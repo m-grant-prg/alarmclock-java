@@ -4,7 +4,11 @@
  */
 package alarmclock;
 
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
+import javax.swing.Timer;
 
 /**
  *
@@ -89,6 +93,11 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmInMinsSpinner.setEnabled(false);
 
         alarmActivatedCheckBox.setText("Activated");
+        alarmActivatedCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alarmActivatedCheckBoxActionPerformed(evt);
+            }
+        });
 
         countdownLabel.setText("Countdown");
 
@@ -203,6 +212,15 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmInMinsSpinner.setEnabled(true);
     }//GEN-LAST:event_alarmInRadioButtonActionPerformed
 
+    private void alarmActivatedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBoxActionPerformed
+        if (alarmActivatedCheckBox.isSelected()) {
+            timerAlarm1 = new Timer(2, this.playAlarm);
+            timerAlarm1.setRepeats(true);
+            timerAlarm1.start();
+            //Thread.sleep(5000);
+        }
+    }//GEN-LAST:event_alarmActivatedCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,6 +280,15 @@ public class AlarmClock extends javax.swing.JFrame {
     private javax.swing.JRadioButton alarmInRadioButton;
     private javax.swing.JLabel countdownLabel;
     // End of variables declaration//GEN-END:variables
+
+    private ActionListener playAlarm = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Toolkit.getDefaultToolkit().beep();
+        }
+    };
+
+    private Timer timerAlarm1;
 
     private void setTime() {
         Calendar currentDate = Calendar.getInstance();
