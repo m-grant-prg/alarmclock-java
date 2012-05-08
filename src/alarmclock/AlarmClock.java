@@ -55,8 +55,10 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmAtMinsSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
 
         alarmInHoursSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
+        alarmInHoursSpinner.setEnabled(false);
 
         alarmInMinsSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+        alarmInMinsSpinner.setEnabled(false);
 
         alarm1ButtonGroup.add(alarmAtRadioButton);
         alarmAtRadioButton.setSelected(true);
