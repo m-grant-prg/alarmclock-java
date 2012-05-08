@@ -4,6 +4,8 @@
  */
 package alarmclock;
 
+import java.util.Calendar;
+
 /**
  *
  * @author mgrantprg
@@ -15,6 +17,7 @@ public class AlarmClock extends javax.swing.JFrame {
      */
     public AlarmClock() {
         initComponents();
+        setTime();
     }
 
     /**
@@ -28,16 +31,20 @@ public class AlarmClock extends javax.swing.JFrame {
 
         alarm1ButtonGroup = new javax.swing.ButtonGroup();
         alarm1 = new javax.swing.JPanel();
-        alarmAtHoursLabel = new javax.swing.JLabel();
-        alarmInHoursLabel = new javax.swing.JLabel();
-        alarmAtHoursSpinner = new javax.swing.JSpinner();
-        alarmAtMinsSpinner = new javax.swing.JSpinner();
-        alarmInHoursSpinner = new javax.swing.JSpinner();
-        alarmInMinsSpinner = new javax.swing.JSpinner();
         alarmAtRadioButton = new javax.swing.JRadioButton();
-        alarmInRadioButton = new javax.swing.JRadioButton();
+        alarmAtHoursLabel = new javax.swing.JLabel();
+        alarmAtHoursSpinner = new javax.swing.JSpinner();
         alarmAtMinsLabel = new javax.swing.JLabel();
+        alarmAtMinsSpinner = new javax.swing.JSpinner();
+        alarmInRadioButton = new javax.swing.JRadioButton();
+        alarmInHoursLabel = new javax.swing.JLabel();
+        alarmInHoursSpinner = new javax.swing.JSpinner();
         alarmInMinsLabel = new javax.swing.JLabel();
+        alarmInMinsSpinner = new javax.swing.JSpinner();
+        alarmActivatedCheckBox = new javax.swing.JCheckBox();
+        countdownLabel = new javax.swing.JLabel();
+        alarmCountdownHoursLabel = new javax.swing.JLabel();
+        alarmCountdownMinsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlarmClock");
@@ -46,30 +53,48 @@ public class AlarmClock extends javax.swing.JFrame {
         alarm1.setBorder(javax.swing.BorderFactory.createTitledBorder("Alarm 1"));
         alarm1.setName("Alarm 1");
 
-        alarmAtHoursLabel.setText("Hours");
+        alarm1ButtonGroup.add(alarmAtRadioButton);
+        alarmAtRadioButton.setSelected(true);
+        alarmAtRadioButton.setText("Alarm at");
+        alarmAtRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alarmAtRadioButtonActionPerformed(evt);
+            }
+        });
 
-        alarmInHoursLabel.setText("Hours");
+        alarmAtHoursLabel.setText("Hours");
 
         alarmAtHoursSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
 
+        alarmAtMinsLabel.setText("Mins");
+
         alarmAtMinsSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+
+        alarm1ButtonGroup.add(alarmInRadioButton);
+        alarmInRadioButton.setText("Alarm in");
+        alarmInRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alarmInRadioButtonActionPerformed(evt);
+            }
+        });
+
+        alarmInHoursLabel.setText("Hours");
 
         alarmInHoursSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
         alarmInHoursSpinner.setEnabled(false);
 
+        alarmInMinsLabel.setText("Mins");
+
         alarmInMinsSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
         alarmInMinsSpinner.setEnabled(false);
 
-        alarm1ButtonGroup.add(alarmAtRadioButton);
-        alarmAtRadioButton.setSelected(true);
-        alarmAtRadioButton.setText("Alarm at");
+        alarmActivatedCheckBox.setText("Activated");
 
-        alarm1ButtonGroup.add(alarmInRadioButton);
-        alarmInRadioButton.setText("Alarm in");
+        countdownLabel.setText("Countdown");
 
-        alarmAtMinsLabel.setText("Mins");
+        alarmCountdownHoursLabel.setText("    0");
 
-        alarmInMinsLabel.setText("Mins");
+        alarmCountdownMinsLabel.setText("    0");
 
         javax.swing.GroupLayout alarm1Layout = new javax.swing.GroupLayout(alarm1);
         alarm1.setLayout(alarm1Layout);
@@ -100,30 +125,47 @@ public class AlarmClock extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(alarmInMinsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(alarmInMinsLabel)))
+                            .addComponent(alarmInMinsLabel))
+                        .addGap(50, 50, 50)
+                        .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(alarm1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(alarmCountdownHoursLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(alarmCountdownMinsLabel)
+                                .addGap(24, 24, 24))
+                            .addGroup(alarm1Layout.createSequentialGroup()
+                                .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(countdownLabel)
+                                    .addComponent(alarmActivatedCheckBox))
+                                .addContainerGap())))
                     .addGroup(alarm1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(alarmInRadioButton)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(alarmInRadioButton)
+                        .addContainerGap())))
         );
         alarm1Layout.setVerticalGroup(
             alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(alarm1Layout.createSequentialGroup()
                 .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtRadioButton)
-                    .addComponent(alarmInRadioButton))
+                    .addComponent(alarmInRadioButton)
+                    .addComponent(alarmActivatedCheckBox))
                 .addGap(7, 7, 7)
                 .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtHoursLabel)
                     .addComponent(alarmInHoursLabel)
                     .addComponent(alarmAtMinsLabel)
-                    .addComponent(alarmInMinsLabel))
+                    .addComponent(alarmInMinsLabel)
+                    .addComponent(countdownLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtHoursSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmAtMinsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmInHoursSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(alarmInMinsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alarmInMinsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alarmCountdownHoursLabel)
+                    .addComponent(alarmCountdownMinsLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -146,6 +188,20 @@ public class AlarmClock extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void alarmAtRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmAtRadioButtonActionPerformed
+        alarmAtHoursSpinner.setEnabled(true);
+        alarmAtMinsSpinner.setEnabled(true);
+        alarmInHoursSpinner.setEnabled(false);
+        alarmInMinsSpinner.setEnabled(false);
+    }//GEN-LAST:event_alarmAtRadioButtonActionPerformed
+
+    private void alarmInRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmInRadioButtonActionPerformed
+        alarmAtHoursSpinner.setEnabled(false);
+        alarmAtMinsSpinner.setEnabled(false);
+        alarmInHoursSpinner.setEnabled(true);
+        alarmInMinsSpinner.setEnabled(true);
+    }//GEN-LAST:event_alarmInRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,15 +247,25 @@ public class AlarmClock extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel alarm1;
     private javax.swing.ButtonGroup alarm1ButtonGroup;
+    private javax.swing.JCheckBox alarmActivatedCheckBox;
     private javax.swing.JLabel alarmAtHoursLabel;
     private javax.swing.JSpinner alarmAtHoursSpinner;
     private javax.swing.JLabel alarmAtMinsLabel;
     private javax.swing.JSpinner alarmAtMinsSpinner;
     private javax.swing.JRadioButton alarmAtRadioButton;
+    private javax.swing.JLabel alarmCountdownHoursLabel;
+    private javax.swing.JLabel alarmCountdownMinsLabel;
     private javax.swing.JLabel alarmInHoursLabel;
     private javax.swing.JSpinner alarmInHoursSpinner;
     private javax.swing.JLabel alarmInMinsLabel;
     private javax.swing.JSpinner alarmInMinsSpinner;
     private javax.swing.JRadioButton alarmInRadioButton;
+    private javax.swing.JLabel countdownLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void setTime() {
+        Calendar currentDate = Calendar.getInstance();
+        alarmAtHoursSpinner.getModel().setValue(currentDate.get(Calendar.HOUR_OF_DAY));
+        alarmAtMinsSpinner.getModel().setValue(currentDate.get(Calendar.MINUTE));
+    }
 }
