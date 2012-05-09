@@ -4,11 +4,13 @@
  */
 package alarmclock;
 
+import java.applet.AudioClip;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import javax.swing.Timer;
+import javax.swing.text.DefaultEditorKit;
 
 /**
  *
@@ -214,11 +216,11 @@ public class AlarmClock extends javax.swing.JFrame {
 
     private void alarmActivatedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBoxActionPerformed
         if (alarmActivatedCheckBox.isSelected()) {
-            timerAlarm1 = new Timer(2, this.playAlarm);
-            timerAlarm1.setRepeats(true);
+            timerAlarm1 = new Timer(20000, this.playAlarm);
             timerAlarm1.start();
-            //Thread.sleep(5000);
         }
+        else
+            timerAlarm1.stop();
     }//GEN-LAST:event_alarmActivatedCheckBoxActionPerformed
 
     /**
@@ -285,6 +287,14 @@ public class AlarmClock extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             Toolkit.getDefaultToolkit().beep();
+            if (alarmInMinsSpinner.isEnabled())
+                alarmInMinsSpinner.setEnabled(false);
+            else
+                alarmInMinsSpinner.setEnabled(true);
+
+            alarmInMinsSpinner.getModel().setValue(alarmInMinsSpinner.getModel().getNextValue());
+            PlaySound player = new PlaySound();
+            player.playFile("alarm-clock-1.wav");
         }
     };
 
@@ -294,5 +304,7 @@ public class AlarmClock extends javax.swing.JFrame {
         Calendar currentDate = Calendar.getInstance();
         alarmAtHoursSpinner.getModel().setValue(currentDate.get(Calendar.HOUR_OF_DAY));
         alarmAtMinsSpinner.getModel().setValue(currentDate.get(Calendar.MINUTE));
+        PlaySound player = new PlaySound();
+        player.playFile("alarm-clock-1.wav");
     }
 }
