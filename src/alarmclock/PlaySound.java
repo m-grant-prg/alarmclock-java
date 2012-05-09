@@ -14,7 +14,7 @@ import java.applet.*;
 public class PlaySound {
 
     public void playFile(String file) {
-        URL fileToPlay = getClass().getResource(file);
+        URL fileToPlay = this.getClass().getResource(file);
         AudioClip player = Applet.newAudioClip(fileToPlay);
         player.play();
     }
