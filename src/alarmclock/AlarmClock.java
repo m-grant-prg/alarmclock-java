@@ -4,15 +4,11 @@
  */
 package alarmclock;
 
-import java.applet.AudioClip;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
-import javax.swing.text.DefaultEditorKit;
 
 /**
  *
@@ -294,7 +290,6 @@ public class AlarmClock extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            Toolkit.getDefaultToolkit().beep();
             if (alarmInMinsSpinner.isEnabled())
                 alarmInMinsSpinner.setEnabled(false);
             else
@@ -315,7 +310,5 @@ public class AlarmClock extends javax.swing.JFrame {
         Calendar currentDate = Calendar.getInstance();
         alarmAtHoursSpinner.getModel().setValue(currentDate.get(Calendar.HOUR_OF_DAY));
         alarmAtMinsSpinner.getModel().setValue(currentDate.get(Calendar.MINUTE));
-        PlaySound player = new PlaySound();
-        player.playFile("alarm-clock-1.wav");
     }
 }
