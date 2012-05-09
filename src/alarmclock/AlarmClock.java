@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.text.DefaultEditorKit;
 
@@ -217,10 +219,15 @@ public class AlarmClock extends javax.swing.JFrame {
     private void alarmActivatedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBoxActionPerformed
         if (alarmActivatedCheckBox.isSelected()) {
             timerAlarm1 = new Timer(20000, this.playAlarm);
+            playerThread = new Thread(new PlaySoundThread());
             timerAlarm1.start();
         }
         else
+        {
             timerAlarm1.stop();
+            if (playerThread.isAlive())
+                    playerThread.interrupt();
+        }
     }//GEN-LAST:event_alarmActivatedCheckBoxActionPerformed
 
     /**
@@ -286,6 +293,7 @@ public class AlarmClock extends javax.swing.JFrame {
     private ActionListener playAlarm = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+
             Toolkit.getDefaultToolkit().beep();
             if (alarmInMinsSpinner.isEnabled())
                 alarmInMinsSpinner.setEnabled(false);
@@ -293,12 +301,15 @@ public class AlarmClock extends javax.swing.JFrame {
                 alarmInMinsSpinner.setEnabled(true);
 
             alarmInMinsSpinner.getModel().setValue(alarmInMinsSpinner.getModel().getNextValue());
-            PlaySound player = new PlaySound();
-            player.playFile("alarm-clock-1.wav");
+
+            timerAlarm1.stop();
+
+            playerThread.start();
         }
     };
 
     private Timer timerAlarm1;
+    private Thread playerThread;
 
     private void setTime() {
         Calendar currentDate = Calendar.getInstance();
