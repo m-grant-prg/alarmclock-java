@@ -215,7 +215,7 @@ public class AlarmClock extends javax.swing.JFrame {
     private void alarmActivatedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBoxActionPerformed
         if (alarmActivatedCheckBox.isSelected()) {
             timerAlarm1 = new Timer(20000, this.playAlarm);
-            playerThread = new Thread(new PlaySoundThread());
+            playerThread = new Thread(new PlaySoundThread("alarm-clock-1.wav", true));
             timerAlarm1.start();
         }
         else
