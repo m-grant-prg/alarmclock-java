@@ -7,9 +7,9 @@ package alarmclock;
 import java.net.URL;
 
 /**
- * Runnable Class to play a sound file in a separate thread. Utilises
- * PlaySoundFile class to support play and loop of sound files embedded in the
- * JAR or external files.
+ * Class implementing the Runnable interface to play a sound file in a separate
+ * thread. Utilises PlaySoundFile class to support play and loop of sound files
+ * embedded in the JAR or external files.
  * @author mgrantprg
  */
 public class PlaySoundThread implements Runnable {
@@ -44,7 +44,7 @@ public class PlaySoundThread implements Runnable {
     }
 
     /**
-     * Override of Thread run() method.
+     * Implementation of Thread run() method as per the Runnable interface.
      */
     public void run() {
         Thread thisThread = Thread.currentThread();
@@ -60,7 +60,7 @@ public class PlaySoundThread implements Runnable {
                 player.playFileLoop(fileToPlayURL);
             else
                 player.playFile(fileToPlayURL);
-        
+
         // This loop allows for the thread to be interrupted.
         while (!Thread.interrupted()) {
             try {
