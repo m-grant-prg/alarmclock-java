@@ -225,8 +225,9 @@ public class AlarmClock extends javax.swing.JFrame {
             timerAlarm1 = new Timer(timerDelay, this.playAlarm);
             playerThread = new Thread(new PlaySoundThread("alarm-clock-1.wav", true));
             timerAlarm1.start();
-            timerCounter1 = new Timer(1000, this.counterUpdater);
+            timerCounter1 = new Timer(60000, this.counterUpdater);
             timerCounter1.start();
+            updateCounters();
         }
         else
         {
@@ -319,14 +320,7 @@ public class AlarmClock extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            currentDate = Calendar.getInstance();
-            long remainingTimeInMillis = (targetTime.getTimeInMillis() - currentDate.getTimeInMillis());
-
-            Long remainingHoursLong = new Long(remainingTimeInMillis / (60 * 60 * 1000));
-            alarmCountdownHoursLabel.setText(remainingHoursLong.toString());
-
-            Long remainingMinsLong = new Long((remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000));
-            alarmCountdownMinsLabel.setText(remainingMinsLong.toString());
+            updateCounters();
         }
     };
 
@@ -366,5 +360,16 @@ public class AlarmClock extends javax.swing.JFrame {
         targetTime = currentDate;
         targetTime.add(Calendar.MILLISECOND, timeDelayInMillis);
         return timeDelayInMillis;
+    }
+
+    private void updateCounters() {
+        currentDate = Calendar.getInstance();
+        long remainingTimeInMillis = (targetTime.getTimeInMillis() - currentDate.getTimeInMillis());
+
+        Long remainingHoursLong = new Long(remainingTimeInMillis / (60 * 60 * 1000));
+        alarmCountdownHoursLabel.setText(remainingHoursLong.toString());
+
+        Long remainingMinsLong = new Long((remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000));
+        alarmCountdownMinsLabel.setText(remainingMinsLong.toString());
     }
 }
