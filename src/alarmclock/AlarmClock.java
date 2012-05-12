@@ -214,6 +214,10 @@ public class AlarmClock extends javax.swing.JFrame {
 
     private void alarmActivatedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBoxActionPerformed
         if (alarmActivatedCheckBox.isSelected()) {
+            alarmAtHoursSpinner.setEnabled(false);
+            alarmAtMinsSpinner.setEnabled(false);
+            alarmInHoursSpinner.setEnabled(false);
+            alarmInMinsSpinner.setEnabled(false);
             if (alarmAtRadioButton.isSelected())
                 timerDelay = alarmAtDelayCalc();
             else
@@ -221,10 +225,21 @@ public class AlarmClock extends javax.swing.JFrame {
             timerAlarm1 = new Timer(timerDelay, this.playAlarm);
             playerThread = new Thread(new PlaySoundThread("alarm-clock-1.wav", true));
             timerAlarm1.start();
+            timerCounter1 = new Timer(1000, this.counterUpdater);
+            timerCounter1.start();
         }
         else
         {
+            if (alarmAtRadioButton.isSelected()) {
+                alarmAtHoursSpinner.setEnabled(true);
+                alarmAtMinsSpinner.setEnabled(true);
+            }
+            else {
+                alarmInHoursSpinner.setEnabled(true);
+                alarmInMinsSpinner.setEnabled(true);
+            }
             timerAlarm1.stop();
+            timerCounter1.stop();
             if (playerThread.isAlive())
                     playerThread.interrupt();
         }
@@ -294,23 +309,33 @@ public class AlarmClock extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (alarmInMinsSpinner.isEnabled())
-                alarmInMinsSpinner.setEnabled(false);
-            else
-                alarmInMinsSpinner.setEnabled(true);
-
-            alarmInMinsSpinner.getModel().setValue(alarmInMinsSpinner.getModel().getNextValue());
-
             timerAlarm1.stop();
-
+            timerCounter1.stop();
             playerThread.start();
         }
     };
 
+        private ActionListener counterUpdater = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            currentDate = Calendar.getInstance();
+            long remainingTimeInMillis = (targetTime.getTimeInMillis() - currentDate.getTimeInMillis());
+
+            Long remainingHoursLong = new Long(remainingTimeInMillis / (60 * 60 * 1000));
+            alarmCountdownHoursLabel.setText(remainingHoursLong.toString());
+
+            Long remainingMinsLong = new Long((remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000));
+            alarmCountdownMinsLabel.setText(remainingMinsLong.toString());
+        }
+    };
+
     private Timer timerAlarm1;
+    private Timer timerCounter1;
     private Thread playerThread;
     private Calendar currentDate;
     private int timerDelay;
+    private Calendar targetTime;
 
     private void setTime() {
         currentDate = Calendar.getInstance();
@@ -319,12 +344,27 @@ public class AlarmClock extends javax.swing.JFrame {
     }
 
     private int alarmAtDelayCalc() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        currentDate = Calendar.getInstance();
+        Integer hoursInMillis = (Integer) alarmAtHoursSpinner.getModel().getValue();
+        Integer minsInMillis = (Integer) alarmAtMinsSpinner.getModel().getValue();
+        int timeDelayHoursInMillis = (hoursInMillis.intValue() - currentDate.get(Calendar.HOUR_OF_DAY)) * 60 * 60 * 1000;
+        int timeDelayMinsInMillis = (minsInMillis.intValue()- currentDate.get(Calendar.MINUTE)) * 60 * 1000;
+        int timeDelayInMillis = timeDelayHoursInMillis + timeDelayMinsInMillis;
+        if (timeDelayInMillis < 0)
+            timeDelayInMillis = (24 * 60 * 60 * 1000) + timeDelayInMillis;
+        targetTime = currentDate;
+        targetTime.add(Calendar.MILLISECOND, timeDelayInMillis);
+        return timeDelayInMillis;
     }
 
     private int alarmInDelayCalc() {
+        currentDate = Calendar.getInstance();
         Integer hoursInMillis = (Integer) alarmInHoursSpinner.getModel().getValue();
         Integer minsInMillis = (Integer) alarmInMinsSpinner.getModel().getValue();
-        return ((hoursInMillis.intValue() * 60 * 60 *1000) + (minsInMillis.intValue() *60 * 1000));
+        int timeDelayInMillis = (hoursInMillis.intValue() * 60 * 60 * 1000)
+                + (minsInMillis.intValue() *60 * 1000);
+        targetTime = currentDate;
+        targetTime.add(Calendar.MILLISECOND, timeDelayInMillis);
+        return timeDelayInMillis;
     }
 }
