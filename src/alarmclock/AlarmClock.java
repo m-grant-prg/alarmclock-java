@@ -214,7 +214,11 @@ public class AlarmClock extends javax.swing.JFrame {
 
     private void alarmActivatedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBoxActionPerformed
         if (alarmActivatedCheckBox.isSelected()) {
-            timerAlarm1 = new Timer(20000, this.playAlarm);
+            if (alarmAtRadioButton.isSelected())
+                timerDelay = alarmAtDelayCalc();
+            else
+                timerDelay = alarmInDelayCalc();
+            timerAlarm1 = new Timer(timerDelay, this.playAlarm);
             playerThread = new Thread(new PlaySoundThread("alarm-clock-1.wav", true));
             timerAlarm1.start();
         }
@@ -305,10 +309,22 @@ public class AlarmClock extends javax.swing.JFrame {
 
     private Timer timerAlarm1;
     private Thread playerThread;
+    private Calendar currentDate;
+    private int timerDelay;
 
     private void setTime() {
-        Calendar currentDate = Calendar.getInstance();
+        currentDate = Calendar.getInstance();
         alarmAtHoursSpinner.getModel().setValue(currentDate.get(Calendar.HOUR_OF_DAY));
         alarmAtMinsSpinner.getModel().setValue(currentDate.get(Calendar.MINUTE));
+    }
+
+    private int alarmAtDelayCalc() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private int alarmInDelayCalc() {
+        Integer hoursInMillis = (Integer) alarmInHoursSpinner.getModel().getValue();
+        Integer minsInMillis = (Integer) alarmInMinsSpinner.getModel().getValue();
+        return ((hoursInMillis.intValue() * 60 * 60 *1000) + (minsInMillis.intValue() *60 * 1000));
     }
 }
