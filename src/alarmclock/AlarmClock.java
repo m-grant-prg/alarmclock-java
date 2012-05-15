@@ -4,7 +4,6 @@
  */
 package alarmclock;
 
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -370,7 +369,7 @@ public class AlarmClock extends javax.swing.JFrame {
             else
                 timerDelay1 = alarmInDelayCalc1();
             timerAlarm1 = new Timer(timerDelay1, this.playAlarm1);
-            playerThread1 = new Thread(new PlaySoundThread("alarm-clock-1.wav", true));
+            playerThread1 = new Thread(new PlaySoundThread("AlarmClock.wav", true));
             timerAlarm1.start();
             timerCounter1 = new Timer(60000, this.counterUpdater1);
             timerCounter1.start();
@@ -418,7 +417,7 @@ public class AlarmClock extends javax.swing.JFrame {
             else
                 timerDelay2 = alarmInDelayCalc2();
             timerAlarm2 = new Timer(timerDelay2, this.playAlarm2);
-            playerThread2 = new Thread(new PlaySoundThread("alarm-clock-1.wav", true));
+            playerThread2 = new Thread(new PlaySoundThread("AlarmClock.wav", true));
             timerAlarm2.start();
             timerCounter2 = new Timer(60000, this.counterUpdater2);
             timerCounter2.start();
