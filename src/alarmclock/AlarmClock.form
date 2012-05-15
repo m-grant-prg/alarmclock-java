@@ -4,6 +4,8 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="alarm1ButtonGroup">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="alarm2ButtonGroup">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -28,9 +30,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="alarm1" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="alarm1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="alarm2" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -40,7 +45,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="alarm1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="160" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="alarm2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,48 +71,48 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="alarmAtRadioButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmAtRadioButton1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="alarmAtHoursSpinner" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmAtHoursSpinner1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="alarmAtMinsLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="alarmAtMinsSpinner" min="-2" max="-2" attributes="0"/>
+                                  <Component id="alarmAtMinsLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="alarmAtMinsSpinner1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="alarmAtHoursLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="alarmAtHoursLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="alarmInHoursSpinner" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="alarmInHoursLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmInHoursSpinner1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmInHoursLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="alarmInMinsSpinner" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="alarmInMinsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmInMinsSpinner1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmInMinsLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="alarmCountdownHoursLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="alarmCountdownHoursLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="alarmCountdownMinsLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="alarmCountdownMinsLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="countdownLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="alarmActivatedCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="countdownLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="alarmActivatedCheckBox1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -113,7 +120,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Component id="alarmInRadioButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="alarmInRadioButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -124,26 +131,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="alarmAtRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmInRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmActivatedCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmActivatedCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="alarmAtHoursLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmInHoursLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmAtMinsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmInMinsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="countdownLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtHoursLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInHoursLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtMinsLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInMinsLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="countdownLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="alarmAtHoursSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmAtMinsSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmInHoursSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmInMinsSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmCountdownHoursLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="alarmCountdownMinsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtHoursSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtMinsSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInHoursSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInMinsSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmCountdownHoursLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmCountdownMinsLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -151,7 +158,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="alarmAtRadioButton">
+        <Component class="javax.swing.JRadioButton" name="alarmAtRadioButton1">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="alarm1ButtonGroup"/>
@@ -160,34 +167,34 @@
             <Property name="text" type="java.lang.String" value="Alarm at"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmAtRadioButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmAtRadioButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="alarmAtHoursLabel">
+        <Component class="javax.swing.JLabel" name="alarmAtHoursLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hours"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="alarmAtHoursSpinner">
+        <Component class="javax.swing.JSpinner" name="alarmAtHoursSpinner1">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="23" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="alarmAtMinsLabel">
+        <Component class="javax.swing.JLabel" name="alarmAtMinsLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mins"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="alarmAtMinsSpinner">
+        <Component class="javax.swing.JSpinner" name="alarmAtMinsSpinner1">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="59" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="alarmInRadioButton">
+        <Component class="javax.swing.JRadioButton" name="alarmInRadioButton1">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="alarm1ButtonGroup"/>
@@ -195,15 +202,15 @@
             <Property name="text" type="java.lang.String" value="Alarm in"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmInRadioButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmInRadioButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="alarmInHoursLabel">
+        <Component class="javax.swing.JLabel" name="alarmInHoursLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hours"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="alarmInHoursSpinner">
+        <Component class="javax.swing.JSpinner" name="alarmInHoursSpinner1">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="23" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -211,12 +218,12 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="alarmInMinsLabel">
+        <Component class="javax.swing.JLabel" name="alarmInMinsLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mins"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="alarmInMinsSpinner">
+        <Component class="javax.swing.JSpinner" name="alarmInMinsSpinner1">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="59" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -224,25 +231,232 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="alarmActivatedCheckBox">
+        <Component class="javax.swing.JCheckBox" name="alarmActivatedCheckBox1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Activated"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmActivatedCheckBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmActivatedCheckBox1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="countdownLabel">
+        <Component class="javax.swing.JLabel" name="countdownLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Countdown"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="alarmCountdownHoursLabel">
+        <Component class="javax.swing.JLabel" name="alarmCountdownHoursLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="    0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="alarmCountdownMinsLabel">
+        <Component class="javax.swing.JLabel" name="alarmCountdownMinsLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="    0"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="alarm2">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Alarm 2"/>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="Alarm 2"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Alarm 2"/>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="alarmAtRadioButton2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="alarmAtHoursSpinner2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="alarmAtMinsLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="alarmAtMinsSpinner2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="alarmAtHoursLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="alarmInHoursSpinner2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmInHoursLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="alarmInMinsSpinner2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="alarmInMinsLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="alarmCountdownHoursLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="alarmCountdownMinsLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="countdownLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="alarmActivatedCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Component id="alarmInRadioButton2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="alarmAtRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmActivatedCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="alarmAtHoursLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInHoursLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtMinsLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInMinsLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="countdownLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="alarmAtHoursSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmAtMinsSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInHoursSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmInMinsSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmCountdownHoursLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alarmCountdownMinsLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JRadioButton" name="alarmAtRadioButton2">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="alarm2ButtonGroup"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Alarm at"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmAtRadioButton2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alarmAtHoursLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hours"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="alarmAtHoursSpinner2">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="23" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alarmAtMinsLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mins"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="alarmAtMinsSpinner2">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="59" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="alarmInRadioButton2">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="alarm2ButtonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Alarm in"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmInRadioButton2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alarmInHoursLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hours"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="alarmInHoursSpinner2">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="23" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alarmInMinsLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mins"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="alarmInMinsSpinner2">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="59" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="alarmActivatedCheckBox2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Activated"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alarmActivatedCheckBox2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="countdownLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Countdown"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alarmCountdownHoursLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="    0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alarmCountdownMinsLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="    0"/>
           </Properties>
