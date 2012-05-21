@@ -369,7 +369,7 @@ public class AlarmClock extends javax.swing.JFrame {
             else
                 timerDelay1 = alarmInDelayCalc1();
             timerAlarm1 = new Timer(timerDelay1, this.playAlarm1);
-            playerThread1 = new Thread(new PlaySoundThread("AlarmClock.wav", true));
+            playerThread1 = new PlaySoundThread("AlarmClock.wav", true);
             timerAlarm1.start();
             timerCounter1 = new Timer(60000, this.counterUpdater1);
             timerCounter1.start();
@@ -387,8 +387,8 @@ public class AlarmClock extends javax.swing.JFrame {
             }
             timerAlarm1.stop();
             timerCounter1.stop();
-            if (playerThread1.isAlive())
-                    playerThread1.interrupt();
+            if (playerThread1.playThread.isAlive())
+                    playerThread1.playThread.interrupt();
         }
     }//GEN-LAST:event_alarmActivatedCheckBox1ActionPerformed
 
@@ -417,7 +417,7 @@ public class AlarmClock extends javax.swing.JFrame {
             else
                 timerDelay2 = alarmInDelayCalc2();
             timerAlarm2 = new Timer(timerDelay2, this.playAlarm2);
-            playerThread2 = new Thread(new PlaySoundThread("AlarmClock.wav", true));
+            playerThread2 = new PlaySoundThread("AlarmClock.wav", true);
             timerAlarm2.start();
             timerCounter2 = new Timer(60000, this.counterUpdater2);
             timerCounter2.start();
@@ -435,8 +435,8 @@ public class AlarmClock extends javax.swing.JFrame {
             }
             timerAlarm2.stop();
             timerCounter2.stop();
-            if (playerThread2.isAlive())
-                    playerThread2.interrupt();
+            if (playerThread2.playThread.isAlive())
+                    playerThread2.playThread.interrupt();
         }
     }//GEN-LAST:event_alarmActivatedCheckBox2ActionPerformed
 
@@ -522,7 +522,7 @@ public class AlarmClock extends javax.swing.JFrame {
 
             timerAlarm1.stop();
             timerCounter1.stop();
-            playerThread1.start();
+            playerThread1.playThread.start();
         }
     };
 
@@ -532,7 +532,7 @@ public class AlarmClock extends javax.swing.JFrame {
 
             timerAlarm2.stop();
             timerCounter2.stop();
-            playerThread2.start();
+            playerThread2.playThread.start();
         }
     };
         private ActionListener counterUpdater1 = new ActionListener() {
@@ -553,14 +553,14 @@ public class AlarmClock extends javax.swing.JFrame {
 
     private Timer timerAlarm1;
     private Timer timerCounter1;
-    private Thread playerThread1;
+    private PlaySoundThread playerThread1;
     private Calendar currentDate;
     private int timerDelay1;
     private Calendar targetTime1;
 
     private Timer timerAlarm2;
     private Timer timerCounter2;
-    private Thread playerThread2;
+    private PlaySoundThread playerThread2;
     private int timerDelay2;
     private Calendar targetTime2;
 

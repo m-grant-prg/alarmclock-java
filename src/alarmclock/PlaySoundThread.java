@@ -18,6 +18,7 @@ public class PlaySoundThread implements Runnable {
     private URL fileToPlayURL;
     private boolean playFile;
     private boolean loop;
+    public Thread playThread;
 
     /**
      * Public constructor used to build an object that plays a file embedded
@@ -26,6 +27,7 @@ public class PlaySoundThread implements Runnable {
      * @param loop True means play in a continuous loop, false means play once.
      */
     public PlaySoundThread(String file, boolean loop) {
+        playThread = new Thread(this);
         this.fileToPlay = file;
         this.playFile = true;
         this.loop = loop;
@@ -38,6 +40,7 @@ public class PlaySoundThread implements Runnable {
      * @param loop True means play in a continuous loop, false means play once.
      */
     public  PlaySoundThread(URL fileToPlayURL, boolean  loop) {
+        playThread = new Thread(this);
         this.fileToPlayURL = fileToPlayURL;
         this.playFile = false;
         this.loop = loop;
@@ -47,7 +50,6 @@ public class PlaySoundThread implements Runnable {
      * Implementation of Thread run() method as per the Runnable interface.
      */
     public void run() {
-        Thread thisThread = Thread.currentThread();
         PlaySoundFile player = new PlaySoundFile();
 
         if (this.playFile)
@@ -64,7 +66,7 @@ public class PlaySoundThread implements Runnable {
         // This loop allows for the thread to be interrupted.
         while (!Thread.interrupted()) {
             try {
-                thisThread.sleep(20000);
+                playThread.sleep(20000);
             }
             catch (InterruptedException e) {
                 player.stopPlayingFile();
