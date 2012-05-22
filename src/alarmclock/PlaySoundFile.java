@@ -10,7 +10,9 @@ import java.applet.*;
 /**
  * Class to play a sound file using the AudioClip player. Supports the playing
  * of JAR embedded files and of external files. Also supports play once or loop.
- * @author mgrantprg
+ * 
+ * @author Mark Grant
+ * @version 0.1
  */
 public class PlaySoundFile {
 

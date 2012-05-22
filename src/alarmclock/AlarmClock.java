@@ -11,7 +11,8 @@ import javax.swing.Timer;
 
 /**
  *
- * @author mgrantprg
+ * @author Mark Grant
+ * @version 0.1
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -21,6 +22,7 @@ public class AlarmClock extends javax.swing.JFrame {
     public AlarmClock() {
         initComponents();
         setTime();
+        
     }
 
     /**

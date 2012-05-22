@@ -10,7 +10,9 @@ import java.net.URL;
  * Class implementing the Runnable interface to play a sound file in a separate
  * thread. Utilises PlaySoundFile class to support play and loop of sound files
  * embedded in the JAR or external files.
- * @author mgrantprg
+ *
+ * @author Mark Grant
+ * @version 0.1
  */
 public class PlaySoundThread implements Runnable {
 
