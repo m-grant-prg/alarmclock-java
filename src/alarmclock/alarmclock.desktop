@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AlarmClock
+Comment=Alarm Clock Utility
+TryExec=/usr/local/bin/AlarmClock.jar
+Exec=/usr/local/bin/AlarmClock.jar
+Icon=/usr/local/bin/AlarmClock.png
+Categories=Utilities
+Terminal=false
+Type=Application
+StartupNotify=true
