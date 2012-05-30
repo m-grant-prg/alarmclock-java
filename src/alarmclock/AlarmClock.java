@@ -22,7 +22,6 @@ public class AlarmClock extends javax.swing.JFrame {
     public AlarmClock() {
         initComponents();
         setTime();
-        
     }
 
     /**
