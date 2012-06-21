@@ -4,13 +4,14 @@
  */
 package alarmclock;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.net.URL;
-import java.applet.*;
 
 /**
  * Class to play a sound file using the AudioClip player. Supports the playing
  * of JAR embedded files and of external files. Also supports play once or loop.
- * 
+ *
  * @author Mark Grant
  * @version 0.1
  */
