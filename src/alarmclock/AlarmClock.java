@@ -12,7 +12,7 @@ import javax.swing.Timer;
 /**
  *
  * @author Mark Grant
- * @version 0.1
+ * @version 0.2
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -65,6 +65,11 @@ public class AlarmClock extends javax.swing.JFrame {
         countdownLabel2 = new javax.swing.JLabel();
         alarmCountdownHoursLabel2 = new javax.swing.JLabel();
         alarmCountdownMinsLabel2 = new javax.swing.JLabel();
+        mainMenuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        exitMenuItem = new javax.swing.JMenuItem();
+        helpMenu = new javax.swing.JMenu();
+        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlarmClock");
@@ -191,7 +196,7 @@ public class AlarmClock extends javax.swing.JFrame {
                     .addComponent(alarmInMinsSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmCountdownHoursLabel1)
                     .addComponent(alarmCountdownMinsLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         alarm2.setBorder(javax.swing.BorderFactory.createTitledBorder("Alarm 2"));
@@ -315,8 +320,29 @@ public class AlarmClock extends javax.swing.JFrame {
                     .addComponent(alarmInMinsSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmCountdownHoursLabel2)
                     .addComponent(alarmCountdownMinsLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
+
+        fileMenu.setText("File");
+
+        exitMenuItem.setText("Exit");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+
+        mainMenuBar.add(fileMenu);
+
+        helpMenu.setText("Help");
+
+        aboutMenuItem.setText("About");
+        helpMenu.add(aboutMenuItem);
+
+        mainMenuBar.add(helpMenu);
+
+        setJMenuBar(mainMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -336,10 +362,9 @@ public class AlarmClock extends javax.swing.JFrame {
                 .addComponent(alarm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(alarm2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        alarm2.getAccessibleContext().setAccessibleName("Alarm 2");
         alarm2.getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -441,6 +466,11 @@ public class AlarmClock extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_alarmActivatedCheckBox2ActionPerformed
 
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+        dispose();
+        System.exit(0);
+    }//GEN-LAST:event_exitMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -483,6 +513,7 @@ public class AlarmClock extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel alarm1;
     private javax.swing.ButtonGroup alarm1ButtonGroup;
     private javax.swing.JPanel alarm2;
@@ -515,6 +546,10 @@ public class AlarmClock extends javax.swing.JFrame {
     private javax.swing.JRadioButton alarmInRadioButton2;
     private javax.swing.JLabel countdownLabel1;
     private javax.swing.JLabel countdownLabel2;
+    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuBar mainMenuBar;
     // End of variables declaration//GEN-END:variables
 
     private ActionListener playAlarm1 = new ActionListener() {
