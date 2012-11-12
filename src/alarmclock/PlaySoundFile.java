@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package alarmclock;
 
 import java.applet.Applet;
@@ -13,7 +9,7 @@ import java.net.URL;
  * of JAR embedded files and of external files. Also supports play once or loop.
  *
  * @author Mark Grant
- * @version 0.1
+ * @version 1.0.2
  */
 public class PlaySoundFile {
 

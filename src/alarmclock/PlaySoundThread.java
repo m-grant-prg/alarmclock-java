@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package alarmclock;
 
 import java.net.URL;
@@ -12,7 +8,7 @@ import java.net.URL;
  * embedded in the JAR or external files.
  *
  * @author Mark Grant
- * @version 0.1
+ * @version 1.0.2
  */
 public class PlaySoundThread implements Runnable {
 
@@ -20,6 +16,10 @@ public class PlaySoundThread implements Runnable {
     private URL fileToPlayURL;
     private boolean playFile;
     private boolean loop;
+
+    /**
+     * Thread to be used for playing a sound.
+     */
     public Thread playThread;
 
     /**

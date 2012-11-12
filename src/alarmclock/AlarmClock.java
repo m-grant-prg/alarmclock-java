@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package alarmclock;
 
 import java.awt.event.ActionEvent;
@@ -10,9 +6,9 @@ import java.util.Calendar;
 import javax.swing.Timer;
 
 /**
- *
+ * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 0.2
+ * @version 1.0.3
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -196,7 +192,7 @@ public class AlarmClock extends javax.swing.JFrame {
                     .addComponent(alarmInMinsSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmCountdownHoursLabel1)
                     .addComponent(alarmCountdownMinsLabel1))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         alarm2.setBorder(javax.swing.BorderFactory.createTitledBorder("Alarm 2"));
@@ -320,7 +316,7 @@ public class AlarmClock extends javax.swing.JFrame {
                     .addComponent(alarmInMinsSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmCountdownHoursLabel2)
                     .addComponent(alarmCountdownMinsLabel2))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fileMenu.setText("File");
@@ -338,6 +334,11 @@ public class AlarmClock extends javax.swing.JFrame {
         helpMenu.setText("Help");
 
         aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         mainMenuBar.add(helpMenu);
@@ -370,6 +371,10 @@ public class AlarmClock extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Event handler for "Alarm at" radio button 1.
+     * @param evt Event object.
+     */
     private void alarmAtRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmAtRadioButton1ActionPerformed
         alarmAtHoursSpinner1.setEnabled(true);
         alarmAtMinsSpinner1.setEnabled(true);
@@ -377,6 +382,10 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmInMinsSpinner1.setEnabled(false);
     }//GEN-LAST:event_alarmAtRadioButton1ActionPerformed
 
+    /**
+     * Event handler for "Alarm in" radio button 1.
+     * @param evt Event object.
+     */
     private void alarmInRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmInRadioButton1ActionPerformed
         alarmAtHoursSpinner1.setEnabled(false);
         alarmAtMinsSpinner1.setEnabled(false);
@@ -384,6 +393,10 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmInMinsSpinner1.setEnabled(true);
     }//GEN-LAST:event_alarmInRadioButton1ActionPerformed
 
+    /**
+     * Event handler for checking the alarm activated checkbox.
+     * @param evt Event object.
+     */
     private void alarmActivatedCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBox1ActionPerformed
         if (alarmActivatedCheckBox1.isSelected()) {
             alarmAtHoursSpinner1.setEnabled(false);
@@ -418,6 +431,10 @@ public class AlarmClock extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_alarmActivatedCheckBox1ActionPerformed
 
+    /**
+     * Event handler for checking the "Alarm at" radio button 2.
+     * @param evt Event object.
+     */
     private void alarmAtRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmAtRadioButton2ActionPerformed
         alarmAtHoursSpinner2.setEnabled(true);
         alarmAtMinsSpinner2.setEnabled(true);
@@ -425,6 +442,10 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmInMinsSpinner2.setEnabled(false);
     }//GEN-LAST:event_alarmAtRadioButton2ActionPerformed
 
+    /**
+     * Event handler for checking the "Alarm in" radio button 2.
+     * @param evt Event object.
+     */
     private void alarmInRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmInRadioButton2ActionPerformed
         alarmAtHoursSpinner2.setEnabled(false);
         alarmAtMinsSpinner2.setEnabled(false);
@@ -432,6 +453,10 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmInMinsSpinner2.setEnabled(true);
     }//GEN-LAST:event_alarmInRadioButton2ActionPerformed
 
+    /**
+     * Event handler for checking the "Alarm activated" checkbox 2.
+     * @param evt Event object.
+     */
     private void alarmActivatedCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBox2ActionPerformed
         if (alarmActivatedCheckBox2.isSelected()) {
             alarmAtHoursSpinner2.setEnabled(false);
@@ -466,10 +491,22 @@ public class AlarmClock extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_alarmActivatedCheckBox2ActionPerformed
 
+    /**
+     * Event handler for the menu action File | Exit.
+     * @param evt Event object.
+     */
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         dispose();
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    /**
+     * Event handler for the menu action Help | About.
+     * @param evt Event object.
+     */
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        new AlarmClockHelpAboutJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,37 +589,46 @@ public class AlarmClock extends javax.swing.JFrame {
     private javax.swing.JMenuBar mainMenuBar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Action taken when action event raised for play alarm 1.
+     */
     private ActionListener playAlarm1 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             timerAlarm1.stop();
             timerCounter1.stop();
             playerThread1.playThread.start();
         }
     };
 
+    /**
+     * Action taken when action event raised for play alarm 2.
+     */
     private ActionListener playAlarm2 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             timerAlarm2.stop();
             timerCounter2.stop();
             playerThread2.playThread.start();
         }
     };
-        private ActionListener counterUpdater1 = new ActionListener() {
+
+    /**
+     * Action taken when action event raised to update timer counter 1.
+     */
+    private ActionListener counterUpdater1 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             updateCounters1();
         }
     };
 
+    /**
+     * Action taken when action event raised to update timer counters 2.
+     */
     private ActionListener counterUpdater2 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             updateCounters2();
         }
     };
@@ -600,6 +646,9 @@ public class AlarmClock extends javax.swing.JFrame {
     private int timerDelay2;
     private Calendar targetTime2;
 
+    /**
+     * Private method to initially populate the Alarm at spinners with the current time.
+     */
     private void setTime() {
         currentDate = Calendar.getInstance();
         alarmAtHoursSpinner1.getModel().setValue(currentDate.get(Calendar.HOUR_OF_DAY));
@@ -608,6 +657,10 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmAtMinsSpinner2.getModel().setValue(currentDate.get(Calendar.MINUTE));
     }
 
+    /**
+     * Calculate the time to wait based on the "Alarm at" value set in clock 1.
+     * @return Time to wait in milliseconds.
+     */
     private int alarmAtDelayCalc1() {
         currentDate = Calendar.getInstance();
         Integer hoursInMillis = (Integer) alarmAtHoursSpinner1.getModel().getValue();
@@ -621,6 +674,11 @@ public class AlarmClock extends javax.swing.JFrame {
         targetTime1.add(Calendar.MILLISECOND, timeDelayInMillis);
         return timeDelayInMillis;
     }
+
+    /**
+     * Calculate the time to wait based on the "Alarm at" value set in clock 2.
+     * @return Time to wait in milliseconds.
+     */
     private int alarmAtDelayCalc2() {
         currentDate = Calendar.getInstance();
         Integer hoursInMillis = (Integer) alarmAtHoursSpinner2.getModel().getValue();
@@ -634,7 +692,12 @@ public class AlarmClock extends javax.swing.JFrame {
         targetTime2.add(Calendar.MILLISECOND, timeDelayInMillis);
         return timeDelayInMillis;
     }
-        private int alarmInDelayCalc1() {
+
+    /**
+     * Calculate the time to wait based on the "Alarm in" value set in clock 1.
+     * @return Time to wait in milliseconds.
+     */
+    private int alarmInDelayCalc1() {
         currentDate = Calendar.getInstance();
         Integer hoursInMillis = (Integer) alarmInHoursSpinner1.getModel().getValue();
         Integer minsInMillis = (Integer) alarmInMinsSpinner1.getModel().getValue();
@@ -644,6 +707,11 @@ public class AlarmClock extends javax.swing.JFrame {
         targetTime1.add(Calendar.MILLISECOND, timeDelayInMillis);
         return timeDelayInMillis;
     }
+
+    /**
+     * Calculate the time to wait based on the "Alarm in" value set in clock 2.
+     * @return Time to wait in milliseconds.
+     */
     private int alarmInDelayCalc2() {
         currentDate = Calendar.getInstance();
         Integer hoursInMillis = (Integer) alarmInHoursSpinner2.getModel().getValue();
@@ -655,6 +723,9 @@ public class AlarmClock extends javax.swing.JFrame {
         return timeDelayInMillis;
     }
 
+    /**
+     * Method to update the countdown labels for clock 1.
+     */
     private void updateCounters1() {
         currentDate = Calendar.getInstance();
         long remainingTimeInMillis = (targetTime1.getTimeInMillis() - currentDate.getTimeInMillis());
@@ -666,6 +737,9 @@ public class AlarmClock extends javax.swing.JFrame {
         alarmCountdownMinsLabel1.setText(remainingMinsLong.toString());
     }
 
+    /**
+     * Method to update the countdown labels for clock 2.
+     */
     private void updateCounters2() {
         currentDate = Calendar.getInstance();
         long remainingTimeInMillis = (targetTime2.getTimeInMillis() - currentDate.getTimeInMillis());
