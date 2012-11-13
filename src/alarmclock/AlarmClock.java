@@ -2,20 +2,30 @@ package alarmclock;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.Calendar;
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.3
+ * @version 1.0.4
  */
 public class AlarmClock extends javax.swing.JFrame {
+
+    BufferedImage alarmClockImage;
 
     /**
      * Creates new form AlarmClock
      */
     public AlarmClock() {
+        // Initialise icon for use in frame borders etc..
+        try {
+            alarmClockImage = ImageIO.read(this.getClass().getResource("AlarmClock.png"));
+        }
+        catch (Exception e) { }
+        
         initComponents();
         setTime();
     }
@@ -69,6 +79,7 @@ public class AlarmClock extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlarmClock");
+        setIconImage(alarmClockImage);
         setName("AlarmClock");
 
         alarm1.setBorder(javax.swing.BorderFactory.createTitledBorder("Alarm 1"));

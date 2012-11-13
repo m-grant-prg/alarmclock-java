@@ -1,14 +1,18 @@
 package alarmclock;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
+import javax.imageio.ImageIO;
 
 /**
  * Class to display a Help | About Swing modal dialog form.
  * @author Mark Grant
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
 
+    public BufferedImage alarmClockImage;
+    
     /**
      * Creates new form AlarmClockHelpAboutJDialog
      * @param parent The parent frame.
@@ -16,6 +20,13 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
      */
     public AlarmClockHelpAboutJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+
+        // Initialise icon for use in frame borders etc..
+        try {
+            alarmClockImage = ImageIO.read(this.getClass().getResource("AlarmClock.png"));
+        }
+        catch (Exception e) { }
+
         initComponents();
     }
 
