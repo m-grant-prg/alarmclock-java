@@ -10,7 +10,7 @@ import javax.swing.Timer;
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.4
+ * @version 1.0.5
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -410,6 +410,8 @@ public class AlarmClock extends javax.swing.JFrame {
      */
     private void alarmActivatedCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBox1ActionPerformed
         if (alarmActivatedCheckBox1.isSelected()) {
+            alarmAtRadioButton1.setEnabled(false);
+            alarmInRadioButton1.setEnabled(false);
             alarmAtHoursSpinner1.setEnabled(false);
             alarmAtMinsSpinner1.setEnabled(false);
             alarmInHoursSpinner1.setEnabled(false);
@@ -427,6 +429,8 @@ public class AlarmClock extends javax.swing.JFrame {
         }
         else
         {
+            alarmAtRadioButton1.setEnabled(true);
+            alarmInRadioButton1.setEnabled(true);
             if (alarmAtRadioButton1.isSelected()) {
                 alarmAtHoursSpinner1.setEnabled(true);
                 alarmAtMinsSpinner1.setEnabled(true);
@@ -470,6 +474,8 @@ public class AlarmClock extends javax.swing.JFrame {
      */
     private void alarmActivatedCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBox2ActionPerformed
         if (alarmActivatedCheckBox2.isSelected()) {
+            alarmAtRadioButton2.setEnabled(false);
+            alarmInRadioButton2.setEnabled(false);
             alarmAtHoursSpinner2.setEnabled(false);
             alarmAtMinsSpinner2.setEnabled(false);
             alarmInHoursSpinner2.setEnabled(false);
@@ -487,6 +493,8 @@ public class AlarmClock extends javax.swing.JFrame {
         }
         else
         {
+            alarmAtRadioButton2.setEnabled(true);
+            alarmInRadioButton2.setEnabled(true);
             if (alarmAtRadioButton2.isSelected()) {
                 alarmAtHoursSpinner2.setEnabled(true);
                 alarmAtMinsSpinner2.setEnabled(true);
