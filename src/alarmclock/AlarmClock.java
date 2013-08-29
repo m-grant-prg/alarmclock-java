@@ -41,6 +41,8 @@ public class AlarmClock extends javax.swing.JFrame {
 
         alarm1ButtonGroup = new javax.swing.ButtonGroup();
         alarm2ButtonGroup = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         alarm1 = new javax.swing.JPanel();
         alarmAtRadioButton1 = new javax.swing.JRadioButton();
         alarmAtHoursLabel1 = new javax.swing.JLabel();
@@ -78,6 +80,8 @@ public class AlarmClock extends javax.swing.JFrame {
         exitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
+
+        jScrollPane1.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlarmClock");
@@ -140,6 +144,11 @@ public class AlarmClock extends javax.swing.JFrame {
 
         alarmSnoozeButton1.setText("Snooze");
         alarmSnoozeButton1.setEnabled(false);
+        alarmSnoozeButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alarmSnoozeButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout alarm1Layout = new javax.swing.GroupLayout(alarm1);
         alarm1.setLayout(alarm1Layout);
@@ -270,6 +279,11 @@ public class AlarmClock extends javax.swing.JFrame {
 
         alarmSnoozeButton2.setText("Snooze");
         alarmSnoozeButton2.setEnabled(false);
+        alarmSnoozeButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alarmSnoozeButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout alarm2Layout = new javax.swing.GroupLayout(alarm2);
         alarm2.setLayout(alarm2Layout);
@@ -434,12 +448,7 @@ public class AlarmClock extends javax.swing.JFrame {
                 timerDelay1 = alarmAtDelayCalc1();
             else
                 timerDelay1 = alarmInDelayCalc1();
-            timerAlarm1 = new Timer(timerDelay1, this.playAlarm1);
-            playerThread1 = new PlaySoundThread("AlarmClock.wav", true);
-            timerAlarm1.start();
-            timerCounter1 = new Timer(60000, this.counterUpdater1);
-            timerCounter1.start();
-            updateCounters1();
+            startTimer1();
         }
         else
         {
@@ -453,10 +462,8 @@ public class AlarmClock extends javax.swing.JFrame {
                 alarmInHoursSpinner1.setEnabled(true);
                 alarmInMinsSpinner1.setEnabled(true);
             }
-            timerAlarm1.stop();
-            timerCounter1.stop();
-            if (playerThread1.playThread.isAlive())
-                    playerThread1.playThread.interrupt();
+            alarmSnoozeButton1.setEnabled(false);
+            stopTimer1();
         }
     }//GEN-LAST:event_alarmActivatedCheckBox1ActionPerformed
 
@@ -498,12 +505,7 @@ public class AlarmClock extends javax.swing.JFrame {
                 timerDelay2 = alarmAtDelayCalc2();
             else
                 timerDelay2 = alarmInDelayCalc2();
-            timerAlarm2 = new Timer(timerDelay2, this.playAlarm2);
-            playerThread2 = new PlaySoundThread("AlarmClock.wav", true);
-            timerAlarm2.start();
-            timerCounter2 = new Timer(60000, this.counterUpdater2);
-            timerCounter2.start();
-            updateCounters2();
+            startTimer2();
         }
         else
         {
@@ -517,10 +519,8 @@ public class AlarmClock extends javax.swing.JFrame {
                 alarmInHoursSpinner2.setEnabled(true);
                 alarmInMinsSpinner2.setEnabled(true);
             }
-            timerAlarm2.stop();
-            timerCounter2.stop();
-            if (playerThread2.playThread.isAlive())
-                    playerThread2.playThread.interrupt();
+            alarmSnoozeButton2.setEnabled(false);
+            stopTimer2();
         }
     }//GEN-LAST:event_alarmActivatedCheckBox2ActionPerformed
 
@@ -540,6 +540,24 @@ public class AlarmClock extends javax.swing.JFrame {
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new AlarmClockHelpAboutJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void alarmSnoozeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmSnoozeButton1ActionPerformed
+        stopTimer1();
+        timerDelay1 = 300000;
+        targetTime1 = Calendar.getInstance();
+        targetTime1.add(Calendar.MILLISECOND, timerDelay1);
+        startTimer1();
+        alarmSnoozeButton1.setEnabled(false);
+    }//GEN-LAST:event_alarmSnoozeButton1ActionPerformed
+
+    private void alarmSnoozeButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmSnoozeButton2ActionPerformed
+        stopTimer2();
+        timerDelay2 = 300000;
+        targetTime2 = Calendar.getInstance();
+        targetTime2.add(Calendar.MILLISECOND, timerDelay2);
+        startTimer2();
+        alarmSnoozeButton2.setEnabled(false);
+    }//GEN-LAST:event_alarmSnoozeButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -621,6 +639,8 @@ public class AlarmClock extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenuBar mainMenuBar;
     // End of variables declaration//GEN-END:variables
 
@@ -632,6 +652,7 @@ public class AlarmClock extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             timerAlarm1.stop();
             timerCounter1.stop();
+            alarmSnoozeButton1.setEnabled(true);
             playerThread1.playThread.start();
         }
     };
@@ -644,6 +665,7 @@ public class AlarmClock extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             timerAlarm2.stop();
             timerCounter2.stop();
+            alarmSnoozeButton2.setEnabled(true);
             playerThread2.playThread.start();
         }
     };
@@ -784,5 +806,37 @@ public class AlarmClock extends javax.swing.JFrame {
 
         Long remainingMinsLong = new Long((remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000));
         alarmCountdownMinsLabel2.setText(remainingMinsLong.toString());
+    }
+
+    private void startTimer1() {
+        timerAlarm1 = new Timer(timerDelay1, this.playAlarm1);
+        playerThread1 = new PlaySoundThread("AlarmClock.wav", true);
+        timerAlarm1.start();
+        timerCounter1 = new Timer(60000, this.counterUpdater1);
+        timerCounter1.start();
+        updateCounters1();
+    }
+
+    private void stopTimer1() {
+        timerAlarm1.stop();
+        timerCounter1.stop();
+        if (playerThread1.playThread.isAlive())
+                playerThread1.playThread.interrupt();
+    }
+
+    private void startTimer2() {
+        timerAlarm2 = new Timer(timerDelay2, this.playAlarm2);
+        playerThread2 = new PlaySoundThread("AlarmClock.wav", true);
+        timerAlarm2.start();
+        timerCounter2 = new Timer(60000, this.counterUpdater2);
+        timerCounter2.start();
+        updateCounters2();
+    }
+
+    private void stopTimer2() {
+        timerAlarm2.stop();
+        timerCounter2.stop();
+        if (playerThread2.playThread.isAlive())
+                playerThread2.playThread.interrupt();
     }
 }
