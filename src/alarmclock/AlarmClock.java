@@ -56,6 +56,7 @@ public class AlarmClock extends javax.swing.JFrame {
         countdownLabel1 = new javax.swing.JLabel();
         alarmCountdownHoursLabel1 = new javax.swing.JLabel();
         alarmCountdownMinsLabel1 = new javax.swing.JLabel();
+        alarmSnoozeButton1 = new javax.swing.JButton();
         alarm2 = new javax.swing.JPanel();
         alarmAtRadioButton2 = new javax.swing.JRadioButton();
         alarmAtHoursLabel2 = new javax.swing.JLabel();
@@ -71,6 +72,7 @@ public class AlarmClock extends javax.swing.JFrame {
         countdownLabel2 = new javax.swing.JLabel();
         alarmCountdownHoursLabel2 = new javax.swing.JLabel();
         alarmCountdownMinsLabel2 = new javax.swing.JLabel();
+        alarmSnoozeButton2 = new javax.swing.JButton();
         mainMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -80,10 +82,11 @@ public class AlarmClock extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlarmClock");
         setIconImage(alarmClockImage);
-        setName("AlarmClock");
+        setName("AlarmClock"); // NOI18N
 
         alarm1.setBorder(javax.swing.BorderFactory.createTitledBorder("Alarm 1"));
-        alarm1.setName("Alarm 1");
+        alarm1.setName("Alarm 1"); // NOI18N
+        alarm1.setPreferredSize(new java.awt.Dimension(546, 125));
 
         alarm1ButtonGroup.add(alarmAtRadioButton1);
         alarmAtRadioButton1.setSelected(true);
@@ -129,9 +132,14 @@ public class AlarmClock extends javax.swing.JFrame {
 
         countdownLabel1.setText("Countdown");
 
+        alarmCountdownHoursLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         alarmCountdownHoursLabel1.setText("    0");
 
+        alarmCountdownMinsLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         alarmCountdownMinsLabel1.setText("    0");
+
+        alarmSnoozeButton1.setText("Snooze");
+        alarmSnoozeButton1.setEnabled(false);
 
         javax.swing.GroupLayout alarm1Layout = new javax.swing.GroupLayout(alarm1);
         alarm1.setLayout(alarm1Layout);
@@ -165,21 +173,20 @@ public class AlarmClock extends javax.swing.JFrame {
                             .addComponent(alarmInMinsLabel1))
                         .addGap(50, 50, 50)
                         .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alarmActivatedCheckBox1)
                             .addGroup(alarm1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(alarmCountdownHoursLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(alarmCountdownMinsLabel1)
-                                .addGap(24, 24, 24))
-                            .addGroup(alarm1Layout.createSequentialGroup()
-                                .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(countdownLabel1)
-                                    .addComponent(alarmActivatedCheckBox1))
-                                .addContainerGap())))
+                                .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(alarm1Layout.createSequentialGroup()
+                                        .addComponent(alarmCountdownHoursLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(alarmCountdownMinsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(countdownLabel1))
+                                .addGap(28, 28, 28)
+                                .addComponent(alarmSnoozeButton1))))
                     .addGroup(alarm1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(alarmInRadioButton1)
-                        .addContainerGap())))
+                        .addComponent(alarmInRadioButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         alarm1Layout.setVerticalGroup(
             alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,26 +195,28 @@ public class AlarmClock extends javax.swing.JFrame {
                     .addComponent(alarmAtRadioButton1)
                     .addComponent(alarmInRadioButton1)
                     .addComponent(alarmActivatedCheckBox1))
-                .addGap(7, 7, 7)
+                .addGap(2, 2, 2)
                 .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtHoursLabel1)
                     .addComponent(alarmInHoursLabel1)
                     .addComponent(alarmAtMinsLabel1)
                     .addComponent(alarmInMinsLabel1)
-                    .addComponent(countdownLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(countdownLabel1)
+                    .addComponent(alarmSnoozeButton1))
+                .addGap(4, 4, 4)
                 .addGroup(alarm1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtHoursSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmAtMinsSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmInHoursSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmInMinsSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(alarmCountdownHoursLabel1)
-                    .addComponent(alarmCountdownMinsLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(alarmCountdownHoursLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alarmCountdownMinsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         alarm2.setBorder(javax.swing.BorderFactory.createTitledBorder("Alarm 2"));
-        alarm2.setName("Alarm 2");
+        alarm2.setName("Alarm 2"); // NOI18N
+        alarm2.setPreferredSize(new java.awt.Dimension(546, 125));
 
         alarm2ButtonGroup.add(alarmAtRadioButton2);
         alarmAtRadioButton2.setSelected(true);
@@ -253,9 +262,14 @@ public class AlarmClock extends javax.swing.JFrame {
 
         countdownLabel2.setText("Countdown");
 
+        alarmCountdownHoursLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         alarmCountdownHoursLabel2.setText("    0");
 
+        alarmCountdownMinsLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         alarmCountdownMinsLabel2.setText("    0");
+
+        alarmSnoozeButton2.setText("Snooze");
+        alarmSnoozeButton2.setEnabled(false);
 
         javax.swing.GroupLayout alarm2Layout = new javax.swing.GroupLayout(alarm2);
         alarm2.setLayout(alarm2Layout);
@@ -289,21 +303,20 @@ public class AlarmClock extends javax.swing.JFrame {
                             .addComponent(alarmInMinsLabel2))
                         .addGap(50, 50, 50)
                         .addGroup(alarm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(alarm2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(alarmCountdownHoursLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(alarmCountdownMinsLabel2)
-                                .addGap(24, 24, 24))
+                            .addComponent(alarmActivatedCheckBox2)
                             .addGroup(alarm2Layout.createSequentialGroup()
                                 .addGroup(alarm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(countdownLabel2)
-                                    .addComponent(alarmActivatedCheckBox2))
-                                .addContainerGap())))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alarm2Layout.createSequentialGroup()
+                                        .addComponent(alarmCountdownHoursLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(alarmCountdownMinsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(countdownLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(alarmSnoozeButton2))))
                     .addGroup(alarm2Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(alarmInRadioButton2)
-                        .addContainerGap())))
+                        .addComponent(alarmInRadioButton2)))
+                .addContainerGap())
         );
         alarm2Layout.setVerticalGroup(
             alarm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,22 +325,23 @@ public class AlarmClock extends javax.swing.JFrame {
                     .addComponent(alarmAtRadioButton2)
                     .addComponent(alarmInRadioButton2)
                     .addComponent(alarmActivatedCheckBox2))
-                .addGap(7, 7, 7)
+                .addGap(2, 2, 2)
                 .addGroup(alarm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtHoursLabel2)
                     .addComponent(alarmInHoursLabel2)
                     .addComponent(alarmAtMinsLabel2)
                     .addComponent(alarmInMinsLabel2)
-                    .addComponent(countdownLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(countdownLabel2)
+                    .addComponent(alarmSnoozeButton2))
+                .addGap(4, 4, 4)
                 .addGroup(alarm2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alarmAtHoursSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmAtMinsSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmInHoursSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alarmInMinsSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(alarmCountdownHoursLabel2)
-                    .addComponent(alarmCountdownMinsLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(alarmCountdownHoursLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alarmCountdownMinsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         fileMenu.setText("File");
@@ -362,10 +376,10 @@ public class AlarmClock extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(alarm1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(alarm2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(alarm1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                    .addComponent(alarm2, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,7 +419,7 @@ public class AlarmClock extends javax.swing.JFrame {
     }//GEN-LAST:event_alarmInRadioButton1ActionPerformed
 
     /**
-     * Event handler for checking the alarm activated checkbox.
+     * Event handler for processing the alarm activated checkbox.
      * @param evt Event object.
      */
     private void alarmActivatedCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alarmActivatedCheckBox1ActionPerformed
@@ -600,6 +614,8 @@ public class AlarmClock extends javax.swing.JFrame {
     private javax.swing.JSpinner alarmInMinsSpinner2;
     private javax.swing.JRadioButton alarmInRadioButton1;
     private javax.swing.JRadioButton alarmInRadioButton2;
+    private javax.swing.JButton alarmSnoozeButton1;
+    private javax.swing.JButton alarmSnoozeButton2;
     private javax.swing.JLabel countdownLabel1;
     private javax.swing.JLabel countdownLabel2;
     private javax.swing.JMenuItem exitMenuItem;
