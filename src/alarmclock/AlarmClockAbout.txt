@@ -1,5 +1,5 @@
 Author: Mark Grant
 
-Release: 1.0.6
+Release: 1.0.8
 
-Release Date: 29th August 2013
+Release Date: 12th May 2014

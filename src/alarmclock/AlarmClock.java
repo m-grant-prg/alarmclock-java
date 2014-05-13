@@ -10,7 +10,7 @@ import javax.swing.Timer;
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.5
+ * @version 1.0.8
  */
 public class AlarmClock extends javax.swing.JFrame {
 
