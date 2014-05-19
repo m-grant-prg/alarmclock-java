@@ -39,4 +39,5 @@ B) An associated GitHub repository AlarmClockAutoToolsDist will be available sho
 
 C) Another associated GitHub repository AlarmClockWindowsDist will be available shortly. This repository provides the mechanism to produce a Windows msi installer package.
 
-D) A PPA (Personal Package Archive) is also available on LaunchPad which provides a neat mechanism for installing AlarmClock and keeping it up-to-date on Ubuntu.
+D) A PPA (Personal Package Archive) is also available on LaunchPad which provides a neat mechanism for installing AlarmClock and keeping it up-to-date on Ubuntu. The PPA resides on LaunchPad here:
+https://code.launchpad.net/~m-grant-prg/+archive/utils
