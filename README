@@ -35,7 +35,7 @@ As a Java application it can run on many operating systems so this repository do
 A) The compiled jar file AlarmClock.jar can be found in the dist folder of this repository. This file can be copied to a target machine and run using the command:
 java -jar "/YourPath/AlarmClock.jar"
 
-B) An associated GitHub repository AlarmClockAutoToolsDist will be available shortly. This repository provides an installation mechanism for any system supporting the AutoTools tool-chain, eg Linux.
+B) An associated GitHub repository AlarmClockAutoToolsDist is available. This repository provides an installation mechanism for any system supporting the AutoTools tool-chain, eg Linux.
 
 C) Another associated GitHub repository AlarmClockWindowsDist will be available shortly. This repository provides the mechanism to produce a Windows msi installer package.
 
