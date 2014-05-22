@@ -37,7 +37,7 @@ java -jar "/YourPath/AlarmClock.jar"
 
 B) An associated GitHub repository AlarmClockAutoToolsDist is available. This repository provides an installation mechanism for any system supporting the AutoTools tool-chain, eg Linux.
 
-C) Another associated GitHub repository AlarmClockWindowsDist will be available shortly. This repository provides the mechanism to produce a Windows msi installer package.
+C) Another associated GitHub repository AlarmClockWindowsDist is available. This repository provides the mechanism to produce a Windows msi installer package.
 
 D) A PPA (Personal Package Archive) is also available on LaunchPad which provides a neat mechanism for installing AlarmClock and keeping it up-to-date on Ubuntu. The PPA resides on LaunchPad here:
 https://code.launchpad.net/~m-grant-prg/+archive/utils
