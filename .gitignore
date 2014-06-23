@@ -1,2 +1,12 @@
 /nbproject/private/
 /build/
+/autom4te.cache/
+/aclocal.*
+/config.*
+/configure
+**/Makefile
+**/Makefile.in
+/missing
+/INSTALL
+/install-sh
+**/*.tar.gz

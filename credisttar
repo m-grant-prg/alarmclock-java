@@ -1,0 +1,3 @@
+cd dist
+tar cvpzf ../distribution/AlarmClock$(git describe | tr -d '\n').tar.gz * --exclude=README.TXT
+cd ..
