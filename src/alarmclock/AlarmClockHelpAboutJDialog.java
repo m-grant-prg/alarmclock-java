@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2014 Mark Grant
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package alarmclock;
 
 import java.awt.image.BufferedImage;
@@ -46,15 +63,15 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("About AlarmClock");
         setModal(true);
-        setName("AlarmClockHelpAboutJDialog");
+        setName("AlarmClockHelpAboutJDialog"); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        helpAboutjTextArea.setColumns(20);
         helpAboutjTextArea.setEditable(false);
+        helpAboutjTextArea.setColumns(20);
         helpAboutjTextArea.setRows(5);
         helpAboutjScrollPane.setViewportView(helpAboutjTextArea);
 
@@ -70,23 +87,22 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(OKjButton)))
+                .addGap(29, 29, 29)
+                .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(OKjButton)
+                .addGap(239, 239, 239))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(OKjButton)
-                .addGap(26, 26, 26))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +130,7 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
                 if (fileByte != -1) text += (char) fileByte;
             } while (fileByte != -1);
             this.helpAboutjTextArea.setText(text);
+            this.helpAboutjTextArea.setCaretPosition(0);
         }
         catch (Exception e) { }
     }//GEN-LAST:event_formWindowOpened
