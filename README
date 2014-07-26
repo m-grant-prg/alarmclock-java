@@ -30,9 +30,9 @@ AlarmClock is written as a NetBeans Java project and as such the files tracked b
 3 ... Installation
 ==================
 
-As a Java application it can run on many operating systems so this repository does not include any specific installation support. Other projects / repositories listed below provide installation packages although the list begins with just using the compiled jar from this repository.
+As a Java application it can run on many operating systems so this repository does not include any specific installation support. Other projects / repositories listed below provide installation packages although the list begins with just using the compiled jar from this source code.
 
-A) The compiled jar file AlarmClock.jar can be found in the dist folder of this repository. This file can be copied to a target machine and run using the command:
+A) Compile the source code to AlarmClock.jar. This file can then be run using the command:
 java -jar "/YourPath/AlarmClock.jar"
 
 B) An associated GitHub repository AlarmClockAutoToolsDist is available. This repository provides an installation mechanism for any system supporting the AutoTools tool-chain, eg Linux.
