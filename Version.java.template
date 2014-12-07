@@ -1,0 +1,63 @@
+
+// Auto-generated, triggered by project build.
+
+// Please do not modify.
+
+/*
+ * Copyright (C) 2014 Mark Grant
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either pkgVersion 3 of the License, or
+ * (at your option) any later pkgVersion.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package alarmclock;
+
+/**
+ * Class solely to return the version of this package.
+ * @author Mark Grant
+ * @version 1.0.1
+ */
+public class Version {
+    private static String pkgVersion = new String("@repository.version@");
+    private static String srcVersion = "v1.0.9";
+    
+    /**
+     * Public static method to return the overall package version.
+     * @return The overall package version.
+     */
+    public static String getPkgVersion() {
+        return pkgVersion;
+    }
+    
+    /**
+     * Public static method to return the overall source version of this package.
+     * @return The overall source version.
+     */
+    public static String getSrcVersion() {
+        return srcVersion;
+    }
+    
+    /**
+     * Public static method to print the overall package version on stdout.
+     */
+    public static void printPkgVersion() {
+        System.out.println(pkgVersion);
+    }
+    
+    /**
+     * Public static method to print the overall source version on stdout.
+     */
+    public static void printSrcVersion() {
+        System.out.println(srcVersion);
+    }
+}

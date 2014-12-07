@@ -11,3 +11,5 @@
 /INSTALL
 /install-sh
 **/*.tar.gz
+**/Version.java
+/src/alarmclock/Version.java
