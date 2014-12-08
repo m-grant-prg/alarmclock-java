@@ -23,11 +23,12 @@ import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
+import gnu.getopt.*;
 
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.8
+ * @version 1.0.9
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -606,6 +607,34 @@ public class AlarmClock extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AlarmClock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
+        LongOpt[] longOpts = new LongOpt[2];
+        longOpts[0] = new LongOpt("help", LongOpt.NO_ARGUMENT, null, 'h');
+        longOpts[1] = new LongOpt("version", LongOpt.NO_ARGUMENT, null, 'V');
+        Getopt g = new Getopt("MGNotes", args, ":hV;", longOpts);
+        int c;
+        while ((c = g.getopt()) != -1)
+            switch (c)
+            {
+                case 'h':
+                    System.out.println("Usage is 'Command' [options]");
+                    System.out.println("	-h or --help displays usage information");
+                    System.out.println("	OR");
+                    System.out.println("	-V or --version displays version information");
+                    System.exit(0);
+                case 'V':
+                    System.out.println("AlarmClock Source version " + Version.getSrcVersion());
+                    System.out.println("AlarmClock Package version " + Version.getPkgVersion());
+                    System.exit(0);
+                case '?':
+                    System.exit(1); // getopt() has already printed an error.
+            }
+        
+        // Program does not accept other arguments.
+        if (g.getOptind() < args.length) {
+            System.out.println("Invalid argument.");
+            System.exit(64);
+        }
 
         /*
          * Create and display the form
