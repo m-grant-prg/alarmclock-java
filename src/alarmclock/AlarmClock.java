@@ -611,7 +611,7 @@ public class AlarmClock extends javax.swing.JFrame {
         LongOpt[] longOpts = new LongOpt[2];
         longOpts[0] = new LongOpt("help", LongOpt.NO_ARGUMENT, null, 'h');
         longOpts[1] = new LongOpt("version", LongOpt.NO_ARGUMENT, null, 'V');
-        Getopt g = new Getopt("MGNotes", args, ":hV;", longOpts);
+        Getopt g = new Getopt("AlarmClock", args, ":hV", longOpts);
         int c;
         while ((c = g.getopt()) != -1)
             switch (c)
