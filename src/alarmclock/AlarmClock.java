@@ -28,7 +28,7 @@ import gnu.getopt.*;
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.9
+ * @version 1.0.10
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -613,9 +613,8 @@ public class AlarmClock extends javax.swing.JFrame {
         longOpts[1] = new LongOpt("version", LongOpt.NO_ARGUMENT, null, 'V');
         Getopt g = new Getopt("AlarmClock", args, ":hV", longOpts);
         int c;
-        while ((c = g.getopt()) != -1)
-            switch (c)
-            {
+        while ((c = g.getopt()) != -1) {
+            switch (c) {
                 case 'h':
                     System.out.println("Usage is 'Command' [options]");
                     System.out.println("	-h or --help displays usage information");
@@ -627,8 +626,9 @@ public class AlarmClock extends javax.swing.JFrame {
                     System.out.println("AlarmClock Package version " + Version.getPkgVersion());
                     System.exit(0);
                 case '?':
-                    System.exit(1); // getopt() has already printed an error.
+                    System.exit(64); // getopt() has already printed an error.
             }
+        }
         
         // Program does not accept other arguments.
         if (g.getOptind() < args.length) {
