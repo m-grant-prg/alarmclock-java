@@ -15,6 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*########################################################################
+##									##
+## Class ID: AlarmClock							##
+## Author: Mark Grant							##
+##									##
+## Further Info:							##
+##									##
+##########################################################################
+
+##########################################################################
+##									##
+## Changelog								##
+##									##
+## Date		Author	Version	Description				##
+##									##
+## 09/12/2015	MG	1.0.11	Introduced in-source ChangeLogs.	##
+##									##
+##########################################################################
+*/
+
 package alarmclock;
 
 import java.awt.event.ActionEvent;
@@ -28,7 +48,7 @@ import gnu.getopt.*;
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.10
+ * @version 1.0.11
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -43,7 +63,7 @@ public class AlarmClock extends javax.swing.JFrame {
             alarmClockImage = ImageIO.read(this.getClass().getResource("AlarmClock.png"));
         }
         catch (Exception e) { }
-        
+
         initComponents();
         setTime();
     }
@@ -629,7 +649,7 @@ public class AlarmClock extends javax.swing.JFrame {
                     System.exit(64); // getopt() has already printed an error.
             }
         }
-        
+
         // Program does not accept other arguments.
         if (g.getOptind() < args.length) {
             System.out.println("Invalid argument.");

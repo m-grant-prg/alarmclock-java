@@ -8,8 +8,8 @@
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either pkgVersion 3 of the License, or
- * (at your option) any later pkgVersion.
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -20,16 +20,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*########################################################################
+##									##
+## Class ID: Version							##
+## Author: Mark Grant							##
+##									##
+## Further Info:							##
+##									##
+##########################################################################
+
+##########################################################################
+##									##
+## Changelog								##
+##									##
+## Date		Author	Version	Description				##
+##									##
+## 09/12/2015	MG	1.0.2	Introduced in-source ChangeLogs.	##
+##									##
+##########################################################################
+*/
+
 package alarmclock;
 
 /**
  * Class solely to return the version of this package.
  * @author Mark Grant
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Version {
     private static String pkgVersion = new String("@repository.version@");
-    private static String srcVersion = "v1.0.11";
+    private static String srcVersion = "v1.0.12";
     
     /**
      * Public static method to return the overall package version.

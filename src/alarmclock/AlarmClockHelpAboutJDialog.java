@@ -15,6 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*########################################################################
+##									##
+## Class ID: AlarmClockHelpAboutJDialog					##
+## Author: Mark Grant							##
+##									##
+## Further Info:							##
+##									##
+##########################################################################
+
+##########################################################################
+##									##
+## Changelog								##
+##									##
+## Date		Author	Version	Description				##
+##									##
+## 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	##
+##									##
+##########################################################################
+*/
+
 package alarmclock;
 
 import java.awt.image.BufferedImage;
@@ -24,12 +44,12 @@ import javax.imageio.ImageIO;
 /**
  * Class to display a Help | About Swing modal dialog form.
  * @author Mark Grant
- * @version 1.0.2
+ * @version 1.0.3
  */
 public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
 
     public BufferedImage alarmClockImage;
-    
+
     /**
      * Creates new form AlarmClockHelpAboutJDialog
      * @param parent The parent frame.

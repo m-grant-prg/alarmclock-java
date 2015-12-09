@@ -15,6 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*########################################################################
+##									##
+## Class ID: PlaySoundFile      					##
+## Author: Mark Grant							##
+##									##
+## Further Info:							##
+##									##
+##########################################################################
+
+##########################################################################
+##									##
+## Changelog								##
+##									##
+## Date		Author	Version	Description				##
+##									##
+## 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	##
+##									##
+##########################################################################
+*/
+
 package alarmclock;
 
 import java.applet.Applet;
@@ -26,7 +46,7 @@ import java.net.URL;
  * of JAR embedded files and of external files. Also supports play once or loop.
  *
  * @author Mark Grant
- * @version 1.0.2
+ * @version 1.0.3
  */
 public class PlaySoundFile {
 

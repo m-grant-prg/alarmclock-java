@@ -15,6 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*########################################################################
+##									##
+## Class ID: PlaySoundThread    					##
+## Author: Mark Grant							##
+##									##
+## Further Info:							##
+##									##
+##########################################################################
+
+##########################################################################
+##									##
+## Changelog								##
+##									##
+## Date		Author	Version	Description				##
+##									##
+## 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	##
+##									##
+##########################################################################
+*/
+
 package alarmclock;
 
 import java.net.URL;
@@ -25,7 +45,7 @@ import java.net.URL;
  * embedded in the JAR or external files.
  *
  * @author Mark Grant
- * @version 1.0.2
+ * @version 1.0.3
  */
 public class PlaySoundThread implements Runnable {
 
