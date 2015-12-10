@@ -48,8 +48,8 @@ package alarmclock;
  * @version 1.0.2
  */
 public class Version {
-    private static String pkgVersion = new String("@repository.version@");
-    private static String srcVersion = "v1.0.12";
+    private static final String pkgVersion = new String("@repository.version@");
+    private static final String srcVersion = "v1.0.12";
     
     /**
      * Public static method to return the overall package version.
