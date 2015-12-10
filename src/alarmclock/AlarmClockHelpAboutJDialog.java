@@ -31,6 +31,9 @@
 ## Date		Author	Version	Description				##
 ##									##
 ## 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	##
+## 10/12/2015   MG      1.0.4   Change to use version information from  ##
+##                              the Version Class rather than from the  ##
+##                              static text file.                       ##
 ##									##
 ##########################################################################
 */
@@ -44,7 +47,7 @@ import javax.imageio.ImageIO;
 /**
  * Class to display a Help | About Swing modal dialog form.
  * @author Mark Grant
- * @version 1.0.3
+ * @version 1.0.4
  */
 public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
 
@@ -79,6 +82,10 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
         helpAboutjScrollPane = new javax.swing.JScrollPane();
         helpAboutjTextArea = new javax.swing.JTextArea();
         OKjButton = new javax.swing.JButton();
+        srcVersionjLabel = new javax.swing.JLabel();
+        srcVersionjTextField = new javax.swing.JTextField();
+        pkgVersionjLabel = new javax.swing.JLabel();
+        pkgVersionjTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("About AlarmClock");
@@ -102,27 +109,56 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
             }
         });
 
+        srcVersionjLabel.setText("Java Source Version :");
+        srcVersionjLabel.setToolTipText("");
+
+        srcVersionjTextField.setEditable(false);
+        srcVersionjTextField.setText("jTextField1");
+        srcVersionjTextField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        pkgVersionjLabel.setText("Java Package Version :");
+
+        pkgVersionjTextField.setEditable(false);
+        pkgVersionjTextField.setText("jTextField1");
+        pkgVersionjTextField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(OKjButton)
-                .addGap(239, 239, 239))
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(OKjButton))
+                    .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(srcVersionjLabel)
+                            .addComponent(pkgVersionjLabel))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pkgVersionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(srcVersionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(srcVersionjLabel)
+                    .addComponent(srcVersionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pkgVersionjLabel)
+                    .addComponent(pkgVersionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(helpAboutjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(36, 36, 36)
                 .addComponent(OKjButton)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -141,6 +177,9 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
      * @param evt Event object.
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.srcVersionjTextField.setText(Version.getSrcVersion());
+        this.pkgVersionjTextField.setText(Version.getPkgVersion());
+
         int fileByte;
         String text = "";
 
@@ -208,5 +247,9 @@ public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
     private javax.swing.JButton OKjButton;
     private javax.swing.JScrollPane helpAboutjScrollPane;
     private javax.swing.JTextArea helpAboutjTextArea;
+    private javax.swing.JLabel pkgVersionjLabel;
+    private javax.swing.JTextField pkgVersionjTextField;
+    private javax.swing.JLabel srcVersionjLabel;
+    private javax.swing.JTextField srcVersionjTextField;
     // End of variables declaration//GEN-END:variables
 }

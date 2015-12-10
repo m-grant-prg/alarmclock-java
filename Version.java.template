@@ -31,11 +31,30 @@
 
 ##########################################################################
 ##									##
-## Changelog								##
+## ChangeLog for this Version Class.					##
 ##									##
 ## Date		Author	Version	Description				##
 ##									##
-## 09/12/2015	MG	1.0.2	Introduced in-source ChangeLogs.	##
+## 09/12/2015	MG	1.0.2	Introduced ChangeLog for this Version	##
+##				Class.					##
+## 10/12/2015	MG	1.0.3	Introduced package ChangeLog into this	##
+##				Version Class.				##
+##				Make srcVersion and pkgVersion final.	##
+##									##
+##########################################################################
+
+##########################################################################
+##									##
+## ChangeLog for package.						##
+##									##
+## Date		Author	Version	Description				##
+##									##
+## 09/12/2015	MG	1.0.12	Introduced in-source ChangeLogs.	##
+## 10/12/2015   MG      1.0.13  Change to use version information from  ##
+##                              the Version Class rather than from the  ##
+##                              static 'Help About' text file.		##
+##				Make Version.srcVersion and		##
+##				Version.pkgVersion final.		##
 ##									##
 ##########################################################################
 */
@@ -45,11 +64,11 @@ package alarmclock;
 /**
  * Class solely to return the version of this package.
  * @author Mark Grant
- * @version 1.0.2
+ * @version 1.0.3
  */
 public class Version {
     private static final String pkgVersion = new String("@repository.version@");
-    private static final String srcVersion = "v1.0.12";
+    private static final String srcVersion = "v1.0.13";
     
     /**
      * Public static method to return the overall package version.
