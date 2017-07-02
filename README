@@ -16,28 +16,41 @@ Contents
 1 ... Project Description
 =========================
 
-This is a GUI AlarmClock application implementing two independent alarms. Each alarm can be set to 'Alarm At', eg 13:15, or 'Alarm In', eg 1 hour 10 mins. Each alarm also incorporates a 'Snooze' button that will pause a ringing alarm for 5 minutes.
+This is a GUI AlarmClock application implementing two independent alarms. Each
+alarm can be set to 'Alarm At', eg 13:15, or 'Alarm In', eg 1 hour 10 mins.
+Each alarm also incorporates a 'Snooze' button that will pause a ringing alarm
+for 5 minutes.
 
 ---------------------
 
 2 ... This Repository
 =====================
 
-AlarmClock is written as a NetBeans Java project and as such the files tracked by Git are determined by NetBeans.
+AlarmClock is written as a NetBeans Java project and as such the files tracked
+by Git are determined by NetBeans.
 
 ------------------
 
 3 ... Installation
 ==================
 
-As a Java application it can run on many operating systems so this repository does not include any specific installation support. Other projects / repositories listed below provide installation packages although the list begins with just using the compiled jar from this source code.
+As a Java application it can run on many operating systems so this repository
+does not include any specific installation support.
+Other projects / repositories listed below provide installation packages
+although the list begins with just using the compiled jar from this source code.
 
-A) Compile the source code to AlarmClock.jar. This file can then be run using the command:
+A) Compile the source code to AlarmClock.jar. This file can then be run using
+the command:
 java -jar "/YourPath/AlarmClock.jar"
 
-B) An associated GitHub repository AlarmClockAutoToolsDist is available. This repository provides an installation mechanism for any system supporting the AutoTools tool-chain, eg Linux.
+B) An associated GitHub repository AlarmClockATDist is available. This
+repository provides an installation mechanism for any system supporting the
+AutoTools tool-chain, eg Linux.
 
-C) Another associated GitHub repository AlarmClockWindowsDist is available. This repository provides the mechanism to produce a Windows msi installer package.
+C) Another associated GitHub repository AlarmClockWindowsDist is available. This
+repository provides the mechanism to produce a Windows msi installer package.
 
-D) A PPA (Personal Package Archive) is also available on LaunchPad which provides a neat mechanism for installing AlarmClock and keeping it up-to-date on Ubuntu. The PPA resides on LaunchPad here:
+D) A PPA (Personal Package Archive) is also available on LaunchPad which
+provides a neat mechanism for installing AlarmClock and keeping it up-to-date on
+Ubuntu. The PPA resides on LaunchPad here:
 https://code.launchpad.net/~m-grant-prg/+archive/utils
