@@ -12,9 +12,9 @@
     <import file="nbproject/build-impl.xml"/>
     <!--
 
-    There exist several targets which are by default empty and which can be 
-    used for execution of your tasks. These targets are usually executed 
-    before and after some main targets. They are: 
+    There exist several targets which are by default empty and which can be
+    used for execution of your tasks. These targets are usually executed
+    before and after some main targets. They are:
 
       -pre-init:                 called before initialization of project properties
       -post-init:                called after initialization of project properties
@@ -40,19 +40,19 @@
             </obfuscate>
         </target>
 
-    For list of available properties check the imported 
-    nbproject/build-impl.xml file. 
+    For list of available properties check the imported
+    nbproject/build-impl.xml file.
 
 
     Another way to customize the build is by overriding existing main targets.
-    The targets of interest are: 
+    The targets of interest are:
 
       -init-macrodef-javac:     defines macro for javac compilation
       -init-macrodef-junit:     defines macro for junit execution
       -init-macrodef-debug:     defines macro for class debugging
       -init-macrodef-java:      defines macro for class execution
       -do-jar:                  JAR building
-      run:                      execution of project 
+      run:                      execution of project
       -javadoc-build:           Javadoc generation
       test-report:              JUnit report generation
 
@@ -64,10 +64,10 @@
             </exec>
         </target>
 
-    Notice that the overridden target depends on the jar target and not only on 
-    the compile target as the regular run target does. Again, for a list of available 
+    Notice that the overridden target depends on the jar target and not only on
+    the compile target as the regular run target does. Again, for a list of available
     properties which you can use, check the target you are overriding in the
-    nbproject/build-impl.xml file. 
+    nbproject/build-impl.xml file.
 
     -->
     <target name="-pre-compile">
@@ -75,14 +75,14 @@
             <arg value="describe"/>
             <arg value="--always"/>
         </exec>
-        
+
         <condition property="repository.version" value="${git.revision}" else="Pre-Release">
             <and>
                 <isset property="git.revision"/>
                 <length string="${git.revision}" trim="yes" length="0" when="greater"/>
             </and>
         </condition>
-    <copy file="Version.java.template" tofile="src/alarmclock/Version.java" overwrite="yes">
+    <copy file="Version.java.template" tofile="src/prg/java/src/alarmclock/Version.java" overwrite="yes">
             <filterchain>
                 <replacetokens>
                     <token key="repository.version" value="${repository.version}" />
