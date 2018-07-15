@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AlarmClock
+Comment=Alarm Clock Utility
+Exec=@bindir@/alarmclock
+Icon=@pkgdatadir@/AlarmClock.png
+Categories=Java;Utility;
+Terminal=false
+Type=Application
+StartupNotify=true

@@ -76,7 +76,7 @@
             <arg value="--always"/>
         </exec>
 
-        <condition property="repository.version" value="${git.revision}" else="Pre-Release">
+        <condition property="package_version" value="${git.revision}" else="Pre-Release">
             <and>
                 <isset property="git.revision"/>
                 <length string="${git.revision}" trim="yes" length="0" when="greater"/>
@@ -85,7 +85,7 @@
     <copy file="Version.java.template" tofile="src/prg/java/src/alarmclock/Version.java" overwrite="yes">
             <filterchain>
                 <replacetokens>
-                    <token key="repository.version" value="${repository.version}" />
+                    <token key="package_version" value="${package_version}" />
                 </replacetokens>
             </filterchain>
         </copy>

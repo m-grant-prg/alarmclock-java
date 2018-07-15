@@ -1,0 +1,5 @@
+# Specify Files and directories to ignore from a git archive command.
+**/nbproject		export-ignore
+manifest.mf		export-ignore
+credisttar		export-ignore
+build.xml		export-ignore

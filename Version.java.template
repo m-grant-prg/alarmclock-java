@@ -55,6 +55,10 @@
 ##                              static 'Help About' text file.		##
 ##				Make Version.srcVersion and		##
 ##				Version.pkgVersion final.		##
+## 17/07/2018	MG	1.0.14	Change repository.version, (also in	##
+##				build.xml), to package_version so both	##
+##				NetBeans and AutoTools can update the	##
+##				field.					##
 ##									##
 ##########################################################################
 */
@@ -67,9 +71,9 @@ package alarmclock;
  * @version 1.0.3
  */
 public class Version {
-    private static final String pkgVersion = new String("@repository.version@");
-    private static final String srcVersion = "v1.0.13";
-    
+    private static final String pkgVersion = new String("@package_version@");
+    private static final String srcVersion = "v1.0.14";
+
     /**
      * Public static method to return the overall package version.
      * @return The overall package version.
@@ -77,7 +81,7 @@ public class Version {
     public static String getPkgVersion() {
         return pkgVersion;
     }
-    
+
     /**
      * Public static method to return the overall source version of this package.
      * @return The overall source version.
@@ -85,14 +89,14 @@ public class Version {
     public static String getSrcVersion() {
         return srcVersion;
     }
-    
+
     /**
      * Public static method to print the overall package version on stdout.
      */
     public static void printPkgVersion() {
         System.out.println(pkgVersion);
     }
-    
+
     /**
      * Public static method to print the overall source version on stdout.
      */

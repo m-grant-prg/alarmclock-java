@@ -1,0 +1,181 @@
+#! /usr/bin/env bash
+#########################################################################
+#									#
+#	alarmclock is automatically generated,				#
+#		please do not modify!					#
+#									#
+#########################################################################
+
+#########################################################################
+#									#
+# Script ID: AlarmClock							#
+# Author: Copyright (C) 2012-2018  Mark Grant				#
+#									#
+# Released under the GPLv3 only.					#
+# SPDX-License-Identifier: GPL-3.0					#
+#									#
+# Purpose:								#
+# To invoke the AlarmClock jar package.					#
+#									#
+# Syntax:	AlarmClock [ -h || --help || -V || --version ]		#
+#									#
+# Exit Codes:	0 - success						#
+#		1 - failure						#
+#									#
+# Further Info:								#
+#									#
+#########################################################################
+
+#########################################################################
+#									#
+# Changelog								#
+#									#
+# Date		Author	Version	Description				#
+#									#
+# 07/11/2012	MG	1.0.1	Created.				#
+# 15/06/2013	MG	1.0.2	Changed command line processing to	#
+#				use getopts.				#
+# 20/08/2013	MG	1.0.3	Debian best practice documentation	#
+#				requires that programs placed in the	#
+#				PATH should not have extensions as the	#
+#				programs may be rewritten in a		#
+#				different language. This would then	#
+#				require a name change, or, if left	#
+#				as-is would cause confusion. So name	#
+#				changed from AlarmClock.sh to		#
+#				AlarmClock.				#
+# 13/01/2014	MG	1.0.4	Changed stdout & stderr message output	#
+#				to use a function directing to one or	#
+#				other based on a status. Changed	#
+#				version option to -V. Added usage of	#
+#				standard error routine.			#
+# 13/11/2014	MG	1.0.5	Switched from getopts to GNU getopt to	#
+#				allow long options.			#
+# 19/11/2014	MG	1.0.6	Change FreeBSD specifics to *BSD and	#
+#				change Linux to be the default.		#
+# 25/11/2014	MG	1.0.7	Add overall package version to -V.	#
+# 08/12/2014	MG	1.0.8	Add jar version information to -V.	#
+# 10/12/2014	MG	1.0.9	Change exit code from 1 to 64 for	#
+#				invalid argument.			#
+# 27/06/2015	MG	1.0.10	Remove BSD support.			#
+# 07/10/2015	MG	1.0.11	Standardise on jarlocation substitution	#
+#				variable.				#
+# 23/10/2015	MG	1.0.12	Conform to use AutoTools General	#
+#				Template v1.0.6 which uses pkgdatadir	#
+#				as installation location of jar files.	#
+# 25/06/2017	MG	1.0.13	Enforce 80 column rule.			#
+# 04/12/2017	MG	1.0.14	Add SPDX license tags to source files.	#
+# 08/12/2017	MG	1.0.15	Adopt standard script exit codes; 0 on	#
+#				success, 1 on failure.			#
+# 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
+#									#
+#########################################################################
+
+##################
+# Init variables #
+##################
+script_exit_code=0
+version="1.0.16"			# set version variable
+jarlocation=@datadir@/java		# Path to jar directory
+cmdline="java -cp $jarlocation/gnu-getopt.jar:$jarlocation/alarmclock-java.jar"
+cmdline+=" alarmclock.AlarmClock"
+outputprefix="AlarmClock: "
+packageversion=@package_version@	# Version of the complete package
+
+#############
+# Functions #
+#############
+
+# Output $1 to stdout or stderr depending on $2.
+output()
+{
+	if [ $2 = 0 ]
+	then
+		echo "$outputprefix$1"
+	else
+		echo "$outputprefix$1" 1>&2
+	fi
+}
+
+# Standard function to test command error ($1 is $?) and exit if non-zero
+std_cmd_err_handler()
+{
+	if [ $1 != 0 ]
+	then
+		script_exit_code=$1
+		script_exit
+	fi
+}
+
+# Standard function to cleanup and return exit code
+script_exit()
+{
+	exit $script_exit_code
+}
+
+# Standard trap exit function
+trap_exit()
+{
+script_exit_code=1
+output "Script terminating due to trap received." 1
+script_exit
+}
+
+# Setup trap
+trap trap_exit SIGHUP SIGINT SIGTERM
+
+########
+# Main #
+########
+# Process command line arguments with GNU getopt.
+GETOPTTEMP=`getopt -o hV --long help,version -n "$0" -- "$@"`
+std_cmd_err_handler $?
+
+eval set -- "$GETOPTTEMP"
+std_cmd_err_handler $?
+
+while true
+do
+	case "$1" in
+	-h|--help)
+		echo "Usage is $0 [options]"
+		echo "	-h or --help displays usage information"
+		echo "	OR"
+		echo "	-V or --version displays version information"
+		shift
+		script_exit_code=0
+		script_exit
+		;;
+	-V|--version)
+		echo "$0 Script version "$version
+		echo "$0 Package version "$packageversion
+		echo "Java command line -"
+		echo "$cmdline"
+		eval "$cmdline -V"
+		shift
+		script_exit_code=0
+		script_exit
+		;;
+	--)	shift
+		break
+		;;
+	*)	script_exit_code=1
+		output "Internal error." 1
+		script_exit
+		;;
+	esac
+done
+
+# Script does not accept other arguments.
+if [ $# -gt 0 ]
+then
+	script_exit_code=1
+	output "Invalid argument." 64
+	script_exit
+fi
+
+eval "$cmdline"
+std_cmd_err_handler $?
+
+script_exit_code=0
+script_exit
