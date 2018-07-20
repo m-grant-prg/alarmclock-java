@@ -2,10 +2,10 @@
 #########################################################################
 #									#
 # Macro ID: ./m4extra/OKJAVAVERSION.m4					#
-# Author: Copyright (C) 2012-2017  Mark Grant				#
+# Author: Copyright (C) 2012-2018  Mark Grant				#
 #									#
-# Released under the GPLv3 only.					#
-# SPDX-License-Identifier: GPL-3.0					#
+# Released under the GPLv3 or later.					#
+# SPDX-License-Identifier: GPL-3.0-or-later				#
 #									#
 # Purpose:								#
 # Macro to test for a required java version.				#

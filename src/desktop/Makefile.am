@@ -4,11 +4,11 @@
 # Script ID: src/desktop/Makefile.am					#
 # Author: Copyright (C) 2012-2018  Mark Grant				#
 #									#
-# Released under the GPLv3 only.					#
-# SPDX-License-Identifier: GPL-3.0					#
+# Released under the GPLv3 or later.					#
+# SPDX-License-Identifier: GPL-3.0-or-later				#
 #									#
 # Purpose:								#
-# AutoMake script file to generate alarmclock.desktop file from source.#
+# AutoMake script file to generate alarmclock.desktop file from source.	#
 #									#
 #########################################################################
 

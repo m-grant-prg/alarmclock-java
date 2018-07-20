@@ -4,8 +4,8 @@
 # Script ID: src/prg/java/src/alarmclock/Makefile.am			#
 # Author: Copyright (C) 2018  Mark Grant				#
 #									#
-# Released under the GPLv3 only.					#
-# SPDX-License-Identifier: GPL-3.0					#
+# Released under the GPLv3 or later.					#
+# SPDX-License-Identifier: GPL-3.0-or-later				#
 #									#
 # Purpose:								#
 # AutoMake script file to install alarmclock jar.			#
