@@ -205,7 +205,7 @@
                       <Component id="alarmCountdownHoursLabel1" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="alarmCountdownMinsLabel1" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -425,7 +425,7 @@
                       <Component id="alarmCountdownHoursLabel2" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="alarmCountdownMinsLabel2" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
