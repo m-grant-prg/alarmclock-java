@@ -5,11 +5,17 @@ Contents
 
 2 ... This Repository
 
-3 ... Installation
-	A) Just using the jar file of this repository.
+3 ... Project Structure
+
+4 ... Installation
+	A) Just using the built jar file.
 	B) For systems supporting AutoTools.
-	C) Windows msi installer.
-	D) For Ubuntu.
+	C) For Ubuntu.
+	D) For Debian and Raspbian.
+	E) Windows msi installer.
+
+5 ... Utility Scripts
+
 
 -------------------------
 
@@ -21,36 +27,162 @@ alarm can be set to 'Alarm At', eg 13:15, or 'Alarm In', eg 1 hour 10 mins.
 Each alarm also incorporates a 'Snooze' button that will pause a ringing alarm
 for 5 minutes.
 
+
 ---------------------
 
 2 ... This Repository
 =====================
 
-AlarmClock is written as a NetBeans Java project and as such the files tracked
-by Git are determined by NetBeans.
+AlarmClock is written in Java using NetBeans as an IDE. The project must be
+maintained via NetBeans to preserve it's support files, (*.form, build.xml,
+etc) which are tracked in git. The repository is also configured for Autotools.
+The AutoTools files exist in parallel to the NetBeans files and do not conflict.
+
+
+-----------------------
+3 ... Project Structure
+=======================
+
+The NetBeans part of the project is expected to be used for development only.
+Once development is complete AutoTools takes over to provide basic build and
+packaging which downstream can be turned into debian, rpm etc packages.
+AutoTools will build an end-user application consisting of:-
+The main application jar file.
+A bash start-up script.
+A manual page for the start-up script.
+A desktop file for a GUI start-up of the application. (It invokes the bash
+script).
+
 
 ------------------
 
-3 ... Installation
+4 ... Installation
 ==================
 
-As a Java application it can run on many operating systems so this repository
-does not include any specific installation support.
-Other projects / repositories listed below provide installation packages
-although the list begins with just using the compiled jar from this source code.
+As a Java application it can run on many operating systems.
 
-A) Compile the source code to AlarmClock.jar. This file can then be run using
-the command:
-java -jar "/YourPath/AlarmClock.jar"
+A) Using a jar
+--------------
+The easiest way to use a jar file is to compile and build within NetBeans. This
+produces the application in the dist subdirectory. The application can then be
+run using:-
+	java -jar "dist/AlarmClock.jar"
+		with the path modified as necessary.
+N.B. If you wish to move the application to another location you *must* move the
+relative subdirectory 'lib' with it. i.e. the jar and the lib directory must
+maintain their relative relationship.
 
-B) An associated GitHub repository AlarmClockATDist is available. This
-repository provides an installation mechanism for any system supporting the
-AutoTools tool-chain, eg Linux.
+B)  AutoTools (configure and make) Installation
+-----------------------------------------------
 
-C) Another associated GitHub repository AlarmClockWindowsDist is available. This
+1 ... Download either the source or distribution tarball (the .tar.gz file)
+	from:-
+	https://github.com/m-grant-prg/alarmclock-java/releases
+
+2 ... Extract the tarball preserving the directory structure.
+
+3 ... cd to the directory created.
+
+4 ... If you downloaded the source tarball type 'autoreconf -if'
+
+5 ... Type './configure'
+
+6 ... As root or sudo, type 'make install clean'
+
+(Quote marks are for textual clarity only).
+
+
+To uninstall the package:
+
+1 ... cd to the directory created in the above install process.
+
+2 ... As root or sudo, type 'make uninstall clean'
+
+C) Ubuntu Installation
+----------------------
+This application is available as an Ubuntu package hosted in a Personal Package
+Archive (PPA). If you add this PPA to your software sources then you can easily
+install, update and remove the package.
+
+To view the details of this PPA please follow the link below:-
+	https://code.launchpad.net/~m-grant-prg/+archive/ubuntu/utils
+
+To add this PPA to your system please type the following:-
+	'sudo add-apt-repository ppa:m-grant-prg/utils'
+	'sudo apt-get update'
+
+To install this package on your system please type the following:-
+	'sudo apt-get update'
+	'sudo apt-get install alarmclock-java'
+
+To uninstall this package at any time please type:-
+	'sudo apt-get remove alarmclock-java'
+
+D) Debian and Raspbian Installation
+-----------------------------------
+Debian and Raspbian '.deb' packages can be downloaded from:-
+	https://github.com/m-grant-prg/alarmclock-java/releases
+
+They can then be installed using a utility such as GDebi which is available in
+the standard repos.
+
+E) Windows installation
+-----------------------
+Another associated GitHub repository AlarmClockWindowsDist is available. This
 repository provides the mechanism to produce a Windows msi installer package.
 
-D) A PPA (Personal Package Archive) is also available on LaunchPad which
-provides a neat mechanism for installing AlarmClock and keeping it up-to-date on
-Ubuntu. The PPA resides on LaunchPad here:
-https://code.launchpad.net/~m-grant-prg/+archive/utils
+
+---------------------
+5 ... Utility Scripts
+=====================
+In the project root directory there is 1 helper script; bootstrap.sh.
+
+bootstrap.sh
+------------
+This misleadingly named script bootstraps the project build and provides other
+useful features. The main options below are probably b, c, C, D and T.
+
+In AutoTools it is usually advisable to perform parallel builds. This means you
+build somewhere other than the project root. This is because building creates
+files and they would confuse the project root downwards. I always create a build
+directory straight off the project root, cd to there and do all build and git
+work from there, (.gitignore is already set to ignore such a directory).
+
+Assuming you adopt the preceding paragraph then a typical invocation of the
+script would be:-
+../bootstrap.sh --build ..
+The last '..' points the way to project root.
+
+The full list of arguments to bootstrap.sh are:-
+	-b, --build make the project.
+
+	-c, --config configure the project.
+
+	-C, --distcheck perform a normal make distcheck.
+
+	-d, --debug build with appropriate debug flags.
+
+	-D, --dist perform a make dist.
+
+	-F, --distcheckfake run a make distcheck using a fake AT standard
+	directory as a substitute for an absolute path which distcheck does not
+	support.
+
+	-g, --gnulib run gnulib-tool --update. Checks for the existence of the
+	cache file proj-root/m4/gnulib-cache.m4. If it does not exist the update
+	is not run.
+
+	-h, --help prints usage information.
+
+	-s, --sparse pass --enable-sparse=yes to configure.
+
+	-T, --source-tarball perform a make srctarball to build a source
+	tarball.
+
+	-V, --version prints version information
+
+Options b build, C distcheck, D dist, F distcheckfake and T source-tarball are
+mutually exclusive.
+
+Options d debug, F distcheckfake and s sparse are enabled by configure so
+require option c config.
