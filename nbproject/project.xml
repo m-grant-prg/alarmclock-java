@@ -12,7 +12,7 @@
             </test-roots>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
-            <definitions>/home/mgrantprg/SWDev/NetBeansProjects/SharedLibs/nblibraries.properties</definitions>
+            <definitions>/home/mgrantprg/SWDev/JavaProjects/SharedLibs/nblibraries.properties</definitions>
         </libraries>
     </configuration>
 </project>
