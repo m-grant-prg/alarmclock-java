@@ -1,3 +1,6 @@
+---------------------------------
+Java Swing AlarmClock Application
+=================================
 Contents
 ========
 
@@ -8,11 +11,11 @@ Contents
 3 ... Project Structure
 
 4 ... Installation
+
 	A) Just using the built jar file.
 	B) For systems supporting AutoTools.
-	C) For Ubuntu.
-	D) For Debian and Raspbian.
-	E) Windows msi installer.
+	C) For Ubuntu, Debian and Raspbian.
+	D) Windows msi installer.
 
 5 ... Utility Scripts
 
@@ -47,11 +50,12 @@ The NetBeans part of the project is expected to be used for development only.
 Once development is complete AutoTools takes over to provide basic build and
 packaging which downstream can be turned into debian, rpm etc packages.
 AutoTools will build an end-user application consisting of:-
-The main application jar file.
-A bash start-up script.
-A manual page for the start-up script.
-A desktop file for a GUI start-up of the application. (It invokes the bash
-script).
+
+	The main application jar file.
+	A bash start-up script.
+	A manual page for the start-up script.
+	A desktop file for a GUI start-up of the application. (It invokes the
+	bash script).
 
 
 ------------------
@@ -77,7 +81,8 @@ B)  AutoTools (configure and make) Installation
 
 1 ... Download either the source or distribution tarball (the .tar.gz file)
 	from:-
-	https://github.com/m-grant-prg/alarmclock-java/releases
+
+https://github.com/m-grant-prg/alarmclock-java/releases
 
 2 ... Extract the tarball preserving the directory structure.
 
@@ -98,35 +103,14 @@ To uninstall the package:
 
 2 ... As root or sudo, type 'make uninstall clean'
 
-C) Ubuntu Installation
-----------------------
-This application is available as an Ubuntu package hosted in a Personal Package
-Archive (PPA). If you add this PPA to your software sources then you can easily
-install, update and remove the package.
+----------------------------------------------
+C) Ubuntu, Debian and Raspbian Installation
+==============================================
+Please refer to the relevant installation section on the wiki at:-
 
-To view the details of this PPA please follow the link below:-
-	https://code.launchpad.net/~m-grant-prg/+archive/ubuntu/utils
+https://github.com/m-grant-prg/alarmclock-java/wiki
 
-To add this PPA to your system please type the following:-
-	'sudo add-apt-repository ppa:m-grant-prg/utils'
-	'sudo apt-get update'
-
-To install this package on your system please type the following:-
-	'sudo apt-get update'
-	'sudo apt-get install alarmclock-java'
-
-To uninstall this package at any time please type:-
-	'sudo apt-get remove alarmclock-java'
-
-D) Debian and Raspbian Installation
------------------------------------
-Debian and Raspbian '.deb' packages can be downloaded from:-
-	https://github.com/m-grant-prg/alarmclock-java/releases
-
-They can then be installed using a utility such as GDebi which is available in
-the standard repos.
-
-E) Windows installation
+D) Windows installation
 -----------------------
 Another associated GitHub repository AlarmClockWindowsDist is available. This
 repository provides the mechanism to produce a Windows msi installer package.
@@ -186,3 +170,4 @@ mutually exclusive.
 
 Options d debug, F distcheckfake and s sparse are enabled by configure so
 require option c config.
+
