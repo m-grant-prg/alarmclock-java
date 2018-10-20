@@ -1,6 +1,12 @@
+Release 1.0.19 2018-10-20
+Add markdown symlink to README.
+Beautify README for GitHub markdown presentation.
+Modify README to refer to new wiki.
+
 Release 1.0.18 2018-08-28
 Maintenance release of project infrastructure changes only. No changes to
 functionality.
 
 Release 1.0.17 2018-07-25
 Initial AutoTools release.
+

@@ -1,3 +1,9 @@
+2018-10-20 v 1.0.19 Mark Grant <m.grant.prg@gmail.com>
+	*  Add markdown symlink to README.
+	Beautify README for GitHub markdown presentation.
+	Modify README to refer to new wiki.
+	Source still at v1.0.14
+
 2018-08-28 v 1.0.18 Mark Grant <m.grant.prg@gmail.com>
 	* Maintenance release of project infrastructure changes only. No
 	changes to functionality.
@@ -5,3 +11,4 @@
 
 2018-07-25 v 1.0.17 Mark Grant <m.grant.prg@gmail.com>
 	* Initial AutoTools release.
+
