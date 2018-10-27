@@ -1,3 +1,6 @@
+Release 1.0.20 2018-10-27
+srctarball to use -src- in filename
+
 Release 1.0.19 2018-10-20
 Add markdown symlink to README.
 Beautify README for GitHub markdown presentation.

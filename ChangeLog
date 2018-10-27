@@ -1,3 +1,7 @@
+2018-10-27 v 1.0.20 Mark Grant <m.grant.prg@gmail.com>
+	*  srctarball to use -src- in filename
+	Source still at v1.0.14
+
 2018-10-20 v 1.0.19 Mark Grant <m.grant.prg@gmail.com>
 	*  Add markdown symlink to README.
 	Beautify README for GitHub markdown presentation.
