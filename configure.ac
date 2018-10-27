@@ -37,7 +37,7 @@ AC_PREREQ([2.69])
 #
 ########################
 
-AC_INIT(MGE AlarmClock Java Package, v1.0.19,
+AC_INIT(MGE AlarmClock Java Package, v1.0.20,
 	m.grant.prg@gmail.com, alarmclock-java)
 
 AC_SUBST(package_version, $PACKAGE_VERSION)
