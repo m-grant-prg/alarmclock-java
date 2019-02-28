@@ -138,50 +138,56 @@ script_exit
 # Setup trap
 trap trap_exit SIGHUP SIGINT SIGTERM
 
+# Process command line arguments with GNU getopt.
+# Parameters -	$1 is the command line.
+# No return value.
+proc_CL()
+{
+	local GETOPTTEMP
+
+	GETOPTTEMP=`getopt -o hV --long help,version -n "$0" -- "$@"`
+
+	eval set -- "$GETOPTTEMP"
+	std_cmd_err_handler $?
+
+	while true; do
+		case "$1" in
+		-h|--help)
+			usage
+			shift
+			script_exit 0
+			;;
+		-V|--version)
+			echo "$0 Script version "$version
+			echo "$0 Package version "$packageversion
+			echo "Java command line -"
+			echo "$cmdline"
+			eval "$cmdline -V"
+			shift
+			script_exit 0
+			;;
+		--)	shift
+			break
+			;;
+		*)	output "Internal error." 1
+			script_exit 64
+			;;
+		esac
+	done
+
+	# Script does not accept other arguments.
+	if [ $# -gt 0 ]; then
+		script_exit_code=1
+		output "Invalid argument." 64
+		script_exit
+	fi
+}
+
 ########
 # Main #
 ########
-# Process command line arguments with GNU getopt.
-GETOPTTEMP=`getopt -o hV --long help,version -n "$0" -- "$@"`
-std_cmd_err_handler $?
 
-eval set -- "$GETOPTTEMP"
-std_cmd_err_handler $?
-
-while true; do
-	case "$1" in
-	-h|--help)
-		usage
-		shift
-		script_exit_code=0
-		script_exit
-		;;
-	-V|--version)
-		echo "$0 Script version "$version
-		echo "$0 Package version "$packageversion
-		echo "Java command line -"
-		echo "$cmdline"
-		eval "$cmdline -V"
-		shift
-		script_exit_code=0
-		script_exit
-		;;
-	--)	shift
-		break
-		;;
-	*)	script_exit_code=1
-		output "Internal error." 1
-		script_exit
-		;;
-	esac
-done
-
-# Script does not accept other arguments.
-if [ $# -gt 0 ]; then
-	script_exit_code=1
-	output "Invalid argument." 64
-	script_exit
-fi
+proc_CL "$@"
 
 eval "$cmdline"
 std_cmd_err_handler $?
