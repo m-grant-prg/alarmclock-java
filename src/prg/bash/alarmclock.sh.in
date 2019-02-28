@@ -68,6 +68,7 @@
 # 08/12/2017	MG	1.0.15	Adopt standard script exit codes; 0 on	#
 #				success, 1 on failure.			#
 # 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
+# 28/02/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
 #									#
 #########################################################################
 
@@ -75,11 +76,11 @@
 # Init variables #
 ##################
 script_exit_code=0
+outputprefix="$(basename $0):"
 version="1.0.16"			# set version variable
 jarlocation=@datadir@/java		# Path to jar directory
 cmdline="java -cp $jarlocation/gnu-getopt.jar:$jarlocation/alarmclock-java.jar"
 cmdline+=" alarmclock.AlarmClock"
-outputprefix="AlarmClock: "
 packageversion=@package_version@	# Version of the complete package
 
 #############
@@ -91,9 +92,9 @@ output()
 {
 	if [ $2 = 0 ]
 	then
-		echo "$outputprefix$1"
+		echo "$outputprefix $1"
 	else
-		echo "$outputprefix$1" 1>&2
+		echo "$outputprefix $1" 1>&2
 	fi
 }
 
