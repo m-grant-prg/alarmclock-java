@@ -70,6 +70,7 @@
 # 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
 # 28/02/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
 #				Make loops and ifs more C-like.		#
+#				Refactor into functions.		#
 #									#
 #########################################################################
 
@@ -87,6 +88,19 @@ packageversion=@package_version@	# Version of the complete package
 #############
 # Functions #
 #############
+
+# -h --help output.
+# No parameters
+# No return value
+usage ()
+{
+cat << EOF
+Usage is $0 [options]
+	-h or --help displays usage information
+	OR
+	-V or --version displays version information
+EOF
+}
 
 # Output $1 to stdout or stderr depending on $2.
 output()
@@ -137,10 +151,7 @@ std_cmd_err_handler $?
 while true; do
 	case "$1" in
 	-h|--help)
-		echo "Usage is $0 [options]"
-		echo "	-h or --help displays usage information"
-		echo "	OR"
-		echo "	-V or --version displays version information"
+		usage
 		shift
 		script_exit_code=0
 		script_exit
