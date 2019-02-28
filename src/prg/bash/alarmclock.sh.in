@@ -69,6 +69,7 @@
 #				success, 1 on failure.			#
 # 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
 # 28/02/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
+#				Make loops and ifs more C-like.		#
 #									#
 #########################################################################
 
@@ -90,8 +91,7 @@ packageversion=@package_version@	# Version of the complete package
 # Output $1 to stdout or stderr depending on $2.
 output()
 {
-	if [ $2 = 0 ]
-	then
+	if [ $2 = 0 ]; then
 		echo "$outputprefix $1"
 	else
 		echo "$outputprefix $1" 1>&2
@@ -101,8 +101,7 @@ output()
 # Standard function to test command error ($1 is $?) and exit if non-zero
 std_cmd_err_handler()
 {
-	if [ $1 != 0 ]
-	then
+	if [ $1 != 0 ]; then
 		script_exit_code=$1
 		script_exit
 	fi
@@ -135,8 +134,7 @@ std_cmd_err_handler $?
 eval set -- "$GETOPTTEMP"
 std_cmd_err_handler $?
 
-while true
-do
+while true; do
 	case "$1" in
 	-h|--help)
 		echo "Usage is $0 [options]"
@@ -168,8 +166,7 @@ do
 done
 
 # Script does not accept other arguments.
-if [ $# -gt 0 ]
-then
+if [ $# -gt 0 ]; then
 	script_exit_code=1
 	output "Invalid argument." 64
 	script_exit
