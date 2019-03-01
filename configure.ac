@@ -10,7 +10,8 @@
 # AutoConf script file to configure AlarmClock AutoTools project.	#
 #									#
 # configure cmd line syntax:-						#
-# ./configure	[--enable-atonly=<yes|no> [default: no] ]		#
+# ./configure	[--enable-atonly=<yes|no> [default: no]			#
+#		 --enable-testinghacks=<yes|no> [default: no]]		#
 #									#
 #########################################################################
 
@@ -22,6 +23,7 @@
 #									#
 # 14/07/2018	MG	1.0.1	AutoTools introduced to project.	#
 # 01/03/2019	MG	1.0.2	Add --enable-atonly option.		#
+#				Add --enable-testinghacks option.	#
 #									#
 #########################################################################
 
@@ -75,6 +77,31 @@ else
 	AC_SUBST(extjarloc,"$datadir/java")
 fi
 
+########################
+#
+# The following allows for an enable-testinghacks=yes/no command line option.
+# The conditional TESTINGHACKS is made available to the makefiles.
+#
+########################
+
+AC_ARG_ENABLE(testinghacks,
+	--enable-testinghacks    Build with testing hacks for local testing,
+	[case "${enableval}" in
+	yes) testinghacks=true ;;
+	no)  testinghacks=false ;;
+	*) AC_MSG_ERROR(bad value ${enableval} for --enable-testinghacks) ;;
+	esac],testinghacks=false)
+AM_CONDITIONAL(TESTINGHACKS, test x$testinghacks = xtrue)
+
+if test "x${testinghacks}" = xtrue; then
+	AC_MSG_NOTICE(Building with testing hacks for local testing.)
+	AC_SUBST(projjarloc,"\$(builddir)/../java/src/alarmclock")
+	AC_SUBST(projjarname,"alarmclock-java-$PACKAGE_VERSION.jar")
+else
+	AC_SUBST(projjarloc,"$datadir/java")
+	AC_SUBST(projjarname,"alarmclock-java.jar")
+fi
+
 
 ########################
 #
@@ -115,6 +142,8 @@ fi
 ########################
 
 AC_SUBST([edit], ["sed \
+		-e 's|@projjarloc[@]|\$(projjarloc)|g' \
+		-e 's|@projjarname[@]|\$(projjarname)|g' \
 		-e 's|@extjarloc[@]|\$(extjarloc)|g' \
 		-e 's|@package_version[@]|\$(package_version)|g' \
 		-e 's|@prefix[@]|\$(prefix)|g' \

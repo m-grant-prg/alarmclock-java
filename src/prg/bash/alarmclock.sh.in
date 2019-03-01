@@ -73,6 +73,9 @@
 #				Refactor into functions.		#
 #				Use new extjarloc configure variable	#
 #				for external jar location.		#
+#				Use new configure variables projjarloc	#
+#				and projjarname to enable testing in	#
+#				local build directory.			#
 #									#
 #########################################################################
 
@@ -81,13 +84,13 @@
 ##################
 script_exit_code=0
 outputprefix="$(basename $0):"
-version=1.1.1			# set version variable
+version=1.1.1				# set version variable
 packageversion=@package_version@	# Version of the complete package
 
-
-jarlocation=@datadir@/java		# Path to jar directory
+projjarloc=@projjarloc@
+projjarname=@projjarname@
 extjarloc=@extjarloc@
-cmdline="java -cp $extjarloc/gnu-getopt.jar:$jarlocation/alarmclock-java.jar"
+cmdline="java -cp $extjarloc/gnu-getopt.jar:$projjarloc/$projjarname"
 cmdline+=" alarmclock.AlarmClock"
 
 #############
