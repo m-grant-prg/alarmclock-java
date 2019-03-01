@@ -353,8 +353,8 @@ proc_CL()
 		esac
 	done
 
-	if [[ $atonly || $debug || $headercheck || $sparse ]] \
-		|| $distcheckfake || $testinghacks || $verbose ; then
+	if [[ $atonly || $debug || $headercheck || $sparse || $testinghacks ]] \
+		|| $distcheckfake || $verbose ; then
 		if ! $config ; then
 			msg="Options a, d, F, H, s, t and v require option c."
 			output "$msg" 1
