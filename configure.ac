@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./configure.ac						#
-# Author: Copyright (C) 2018  Mark Grant				#
+# Author: Copyright (C) 2018-2019  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -10,7 +10,7 @@
 # AutoConf script file to configure AlarmClock AutoTools project.	#
 #									#
 # configure cmd line syntax:-						#
-# ./configure	[--enable-debug=<yes|no> [default: no]]			#
+# ./configure	[--enable-atonly=<yes|no> [default: no] ]		#
 #									#
 #########################################################################
 
@@ -21,10 +21,11 @@
 # Date		Author	Version	Description				#
 #									#
 # 14/07/2018	MG	1.0.1	AutoTools introduced to project.	#
+# 01/03/2019	MG	1.0.2	Add --enable-atonly option.		#
 #									#
 #########################################################################
 
-AC_REVISION([$Revision: 1.0.1 $])
+AC_REVISION([$Revision: 1.0.2 $])
 
 AC_PREREQ([2.69])
 
@@ -53,22 +54,25 @@ AC_CANONICAL_SYSTEM
 
 ########################
 #
-# The following allows for an enable-debug=yes/no command line option. The
-# conditional DEBUG is made available to the makefiles.
+# The following allows for an enable-atonly=yes/no command line option. The
+# conditional ATONLY is made available to the makefiles.
 #
 ########################
 
-AC_ARG_ENABLE(debug,
-	--enable-debug    Build for debugging,
+AC_ARG_ENABLE(atonly,
+	--enable-atonly    Build for AT only testing or installation,
 	[case "${enableval}" in
-		yes) debug=true ;;
-		no)  debug=false ;;
-		*) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
-	esac],debug=false)
-AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
+		yes) atonly=true ;;
+		no)  atonly=false ;;
+		*) AC_MSG_ERROR(bad value ${enableval} for --enable-atonly) ;;
+	esac],atonly=false)
+AM_CONDITIONAL(ATONLY, test x$atonly = xtrue)
 
-if test "x${debug}" = xtrue; then
-	AC_MSG_NOTICE(Build in debug mode.)
+if test "x${atonly}" = xtrue; then
+	AC_MSG_NOTICE(Building for AT only testing or installing.)
+	AC_SUBST(extjarloc,"/usr/share/java")
+else
+	AC_SUBST(extjarloc,"$datadir/java")
 fi
 
 
@@ -111,6 +115,7 @@ fi
 ########################
 
 AC_SUBST([edit], ["sed \
+		-e 's|@extjarloc[@]|\$(extjarloc)|g' \
 		-e 's|@package_version[@]|\$(package_version)|g' \
 		-e 's|@prefix[@]|\$(prefix)|g' \
 		-e 's|@exec_prefix[@]|\$(exec_prefix)|g' \

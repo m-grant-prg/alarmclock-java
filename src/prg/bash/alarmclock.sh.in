@@ -68,9 +68,11 @@
 # 08/12/2017	MG	1.0.15	Adopt standard script exit codes; 0 on	#
 #				success, 1 on failure.			#
 # 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
-# 28/02/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
+# 01/03/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
 #				Make loops and ifs more C-like.		#
 #				Refactor into functions.		#
+#				Use new extjarloc configure variable	#
+#				for external jar location.		#
 #									#
 #########################################################################
 
@@ -79,11 +81,14 @@
 ##################
 script_exit_code=0
 outputprefix="$(basename $0):"
-version="1.0.16"			# set version variable
-jarlocation=@datadir@/java		# Path to jar directory
-cmdline="java -cp $jarlocation/gnu-getopt.jar:$jarlocation/alarmclock-java.jar"
-cmdline+=" alarmclock.AlarmClock"
+version=1.1.1			# set version variable
 packageversion=@package_version@	# Version of the complete package
+
+
+jarlocation=@datadir@/java		# Path to jar directory
+extjarloc=@extjarloc@
+cmdline="java -cp $extjarloc/gnu-getopt.jar:$jarlocation/alarmclock-java.jar"
+cmdline+=" alarmclock.AlarmClock"
 
 #############
 # Functions #

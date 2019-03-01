@@ -2,7 +2,7 @@
 #########################################################################
 #									#
 # Script ID: src/prg/java/src/alarmclock/Makefile.am			#
-# Author: Copyright (C) 2018  Mark Grant				#
+# Author: Copyright (C) 2018-2019  Mark Grant				#
 #									#
 # Released under the GPLv3 or later.					#
 # SPDX-License-Identifier: GPL-3.0-or-later				#
@@ -19,6 +19,9 @@
 # Date		Author	Version	Description				#
 #									#
 # 15/07/2018	MG	1.0.1	Introduced AutoTools to the project.	#
+# 01/03/2019	MG	1.0.2	Change this project jar treatment to	#
+#				normal and use new extjarloc configure	#
+#				variable for the getopt jar location.	#
 #									#
 #########################################################################
 
@@ -34,13 +37,7 @@ JAVAROOT = .
 
 jarfile = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION).jar
 
-# Obviously for this externally installed jar library, something like
-# /usr/local/share/java wouldn't work.
-if DEBUG
-jardir = /usr/share/java
-else
 jardir = $(datadir)/java
-endif
 
 pkgpath = alarmclock
 
@@ -49,7 +46,7 @@ Version.java: Makefile
 	$(edit) $(top_srcdir)/$@.template > $@
 
 
-AM_JAVACFLAGS = -cp $(jardir)/gnu-getopt.jar
+AM_JAVACFLAGS = -cp $(extjarloc)/gnu-getopt.jar
 
 $(jarfile): classnoinst.stamp AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
 	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)
