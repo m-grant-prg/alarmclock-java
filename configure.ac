@@ -22,8 +22,9 @@
 # Date		Author	Version	Description				#
 #									#
 # 14/07/2018	MG	1.0.1	AutoTools introduced to project.	#
-# 01/03/2019	MG	1.0.2	Add --enable-atonly option.		#
+# 02/03/2019	MG	1.0.2	Add --enable-atonly option.		#
 #				Add --enable-testinghacks option.	#
+#				Update to java-vm m4 macros v1.0.5	#
 #									#
 #########################################################################
 
@@ -261,10 +262,7 @@ AX_TRY_RUN_JAVA
 AX_PROG_JAVADOC
 
 # Specially written m4 macro.
-OKJAVAVERSION(1.7, $srcdir)
-if test "x$status" = xnotok ; then
-   	AC_MSG_ERROR([java jre not suitable])
-fi
+JAVA_VERSION_OK(1.7, $srcdir)
 
 
 # Checks for libraries.
