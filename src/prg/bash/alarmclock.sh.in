@@ -110,13 +110,17 @@ Usage is $0 [options]
 EOF
 }
 
-# Output $1 to stdout or stderr depending on $2.
+# Standard function to emit messages depending on various parameters.
+# Parameters -	$1 What:-	The message to emit.
+#		$2 Where:-	stdout == 0
+#				stderr != 0
+# No return value.
 output()
 {
-	if [ $2 = 0 ]; then
-		echo "$outputprefix $1"
+	if (( !$2 )); then
+		printf "%s %s\n" $outputprefix "$1"
 	else
-		echo "$outputprefix $1" 1>&2
+		printf "%s %s\n" $outputprefix "$1" 1>&2
 	fi
 }
 
