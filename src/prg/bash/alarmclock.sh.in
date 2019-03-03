@@ -81,21 +81,24 @@
 #				Generally use printf rather than echo.	#
 #				Remove script_exit_code.		#
 #				Add missing error handling after getopt	#
+#				Address local, readonly and global	#
+#				variables.				#
 #									#
 #########################################################################
 
 ##################
 # Init variables #
 ##################
-outputprefix="$(basename $0):"
-version=1.1.1				# set version variable
-packageversion=@package_version@	# Version of the complete package
+readonly outputprefix="$(basename $0):"
+readonly version=1.1.1				# Script version
+readonly packageversion=@package_version@	# Package version
 
-projjarloc=@projjarloc@
-projjarname=@projjarname@
-extjarloc=@extjarloc@
+readonly projjarloc=@projjarloc@
+readonly projjarname=@projjarname@
+readonly extjarloc=@extjarloc@
 cmdline="java -cp $extjarloc/gnu-getopt.jar:$projjarloc/$projjarname"
 cmdline+=" alarmclock.AlarmClock"
+
 
 #############
 # Functions #
@@ -203,6 +206,7 @@ proc_CL()
 		script_exit 64
 	fi
 }
+
 
 ########
 # Main #
