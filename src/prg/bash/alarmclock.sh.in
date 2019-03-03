@@ -195,7 +195,7 @@ proc_CL()
 	done
 
 	# Script does not accept other arguments.
-	if [ $# -gt 0 ]; then
+	if (( $# > 0 )); then
 		output "Invalid argument." 64
 		script_exit 64
 	fi
