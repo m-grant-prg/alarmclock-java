@@ -22,9 +22,10 @@
 # Date		Author	Version	Description				#
 #									#
 # 14/07/2018	MG	1.0.1	AutoTools introduced to project.	#
-# 02/03/2019	MG	1.0.2	Add --enable-atonly option.		#
+# 03/03/2019	MG	1.0.2	Add --enable-atonly option.		#
 #				Add --enable-testinghacks option.	#
 #				Update to java-vm m4 macros v1.0.5	#
+#				Pass bash path to scripts and Makefiles	#
 #									#
 #########################################################################
 
@@ -143,6 +144,7 @@ fi
 ########################
 
 AC_SUBST([edit], ["sed \
+		-e 's|@bashlocation[@]|\$(BASH)|g' \
 		-e 's|@projjarloc[@]|\$(projjarloc)|g' \
 		-e 's|@projjarname[@]|\$(projjarname)|g' \
 		-e 's|@extjarloc[@]|\$(extjarloc)|g' \
@@ -233,9 +235,9 @@ if test "x$GETOPT" = "xno" ; then
 	AC_MSG_ERROR([getopt not found])
 fi
 
-AC_CHECK_PROG([BASH], [bash], [yes], [no])
+AC_PATH_PROG([BASH], [bash], [no])
 if test "x$BASH" = "xno" ; then
-   	AC_MSG_ERROR([bash not found])
+	AC_MSG_ERROR([bash not found])
 fi
 
 AC_CHECK_PROG([TXT2MAN], [txt2man], [yes], [no])

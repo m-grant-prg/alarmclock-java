@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! @bashlocation@
 #########################################################################
 #									#
 #	alarmclock is automatically generated,				#
@@ -83,6 +83,8 @@
 #				Add missing error handling after getopt	#
 #				Address local, readonly and global	#
 #				variables.				#
+#				Replace #! env bash with absolute bash	#
+#				path via configure.			#
 #									#
 #########################################################################
 
