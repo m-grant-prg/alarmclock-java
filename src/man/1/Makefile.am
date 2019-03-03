@@ -1,8 +1,7 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: src/man/1/Makefile.am					#
-# Author: Copyright (C) 2012-2018  Mark Grant				#
+# Author: Copyright (C) 2012-2019  Mark Grant				#
 #									#
 # Released under the GPLv3 or later.					#
 # SPDX-License-Identifier: GPL-3.0-or-later				#
@@ -33,6 +32,7 @@
 # 09/02/2018	MG	1.0.6	Change file's header for new directory	#
 #				names.					#
 # 18/07/2018	MG	1.0.7	Manual merge with Java project.		#
+# 03/03/2019	MG	1.0.8	Remove unnecessary shebang.		#
 #									#
 #########################################################################
 

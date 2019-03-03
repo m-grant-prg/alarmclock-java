@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 #########################################################################
 #									#
 # Script ID: src/prg/java/src/alarmclock/Makefile.am			#
@@ -19,9 +18,10 @@
 # Date		Author	Version	Description				#
 #									#
 # 15/07/2018	MG	1.0.1	Introduced AutoTools to the project.	#
-# 01/03/2019	MG	1.0.2	Change this project jar treatment to	#
+# 03/03/2019	MG	1.0.2	Change this project jar treatment to	#
 #				normal and use new extjarloc configure	#
 #				variable for the getopt jar location.	#
+#				Remove unnecessary shebang.		#
 #									#
 #########################################################################
 
