@@ -76,6 +76,9 @@
 #				Use new configure variables projjarloc	#
 #				and projjarname to enable testing in	#
 #				local build directory.			#
+#				Use (( ... )) where appropriate.	#
+#				Use [[ ... ]] where appropriate.	#
+#				Generally use printf rather than echo.	#
 #									#
 #########################################################################
 
