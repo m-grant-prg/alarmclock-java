@@ -180,10 +180,10 @@ proc_CL()
 			script_exit 0
 			;;
 		-V|--version)
-			echo "$0 Script version "$version
-			echo "$0 Package version "$packageversion
-			echo "Java command line -"
-			echo "$cmdline"
+			printf "%s Script version %s\n" $0 $version
+			printf "%s Package version %s\n" $0 $packageversion
+			printf "Java command line -\n"
+			printf "%s\n" "$cmdline"
 			eval "$cmdline -V"
 			shift
 			script_exit 0
