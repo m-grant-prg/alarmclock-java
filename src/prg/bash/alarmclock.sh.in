@@ -79,13 +79,13 @@
 #				Use (( ... )) where appropriate.	#
 #				Use [[ ... ]] where appropriate.	#
 #				Generally use printf rather than echo.	#
+#				Remove script_exit_code.		#
 #									#
 #########################################################################
 
 ##################
 # Init variables #
 ##################
-script_exit_code=0
 outputprefix="$(basename $0):"
 version=1.1.1				# set version variable
 packageversion=@package_version@	# Version of the complete package
@@ -127,27 +127,29 @@ output()
 	fi
 }
 
-# Standard function to test command error ($1 is $?) and exit if non-zero
+# Standard function to test command error and exit if non-zero.
+# Parameters - $1 is $?
+# No return value.
 std_cmd_err_handler()
 {
-	if [ $1 != 0 ]; then
-		script_exit_code=$1
-		script_exit
+	if (( $1 )); then
+		script_exit $1
 	fi
 }
 
-# Standard function to cleanup and return exit code
+# Standard function to tidy up and return exit code.
+# Parameters - 	$1 is the exit code.
+# No return value.
 script_exit()
 {
-	exit $script_exit_code
+	exit $1
 }
 
 # Standard trap exit function
 trap_exit()
 {
-script_exit_code=1
 output "Script terminating due to trap received." 1
-script_exit
+script_exit 1
 }
 
 # Setup trap
@@ -192,9 +194,8 @@ proc_CL()
 
 	# Script does not accept other arguments.
 	if [ $# -gt 0 ]; then
-		script_exit_code=1
 		output "Invalid argument." 64
-		script_exit
+		script_exit 64
 	fi
 }
 
@@ -207,5 +208,5 @@ proc_CL "$@"
 eval "$cmdline"
 std_cmd_err_handler $?
 
-script_exit_code=0
-script_exit
+script_exit 0
+
