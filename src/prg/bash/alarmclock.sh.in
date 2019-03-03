@@ -68,7 +68,7 @@
 # 08/12/2017	MG	1.0.15	Adopt standard script exit codes; 0 on	#
 #				success, 1 on failure.			#
 # 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
-# 01/03/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
+# 03/03/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
 #				Make loops and ifs more C-like.		#
 #				Refactor into functions.		#
 #				Use new extjarloc configure variable	#
@@ -80,6 +80,7 @@
 #				Use [[ ... ]] where appropriate.	#
 #				Generally use printf rather than echo.	#
 #				Remove script_exit_code.		#
+#				Add missing error handling after getopt	#
 #									#
 #########################################################################
 
@@ -163,6 +164,7 @@ proc_CL()
 	local GETOPTTEMP
 
 	GETOPTTEMP=`getopt -o hV --long help,version -n "$0" -- "$@"`
+	std_cmd_err_handler $?
 
 	eval set -- "$GETOPTTEMP"
 	std_cmd_err_handler $?
