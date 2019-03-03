@@ -146,15 +146,18 @@ script_exit()
 	exit $1
 }
 
-# Standard trap exit function
+# Standard trap exit function.
+# No parameters.
+# No return value.
 trap_exit()
 {
-output "Script terminating due to trap received." 1
-script_exit 1
-}
+	local -i exit_code=$?
+	local msg
 
-# Setup trap
-trap trap_exit SIGHUP SIGINT SIGTERM
+	msg="Script terminating with exit code $exit_code due to trap received."
+	output "$msg" 1 0
+	script_exit $exit_code
+}
 
 # Process command line arguments with GNU getopt.
 # Parameters -	$1 is the command line.
@@ -204,6 +207,9 @@ proc_CL()
 ########
 # Main #
 ########
+
+# Setup trap.
+trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
 
 proc_CL "$@"
 
