@@ -25,6 +25,8 @@
 #				Change source tarball name to be the	#
 #				same as that in GitHub releases. This	#
 #				aids integrating with rpm generation.	#
+#				Add install of standard GNU files like	#
+#				AUTHORS, etc.				#
 #									#
 #########################################################################
 
@@ -37,7 +39,13 @@ SUBDIRS += src/man/1
 SUBDIRS += src/prg/bash src/prg/java/src/alarmclock
 
 
-EXTRA_DIST = JavaVersionCheckDist Version.java.template
+doc_DATA = AUTHORS ChangeLog COPYING NEWS README
+
+
+EXTRA_DIST = JavaVersionCheckDist Version.java.template \
+		$(srcdir)/AUTHORS $(srcdir)/ChangeLog $(srcdir)/COPYING \
+		$(srcdir)/NEWS $(srcdir)/README
+
 
 srctarball:
 	@cwd="$${PWD}" && \
