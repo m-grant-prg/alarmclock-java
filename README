@@ -94,7 +94,7 @@ https://github.com/m-grant-prg/alarmclock-java/releases
 
 4 ... If you downloaded the source tarball type 'autoreconf -if'
 
-5 ... Type './configure'
+5 ... Type './configure --enable-atonly=yes'
 
 6 ... As root or sudo, type 'make install clean'
 
