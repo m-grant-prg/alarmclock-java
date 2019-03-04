@@ -21,7 +21,10 @@
 # 27/10/2018	MG	1.0.2	Change srctarball target to build with	#
 #				src between package name and version in	#
 #				filename.				#
-# 03/03/2019	MG	1.0.3	Remove unnecessary shebang.		#
+# 04/03/2019	MG	1.0.3	Remove unnecessary shebang.		#
+#				Change source tarball name to be the	#
+#				same as that in GitHub releases. This	#
+#				aids integrating with rpm generation.	#
 #									#
 #########################################################################
 
@@ -38,7 +41,7 @@ EXTRA_DIST = JavaVersionCheckDist Version.java.template
 
 srctarball:
 	@cwd="$${PWD}" && \
-	targ="$${cwd}/@PACKAGE_TARNAME@-src-@PACKAGE_VERSION@.tar.gz" && \
+	targ="$${cwd}/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz" && \
 	cd @srcdir@ && \
 	echo "making srctarball from @srcdir@" && \
 	echo "GA	$${targ}" && \

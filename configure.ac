@@ -22,10 +22,12 @@
 # Date		Author	Version	Description				#
 #									#
 # 14/07/2018	MG	1.0.1	AutoTools introduced to project.	#
-# 03/03/2019	MG	1.0.2	Add --enable-atonly option.		#
+# 04/03/2019	MG	1.0.2	Add --enable-atonly option.		#
 #				Add --enable-testinghacks option.	#
 #				Update to java-vm m4 macros v1.0.5	#
 #				Pass bash path to scripts and Makefiles	#
+#				Remove preceding v from package version	#
+#				as it should not be there.		#
 #									#
 #########################################################################
 
@@ -42,7 +44,7 @@ AC_PREREQ([2.69])
 #
 ########################
 
-AC_INIT(MGE AlarmClock Java Package, v1.0.20,
+AC_INIT(MGE AlarmClock Java Package, 1.0.20,
 	m.grant.prg@gmail.com, alarmclock-java)
 
 AC_SUBST(package_version, $PACKAGE_VERSION)
