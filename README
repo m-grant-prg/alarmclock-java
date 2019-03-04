@@ -17,7 +17,7 @@ Contents
 
 	A) Just using the built jar file.
 	B) For systems supporting AutoTools.
-	C) For Ubuntu, Debian and Raspbian.
+	C) Of Distro-Native Package
 	D) Windows msi installer.
 
 5 ... Utility Scripts
@@ -106,10 +106,11 @@ To uninstall the package:
 
 2 ... As root or sudo, type 'make uninstall clean'
 
-----------------------------------------------
-C) Ubuntu, Debian and Raspbian Installation
-==============================================
-Please refer to the relevant installation section on the wiki at:-
+----------------------------------------
+C) Installation of Distro-Native Package
+========================================
+Installation packages native to different distributions are available, please
+refer to the relevant installation section on the wiki at:-
 
 https://github.com/m-grant-prg/alarmclock-java/wiki
 
