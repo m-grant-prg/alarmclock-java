@@ -11,12 +11,11 @@ OPTIONS
 
 -V, --version  prints version information
 EXIT STATUS
-0
-if OK,
+0 - Success
 
-1
-on failure.
+1 - General failure
 
+64 - Command line error
 AUTHOR
 Written by Mark Grant.
 REPORTING BUGS
