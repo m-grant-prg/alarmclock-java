@@ -41,7 +41,7 @@
 # Date		Author	Version	Description				#
 #									#
 # 14/07/2018	MG	1.0.1	AutoTools introduced to project.	#
-# 06/03/2019	MG	1.0.2	Add --enable-atonly option.		#
+# 08/03/2019	MG	1.0.2	Add --enable-atonly option.		#
 #				Add --enable-testinghacks option.	#
 #				Update to java-vm m4 macros v1.0.5	#
 #				Pass bash path to scripts and Makefiles	#
@@ -106,6 +106,8 @@ AC_MSG_NOTICE(checking command line arguments)
 #
 # The following allows for an enable-atonly=yes/no command line option. The
 # conditional ATONLY is made available to the makefiles.
+# This allows for a workaround where AutoTools normally has a prefix of
+# /usr/local but anything pre-installed would normally be in /usr.
 #
 AC_ARG_ENABLE(atonly,
 	--enable-atonly    Build for AT only testing or installation,
@@ -124,10 +126,11 @@ else
 fi
 
 #
-# STDJARLOC can be passed on the configure command line. If present, it should
-# contain the path to the standard jar location, datadir/java on Debian but
-# maybe somewhere else on other distros. If present it always overrides the
-# Debian-based standard for extjarloc above.
+# STDJARLOC can be passed on the configure command line, (preferable), or as a
+# pre-set environment variable. If present, it should contain the path to the
+# standard jar location, datadir/java on Debian but maybe somewhere else on
+# other distros. If present it always overrides the Debian-based standard for
+# extjarloc above.
 #
 if test "$STDJARLOC" != ""; then
 	AC_SUBST(extjarloc, "$STDJARLOC")
@@ -136,6 +139,8 @@ fi
 #
 # The following allows for an enable-testinghacks=yes/no command line option.
 # The conditional TESTINGHACKS is made available to the makefiles.
+# This allows different variable substitutions depending on whether in a test
+# environment or a production build / install environment.
 #
 AC_ARG_ENABLE(testinghacks,
 	--enable-testinghacks    Build with testing hacks for local testing,
@@ -151,8 +156,8 @@ if test "x${testinghacks}" = xtrue; then
 	AC_SUBST(projjarloc,"\$(builddir)/../java/src/alarmclock")
 	AC_SUBST(projjarname,"alarmclock-java-$PACKAGE_VERSION.jar")
 else
-	# If STDJARLOC is supplied on the command line it overrides the
-	# alternative Debian-based standard for jar file location.
+	# If STDJARLOC is supplied it overrides the alternative Debian-based
+	# standard for jar file location.
 	if test "$STDJARLOC" != ""; then
 		AC_SUBST(projjarloc, "$STDJARLOC")
 	else
