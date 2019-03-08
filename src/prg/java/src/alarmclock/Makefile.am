@@ -18,9 +18,10 @@
 # Date		Author	Version	Description				#
 #									#
 # 15/07/2018	MG	1.0.1	Introduced AutoTools to the project.	#
-# 03/03/2019	MG	1.0.2	Change this project jar treatment to	#
+# 08/03/2019	MG	1.0.2	Change this project jar treatment to	#
 #				normal and use new extjarloc configure	#
-#				variable for the getopt jar location.	#
+#				variable for the standard jar location	#
+#				for use in the ClassPath.		#
 #				Remove unnecessary shebang.		#
 #									#
 #########################################################################
@@ -46,7 +47,7 @@ Version.java: Makefile
 	$(edit) $(top_srcdir)/$@.template > $@
 
 
-AM_JAVACFLAGS = -cp $(extjarloc)/gnu-getopt.jar
+AM_JAVACFLAGS = -cp "$(extjarloc)/*"
 
 $(jarfile): classnoinst.stamp AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
 	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)

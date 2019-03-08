@@ -89,11 +89,12 @@
 # 08/12/2017	MG	1.0.15	Adopt standard script exit codes; 0 on	#
 #				success, 1 on failure.			#
 # 18/07/2018	MG	1.0.16	Manual merge with the Java project.	#
-# 03/03/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
+# 08/03/2019	MG	1.1.1	Do not hard code outputprefix contents.	#
 #				Make loops and ifs more C-like.		#
 #				Refactor into functions.		#
 #				Use new extjarloc configure variable	#
-#				for external jar location.		#
+#				for external standard jar location for	#
+#				use in the ClassPath.			#
 #				Use new configure variables projjarloc	#
 #				and projjarname to enable testing in	#
 #				local build directory.			#
@@ -119,7 +120,7 @@ readonly packageversion=@package_version@	# Package version
 readonly projjarloc=@projjarloc@
 readonly projjarname=@projjarname@
 readonly extjarloc=@extjarloc@
-cmdline="java -cp $extjarloc/gnu-getopt.jar:$projjarloc/$projjarname"
+cmdline="java -cp "$extjarloc/*":$projjarloc/$projjarname"
 cmdline+=" alarmclock.AlarmClock"
 
 
