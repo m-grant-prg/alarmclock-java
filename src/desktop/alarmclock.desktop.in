@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=MGE
-GenericName=AlarmClock
+Name=AlarmClock
+GenericName=Alarm Clock
 Comment=Alarm Clock Utility
 Exec=@bindir@/alarmclock
 Icon=@pkgdatadir@/AlarmClock.png
