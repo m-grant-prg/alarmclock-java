@@ -1,3 +1,39 @@
+2019-03-10 v 1.1.1 Mark Grant <m.grant.prg@gmail.com>
+	*  Correct Name and Generic Name usage in the desktop file.
+	Use standard categories from Freedesktop Desktop in desktop file.
+	Use wildcard in ClassPath for build and script
+	Improve comments in configure.ac CLA section
+	configure: Support STDJARLOC environment variable
+	Update man page exit status section
+	configure.ac: Adopt new standard layout
+	README: Add --enable-atonly to configure command
+	README: Update section on bootstrap.sh
+	README: Make package install references generic
+	Install standard GNU files eg AUTHOR etc
+	README: Add Copyright statement
+	Correct package versioning
+	Add bash exit code explanation
+	Pass bash path to scripts and Makefile.am's
+	Remove unnecessary shebangs from Makefile.am's
+	Update Copyright statement format
+	Use local and readonly variables where appropriate
+	Convert remaining echo statements to printf
+	Improve trap handling
+	Change [ x -gt y ] to (( .. ))
+	Add missing error handling after getopt
+	Remove script_exit_code variable
+	Update in-file ChangeLog
+	Standardise output() with (( )) and printf
+	Update to java-vm m4 macros v1.0.5
+	Add --enable-testinghacks to configure CLA
+	Add -a or --at-only build option
+	Update bootstrap.sh
+	alarmclock: Refactor CL processing into function
+	alarmclock: Refactor help text into function
+	alarmclock: Make loops and ifs more C-like
+	alarmclock: Do not hardcode outputprefix
+	Correct name capitalisation in bash script
+
 2018-10-27 v 1.0.20 Mark Grant <m.grant.prg@gmail.com>
 	*  srctarball to use -src- in filename
 	Source still at v1.0.14
