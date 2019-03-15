@@ -31,7 +31,9 @@
 #				[ -t || --testing-hacks ] ||		#
 #				[ -T || --source-tarball ] ||		#
 #				[ -v || --verbose ] ||			#
-#				[ -V || --version ]			#
+#				[ -V || --version ] ||			#
+#				[ -- ]					#
+#				[ non-option arguments ]		#
 #									#
 # Exit codes used:-							#
 # Bash standard Exit Codes:	0 - success				#
@@ -115,13 +117,20 @@
 #				Tidy up local and global variables.	#
 #				Add -a --at-only option.		#
 #				Add -t --testing-hacks option.		#
+# 15/03/2019	MG	1.3.9	Add support for non-option arguments	#
+#				which are not option arguments being	#
+#				passed straight through to the		#
+#				configure command line apart from the	#
+#				first which is the base directory. This	#
+#				allows support for things like		#
+#				--prefix=... etc.			#
 #									#
 #########################################################################
 
 ##################
 # Init variables #
 ##################
-readonly version="1.3.8"		# set version variable
+readonly version="1.3.8+rc1"		# set version variable
 readonly packageversion=v1.2.13	# Version of the complete package
 
 # Set defaults
@@ -141,6 +150,7 @@ verbose=false
 verboseconfig=" --enable-silent-rules=yes"
 verbosemake=" --quiet"
 basedir="."
+configcli_extra_args=""
 
 
 #############
@@ -369,14 +379,13 @@ proc_CL()
 		script_exit 64
 	fi
 
-	# Script can accept 1 other argument, the base directory.
-	if [[ $# > 1 ]]; then
-		output "Invalid argument." 1
-		script_exit 64
-	fi
-
-	if [[ $# == 1 ]]; then
+	# First non-option argument which is not an option argument is the base
+	# directory, all others are passed straight to the configure command
+	# line, (to support things like  --prefix=... etc).
+	if (( $# )); then
 		basedir=$1
+		shift
+		configcli_extra_args=" $@"
 	fi
 }
 
@@ -418,8 +427,8 @@ proc_config()
 	output "$msg" $status
 	std_cmd_err_handler $status
 
-	cmdline="$basedir/configure$verboseconfig$atonly$debug$headercheck"
-	cmdline+="$sparse$testinghacks"
+	cmdline="$basedir/configure$configcli_extra_args$verboseconfig"
+	cmdline+="$atonly$debug$headercheck$sparse$testinghacks"
 
 	if $distcheckfake ; then
 		cmdline=$cmdline" --enable-distcheckfake=yes"
