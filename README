@@ -82,7 +82,6 @@ maintain their relative relationship.
 
 B)  AutoTools (configure and make) Installation
 -----------------------------------------------
-
 1 ... Download either the source or distribution tarball (the .tar.gz file)
 	from:-
 
@@ -107,9 +106,8 @@ To uninstall the package:
 
 2 ... As root or sudo, type 'make uninstall clean'
 
-----------------------------------------
 C) Installation of Distro-Native Package
-========================================
+----------------------------------------
 Installation packages native to different distributions are available, please
 refer to the relevant installation section on the wiki at:-
 
