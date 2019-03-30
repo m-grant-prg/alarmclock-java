@@ -52,7 +52,7 @@ AM_JAVACFLAGS = -cp "$(extjarloc)/*"
 
 $(jarfile): classnoinst.stamp AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
 	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)
-	$(JAVADOC) -sourcepath $(srcdir)/*.java -d ./docs -subpackages $(srcdir)
+	$(JAVADOC) -sourcepath $(srcdir)/*.java -d ./docs
 
 jar_DATA = $(jarfile)
 
