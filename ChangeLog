@@ -1,3 +1,9 @@
+2019-03-30 v 1.1.2 Mark Grant <m.grant.prg@gmail.com>
+	*  Build javadoc to aid debugging.
+	Correct README formatting.
+	Update bootstrap.sh to v1.4.1
+	Source still at v1.0.14
+
 2019-03-10 v 1.1.1 Mark Grant <m.grant.prg@gmail.com>
 	*  Correct Name and Generic Name usage in the desktop file.
 	Use standard categories from Freedesktop Desktop in desktop file.

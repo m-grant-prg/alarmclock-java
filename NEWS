@@ -1,3 +1,8 @@
+Release 1.1.2 2019-03-30
+Build javadoc to aid debugging.
+Correct README formatting.
+Update bootstrap.sh to v1.4.1
+
 Release 1.1.1 2019-03-10
 Correct Name and Generic Name usage in the desktop file.
 Use standard categories from Freedesktop Desktop in desktop file.
