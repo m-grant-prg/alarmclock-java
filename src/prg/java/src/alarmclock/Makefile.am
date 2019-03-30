@@ -23,6 +23,7 @@
 #				variable for the standard jar location	#
 #				for use in the ClassPath.		#
 #				Remove unnecessary shebang.		#
+# 30/03/2019	MG	1.0.3	Add build of javadoc.			#
 #									#
 #########################################################################
 
@@ -51,6 +52,7 @@ AM_JAVACFLAGS = -cp "$(extjarloc)/*"
 
 $(jarfile): classnoinst.stamp AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
 	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)
+	$(JAVADOC) -sourcepath $(srcdir)/*.java -d ./docs -subpackages $(srcdir)
 
 jar_DATA = $(jarfile)
 
@@ -62,6 +64,9 @@ install-data-hook:
 
 uninstall-local:
 	rm -f $(DESTDIR)$(jardir)/$(PACKAGE_TARNAME).jar
+
+clean-local:
+	rm -rf ./docs
 
 
 dist_noinst_JAVA = AlarmClock.java AlarmClockHelpAboutJDialog.java \
