@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /bin/bash
 #########################################################################
 #									#
 #	bootstrap.sh is automatically generated,			#
@@ -106,7 +106,7 @@
 # 06/08/2018	MG	1.3.6	Add -H --header-check option.		#
 #				Change error log file to build log.	#
 # 22/08/2018	MG	1.3.7	Add verbose option.			#
-# 01/03/2019	MG	1.3.8	Style if, for and while loops after C.	#
+# 24/03/2019	MG	1.4.1	Style if, for and while loops after C.	#
 #				Use -proper- booleans.			#
 #				Remove script_exit_code variable 	#
 #				propogating the exit code as a function	#
@@ -117,21 +117,25 @@
 #				Tidy up local and global variables.	#
 #				Add -a --at-only option.		#
 #				Add -t --testing-hacks option.		#
-# 15/03/2019	MG	1.3.9	Add support for non-option arguments	#
+#				Add support for non-option arguments	#
 #				which are not option arguments being	#
 #				passed straight through to the		#
 #				configure command line apart from the	#
 #				first which is the base directory. This	#
 #				allows support for things like		#
 #				--prefix=... etc.			#
+#				Add missing error check after getopt.	#
+#				Replace #! env bash with absolute path	#
+#				via configure.				#
 #									#
 #########################################################################
 
 ##################
 # Init variables #
 ##################
-readonly version="1.3.8+rc1"		# set version variable
-readonly packageversion=v1.2.13	# Version of the complete package
+
+readonly version=1.4.1			# set version variable
+readonly packageversion=1.3.1	# Version of the complete package
 
 # Set defaults
 atonly=""
@@ -163,7 +167,7 @@ configcli_extra_args=""
 usage ()
 {
 cat << EOF
-Usage is $0 [options]
+Usage:- acmbuild.sh / $0 [options] [-- configure options to pass on]
 	-a or --at-only during testing and for an AutoTools-only install, some
 		build changes are required. e.g. You may reference an external
 		Java jar in datadir but in AT builds and installations this
@@ -196,7 +200,7 @@ EOF
 # No return value.
 output()
 {
-	if [ $2 = 0 ]; then
+	if (( !$2 )); then
 		printf "%s\n" "$1"
 	else
 		printf "%s\n" "$1" 1>&2
@@ -208,7 +212,7 @@ output()
 # No return value.
 std_cmd_err_handler()
 {
-	if [ $1 != 0 ]; then
+	if (( $1 )); then
 		script_exit $1
 	fi
 }
@@ -226,16 +230,13 @@ script_exit()
 # No return value.
 trap_exit()
 {
-	local exit_code=$?
+	local -i exit_code=$?
 	local msg
 
 	msg="Script terminating with exit code $exit_code due to trap received."
-	output "$msg" 1 0
+	output "$msg" 1
 	script_exit $exit_code
 }
-
-# Setup trap
-trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
 
 # Process command line arguments with GNU getopt.
 # Parameters -	$1 is the command line.
@@ -243,14 +244,17 @@ trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
 proc_CL()
 {
 	local GETOPTTEMP
+	local script_name="acmbuild.sh/bootstrap.sh"
 	local tmp
 
 	tmp="getopt -o abcCdDFghHstTvV "
 	tmp+="--long at-only,build,config,distcheck,debug,dist,distcheckfake,"
 	tmp+="gnulib,help,header-check,sparse,source-tarball,testing-hacks,"
 	tmp+="verbose,version "
-	tmp+="-n $0 -- $@"
+	tmp+="-n $script_name -- $@"
 	GETOPTTEMP=`eval $tmp`
+	std_cmd_err_handler $?
+
 	eval set -- "$GETOPTTEMP"
 	std_cmd_err_handler $?
 
@@ -485,6 +489,9 @@ proc_make()
 ########
 # Main #
 ########
+
+# Setup trap
+trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
 
 proc_CL $@
 
