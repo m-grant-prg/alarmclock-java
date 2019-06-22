@@ -107,6 +107,7 @@
 #				variables.				#
 #				Replace #! env bash with absolute bash	#
 #				path via configure.			#
+# 22/06/2019	MG	1.1.2	Modernise getopt processing.		#
 #									#
 #########################################################################
 
@@ -114,7 +115,7 @@
 # Init variables #
 ##################
 readonly outputprefix="$(basename $0):"
-readonly version=1.1.1				# Script version
+readonly version=1.1.2				# Script version
 readonly packageversion=@package_version@	# Package version
 
 readonly projjarloc=@projjarloc@
@@ -192,8 +193,10 @@ trap_exit()
 proc_CL()
 {
 	local GETOPTTEMP
+	local tmp
 
-	GETOPTTEMP=`getopt -o hV --long help,version -n "$0" -- "$@"`
+	tmp="getopt -o hV --long help,version"
+	GETOPTTEMP=$($tmp -n "$0" -- "$@")
 	std_cmd_err_handler $?
 
 	eval set -- "$GETOPTTEMP"
