@@ -127,7 +127,7 @@ In the project root directory there is 1 helper script; bootstrap.sh.
 bootstrap.sh
 ------------
 This misleadingly named script bootstraps the project build and provides other
-useful features. The main options below are probably b, c, C, D and T.
+useful features. The main options are probably b, c, C, D and T.
 
 In AutoTools it is usually advisable to perform parallel builds. This means you
 build somewhere other than the project root. This is because building creates
@@ -138,52 +138,12 @@ work from there, (.gitignore is already set to ignore such a directory).
 Assuming you adopt the preceding paragraph then a typical invocation of the
 script would be:-
 
-	../bootstrap.sh --build ..
-	The last '..' points the way to project root.
+../bootstrap.sh --config --build ..
 
-The full list of arguments to bootstrap.sh are:-
+The last '..' points the way to project root.
 
-	-a or --at-only during testing and for an AutoTools-only install, some
-		build changes are required. e.g. You may reference an external
-		Java jar in datadir but in AT builds and installations this
-		may expand to /usr/local/share... So a substitution is required
-		for this scenario.
+For the full list of arguments to bootstrap.sh, please refer to the options
+section of the acmbuild wiki, the options are identical:-
 
-	-b, --build make the project.
-
-	-c, --config configure the project.
-
-	-C, --distcheck perform a normal make distcheck.
-
-	-d, --debug build with appropriate debug flags.
-
-	-D, --dist perform a make dist.
-
-	-F, --distcheckfake run a make distcheck using a fake AT standard
-		directory as a substitute for an absolute path which distcheck
-		does not support.
-
-	-g, --gnulib run gnulib-tool --update. Checks for the existence of the
-		cache file proj-root/m4/gnulib-cache.m4. If it does not exist
-		the update is not run.
-
-	-h, --help prints usage information.
-
-	-s, --sparse pass --enable-sparse=yes to configure.
-
-	-t or --testing-hacks some build changes may be required for testing
-		purposes. e.g. A script may invoke a project jar file which
-		when installed will be somewhere under datadir, but during
-		testing it is in the project tree.
-
-	-T, --source-tarball perform a make srctarball to build a source0
-		tarball.
-
-	-V, --version prints version information
-
-Options b build, C distcheck, D dist, F distcheckfake and T source-tarball are
-mutually exclusive.
-
-Options a at-only, d debug, F distcheckfake, t testing-hacks  and s sparse are
-enabled by configure so require option c config.
+https://github.com/m-grant-prg/acmbuild/wiki
 
