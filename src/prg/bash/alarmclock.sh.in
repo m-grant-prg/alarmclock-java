@@ -108,6 +108,7 @@
 #				Replace #! env bash with absolute bash	#
 #				path via configure.			#
 # 22/06/2019	MG	1.1.2	Modernise getopt processing.		#
+#				Setup trap handling ASAP.		#
 #									#
 #########################################################################
 
@@ -187,6 +188,9 @@ trap_exit()
 	script_exit $exit_code
 }
 
+# Setup trap.
+trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
+
 # Process command line arguments with GNU getopt.
 # Parameters -	$1 is the command line.
 # No return value.
@@ -238,9 +242,6 @@ proc_CL()
 ########
 # Main #
 ########
-
-# Setup trap.
-trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
 
 proc_CL "$@"
 
