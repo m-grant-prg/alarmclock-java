@@ -24,6 +24,7 @@
 #				for use in the ClassPath.		#
 #				Remove unnecessary shebang.		#
 # 30/03/2019	MG	1.0.3	Add build of javadoc.			#
+# 22/06/2019	MG	1.0.4	Add classpath to javadoc to find getopt.#
 #									#
 #########################################################################
 
@@ -52,7 +53,8 @@ AM_JAVACFLAGS = -cp "$(extjarloc)/*"
 
 $(jarfile): classnoinst.stamp AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
 	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)
-	$(JAVADOC) -sourcepath $(srcdir)/*.java -d ./docs
+	$(JAVADOC) -classpath "$(extjarloc)/*" -sourcepath $(srcdir)/*.java \
+		-d ./docs
 
 jar_DATA = $(jarfile)
 
