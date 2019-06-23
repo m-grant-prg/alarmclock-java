@@ -30,11 +30,16 @@
 #				cannot support make distcheck so remove	#
 #				support here.				#
 # 03/03/2019	MG	1.0.8	Remove unnecessary shebang.		#
+# 22/06/2019	MG	1.0.9	Add support for make distcheck.		#
 #									#
 #########################################################################
 
 
-desktopdir = /usr/share/applications
+# desktoploc is set in configure.ac to provide a conditional target depending
+# on whether distcheck is being run.
+
+desktopdir = $(desktoploc)
+
 
 alarmclock.desktop: Makefile
 	mkdir -p $(@D)

@@ -11,8 +11,16 @@
 #									#
 # configure cmd line syntax:-						#
 # ./configure	[ STDJARLOC=/path/to/standard/jar/location ]		#
-#		[ --enable-atonly=<yes|no> [default: no]		#
-#		  --enable-testinghacks=<yes|no> [default: no] ]	#
+#		[ --enable-atonly=<yes|no> [default: no] ]		#
+#		[ --enable-distcheckfake=<yes|no> [default: no] ]	#
+#		[ --enable-testinghacks=<yes|no> [default: no] ]	#
+#									#
+# --enable-distcheckfake enables the replacement of an absolute		#
+# directory path specified in a variable, with a value based on		#
+# AutoTools standard directories. This enables the Makefile.am to use	#
+# the AT variable based value when running distcheck and the absolute	#
+# path for all else. Hence distcheck can now succeed when it would 	#
+# normally fail.							#
 #									#
 # Layout: (Only relevant sections will exist).				#
 # ChangeLog : High level ChangeLog					#
@@ -50,6 +58,7 @@
 #				Re-vamp to new standard layout.		#
 #				Add support for STDJARLOC environment	#
 #				variable.				#
+# 22/06/2019	MG	1.0.3	Add distcheckfake option.		#
 #									#
 #########################################################################
 
@@ -60,7 +69,7 @@
 #					#
 #########################################
 
-AC_REVISION([$Revision: 1.0.2 $])
+AC_REVISION([$Revision: 1.0.3 $])
 
 AC_PREREQ([2.69])
 
@@ -123,6 +132,32 @@ if test "x${atonly}" = xtrue; then
 	AC_SUBST(extjarloc,"/usr/share/java")
 else
 	AC_SUBST(extjarloc,"$datadir/java")
+fi
+
+#
+# If a file location has to be fixed, e.g. /etc/foo.conf and never
+# /usr/local/etc/foo.conf, then make distcheck will fail. Setting this flag
+# allows make distcheck to locate the file in an AT standard directory-based
+# location.
+# eg /usr/local/etc/foo.conf.
+# and hence succeed.
+#
+AC_ARG_ENABLE([distcheckfake],
+	[  --enable-distcheckfake    Enable running of distcheck],
+	[case "${enableval}" in
+		yes) distcheckfake=true ;;
+		no)  distcheckfake=false ;;
+		*) AC_MSG_ERROR([bad value ${enableval} for \
+			--enable-distcheckfake]) ;;
+	esac],[distcheckfake=false])
+AM_CONDITIONAL([DISTCHECKFAKE], [test x$distcheckfake = xtrue])
+
+if test "x${distcheckfake}" = xtrue; then
+	AC_SUBST([desktoploc], ["$datadir/applications"])
+	AC_MSG_NOTICE([Using substitute paths to facilitate distcheck.])
+else
+	AC_SUBST([desktoploc], ["/usr/share/applications"])
+	AC_MSG_NOTICE([Using distcheck incompatible absolute based paths.])
 fi
 
 #
@@ -337,6 +372,7 @@ AC_MSG_NOTICE(processing additional checks and variables)
 #	pkglibexecdir	${libexecdir}/${PACKAGE}
 #
 AC_SUBST([edit], ["sed \
+		-e 's|@desktoploc[@]|\$(desktoploc)|g' \
 		-e 's|@bashlocation[@]|\$(BASH)|g' \
 		-e 's|@projjarloc[@]|\$(projjarloc)|g' \
 		-e 's|@projjarname[@]|\$(projjarname)|g' \

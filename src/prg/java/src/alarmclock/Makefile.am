@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later				#
 #									#
 # Purpose:								#
-# AutoMake script file to install alarmclock jar.			#
+# AutoMake script file for alarmclock jar.				#
 #									#
 #########################################################################
 
@@ -24,16 +24,27 @@
 #				for use in the ClassPath.		#
 #				Remove unnecessary shebang.		#
 # 30/03/2019	MG	1.0.3	Add build of javadoc.			#
-# 22/06/2019	MG	1.0.4	Add classpath to javadoc to find getopt.#
+# 23/06/2019	MG	1.0.4	Add classpath to javadoc to find getopt.#
+#				Fix make distcheck issues.		#
 #									#
 #########################################################################
 
 
-AlarmClock.png AlarmClock.wav AlarmClockAbout.txt: Makefile
-	cp $(@) $(pkgpath)
+pkgpath = alarmclock
 
 
-noinst_DATA = AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
+$(pkgpath)/AlarmClock.png $(pkgpath)/AlarmClock.wav \
+	$(pkgpath)/AlarmClockAbout.txt: Makefile
+	mkdir -pv $(@D)
+	rm -fv $(@)
+	cp -v $(srcdir)/$(pkgpath)/$(@F).in $@
+$(pkgpath)/AlarmClock.png: $(srcdir)/$(pkgpath)/AlarmClock.png.in
+$(pkgpath)/AlarmClock.wav: $(srcdir)/$(pkgpath)/AlarmClock.wav.in
+$(pkgpath)/AlarmClock.txt: $(srcdir)/$(pkgpath)/AlarmClock.txt.in
+
+
+noinst_DATA = $(pkgpath)/AlarmClock.png $(pkgpath)/AlarmClock.wav \
+	$(pkgpath)/AlarmClockAbout.txt
 
 
 JAVAROOT = .
@@ -42,21 +53,21 @@ jarfile = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION).jar
 
 jardir = $(datadir)/java
 
-pkgpath = alarmclock
-
-
 Version.java: Makefile
 	$(edit) $(top_srcdir)/$@.template > $@
 
-
 AM_JAVACFLAGS = -cp "$(extjarloc)/*"
 
-$(jarfile): classnoinst.stamp AlarmClock.png AlarmClock.wav AlarmClockAbout.txt
+$(jarfile): classnoinst.stamp $(pkgpath)/AlarmClock.png \
+	$(pkgpath)/AlarmClock.wav $(pkgpath)/AlarmClockAbout.txt
 	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)
 	$(JAVADOC) -classpath "$(extjarloc)/*" -sourcepath $(srcdir)/*.java \
 		-d ./docs
 
 jar_DATA = $(jarfile)
+
+dist_noinst_JAVA = AlarmClock.java AlarmClockHelpAboutJDialog.java \
+		PlaySoundFile.java PlaySoundThread.java Version.java
 
 
 # Convention requires a link to the jar file without the version information.
@@ -71,12 +82,10 @@ clean-local:
 	rm -rf ./docs
 
 
-dist_noinst_JAVA = AlarmClock.java AlarmClockHelpAboutJDialog.java \
-		PlaySoundFile.java PlaySoundThread.java Version.java
-
-
-EXTRA_DIST = $(srcdir)/AlarmClock.png $(srcdir)/AlarmClock.wav \
-		$(srcdir)/AlarmClockAbout.txt
+EXTRA_DIST = $(srcdir)/$(pkgpath)/AlarmClock.png.in \
+	$(srcdir)/$(pkgpath)/AlarmClock.wav.in \
+	$(srcdir)/$(pkgpath)/AlarmClockAbout.txt.in
 
 
 CLEANFILES = $(jarfile) $(pkgpath)/* Version.java
+

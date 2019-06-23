@@ -45,3 +45,4 @@ pkgdata_DATA = AlarmClock.png
 EXTRA_DIST = $(srcdir)/AlarmClock.png.in
 
 CLEANFILES = *.tmp AlarmClock.png
+

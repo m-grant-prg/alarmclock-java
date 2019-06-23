@@ -27,11 +27,20 @@
 #				aids integrating with rpm generation.	#
 #				Add install of standard GNU files like	#
 #				AUTHORS, etc.				#
+# 22/06/2019	MG	1.0.4	To enable make distcheck to work, any	#
+#				hard-coded paths requiring permissions	#
+#				such as /etc or fixed locations such as	#
+#				/usr/share/java must be accommodated,	#
+#				so set the configure flags to be used	#
+#				by make distcheck.			#
 #									#
 #########################################################################
 
 
 ACLOCAL_AMFLAGS = -I m4 -I m4extra
+
+
+AM_DISTCHECK_CONFIGURE_FLAGS = --enable-distcheckfake=yes --enable-atonly=yes
 
 
 SUBDIRS = src/desktop src/distobjects
