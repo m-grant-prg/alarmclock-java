@@ -15,10 +15,10 @@ Contents
 
 4 ... Installation
 
-	A) Just using the built jar file.
-	B) For systems supporting AutoTools.
-	C) Of Distro-Native Package
-	D) Windows msi installer.
+		A) Just using the built jar file.
+		B) For systems supporting AutoTools.
+		C) Of Distro-Native Package
+		D) Windows msi installer.
 
 5 ... Utility Scripts
 
@@ -93,7 +93,16 @@ https://github.com/m-grant-prg/alarmclock-java/releases
 
 4 ... If you downloaded the source tarball type 'autoreconf -if'
 
-5 ... Type './configure --enable-atonly=yes'
+5(a) ... For Debian and closely related distros where support jar files are
+located in /usr/share/java:-
+
+		Type './configure --enable-atonly=yes'
+		Now skip to step (6).
+
+5(b) ... For distros which do not store support jar files in /usr/share/java:-
+
+		Find the '/path/to/jars'
+		Type './configure STDJARLOC=/path/to/jars --enable-atonly=yes'
 
 6 ... As root or sudo, type 'make install clean'
 
