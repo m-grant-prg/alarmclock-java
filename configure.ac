@@ -15,12 +15,48 @@
 #		[ --enable-distcheckfake=<yes|no> [default: no] ]	#
 #		[ --enable-testinghacks=<yes|no> [default: no] ]	#
 #									#
-# --enable-distcheckfake enables the replacement of an absolute		#
-# directory path specified in a variable, with a value based on		#
-# AutoTools standard directories. This enables the Makefile.am to use	#
-# the AT variable based value when running distcheck and the absolute	#
-# path for all else. Hence distcheck can now succeed when it would 	#
-# normally fail.							#
+# Parameters generic description. For specifics to this configure.ac	#
+# please see inline comments at the point of definition:-		#
+# STDJARLOC								#
+#	This parameter should be used when an absolute jar location is	#
+#	required, (eg to consume distro installed jars), that is not	#
+#	the Debian location of /usr/share/java. If that is the desired	#
+#	distro location use atonly.					#
+#	Jar file location defaults to datadir/java for the AT build but	#
+#	a jar file installed already (eg getopt) will be in the distro	#
+#	production directory such as /usr/share/java (for Debian and	#
+#	others). The -atonly option will set this explicitly (ie works	#
+#	for Debian and others) but for distros using a different	#
+#	location, setting this environment variable will override both	#
+#	a standard AT build and the location used during an -atonly	#
+#	build.								#
+# --enable-atonly							#
+#	Used to produce a fully working package just from the AT build	#
+#	when the build references a (distro / external) static location	#
+#	eg another package's config file in /etc (AOT AT's		#
+#	/usr/local/etc), or an externally installed jar file in		#
+#	/usr/share/jave (AOT AT's /usr/local/share/java).		#
+#	In the case of jar files, atonly will set external jar		#
+#	locations for Debian-like distros. For distros using a		#
+#	different external jar location, please combine this option	#
+#	with the STDJARLOC environment variable mentioned above.	#
+# --enable-distcheckfake						#
+#	Enables the replacement of an absolute directory path specified	#
+#	in a variable, with a value based on AutoTools standard		#
+#	directories. This enables the Makefile.am to use the AT		#
+#	variable based value when running distcheck and the absolute	#
+#	path for all else. Hence distcheck can now succeed when it	#
+#	would normally fail.						#
+# --enable-testinghacks							#
+#	This option should be used when the AT testing environment, (ie	#
+#	using the build directory), requires differences in invocation.	#
+#	An example would be a shell script invoking a program / script 	#
+#	/ jar file. In the AT build directory the script should invoke	#
+#	the target in the build system, whereas in production it might	#
+#	invoke the target in datadir, datadir/java or pkgdatadir. If	#
+#	this was left unchanged the test invocation of the script would	#
+#	end up testing any old installed version of the target or	#
+#	failing because it cannot be found.				#
 #									#
 # Layout: (Only relevant sections will exist).				#
 # ChangeLog : High level ChangeLog					#
@@ -59,6 +95,7 @@
 #				Add support for STDJARLOC environment	#
 #				variable.				#
 # 22/06/2019	MG	1.0.3	Add distcheckfake option.		#
+#				Improve in-file comments on CLAs.	#
 #									#
 #########################################################################
 
@@ -135,6 +172,17 @@ else
 fi
 
 #
+# STDJARLOC can be passed on the configure command line, (preferable), or as a
+# pre-set environment variable. If present, it should contain the path to the
+# standard jar location, datadir/java on Debian but maybe somewhere else on
+# other distros. If present it always overrides the Debian-based standard for
+# extjarloc above.
+#
+if test "$STDJARLOC" != ""; then
+	AC_SUBST(extjarloc, "$STDJARLOC")
+fi
+
+#
 # If a file location has to be fixed, e.g. /etc/foo.conf and never
 # /usr/local/etc/foo.conf, then make distcheck will fail. Setting this flag
 # allows make distcheck to locate the file in an AT standard directory-based
@@ -158,17 +206,6 @@ if test "x${distcheckfake}" = xtrue; then
 else
 	AC_SUBST([desktoploc], ["/usr/share/applications"])
 	AC_MSG_NOTICE([Using distcheck incompatible absolute based paths.])
-fi
-
-#
-# STDJARLOC can be passed on the configure command line, (preferable), or as a
-# pre-set environment variable. If present, it should contain the path to the
-# standard jar location, datadir/java on Debian but maybe somewhere else on
-# other distros. If present it always overrides the Debian-based standard for
-# extjarloc above.
-#
-if test "$STDJARLOC" != ""; then
-	AC_SUBST(extjarloc, "$STDJARLOC")
 fi
 
 #
