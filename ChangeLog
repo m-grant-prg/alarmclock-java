@@ -1,3 +1,16 @@
+2019-06-27 v 1.1.4 Mark Grant <m.grant.prg@gmail.com>
+	*  at: Update bootstrap.sh to v1.4.5
+	at: README: Improve AT installation instructions
+	at: configure.ac: Improve in-file comments
+	at: Fix make distcheck using enable-distcheckfake
+	at: Add classpath to javadoc to find getopt jar
+	travis: Setup Travis CI build testing
+	README: Point bootstrap.sh part at acmbuild wiki
+	git: Update project root gitignore to v1.0.2
+	Setup trap handling ASAP
+	Improve getopt CL processing
+	Source still at v1.0.14
+
 2019-03-30 v 1.1.3 Mark Grant <m.grant.prg@gmail.com>
 	*  Fix javadoc creation errors with later versions.
 	Source still at v1.0.14
