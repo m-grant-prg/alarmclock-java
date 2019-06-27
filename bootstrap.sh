@@ -23,7 +23,6 @@
 #				[ -C || --distcheck ] ||		#
 #				[ -d || --debug ] ||			#
 #				[ -D || --dist ] ||			#
-#				[ -F || --distcheckfake ] ||		#
 #				[ -g || --gnulib ] ||			#
 #				[ -h || --help ] ||			#
 #				[ -H || --header-check ] ||		#
@@ -136,6 +135,9 @@
 #				with eval.				#
 # 18/06/2019	MG	1.4.4	Add -K --check option to run		#
 #				make --quiet check.			#
+# 25/06/2019	MG	1.4.5	Remove distcheckfake option. Now done	#
+#				by distcheck with configure flags in	#
+#				top level makefile.			#
 #									#
 #########################################################################
 
@@ -144,8 +146,8 @@
 # Init variables #
 ##################
 
-readonly version=1.4.4			# set version variable
-readonly packageversion=1.3.5	# Version of the complete package
+readonly version=1.4.5			# set version variable
+readonly packageversion=1.3.6	# Version of the complete package
 
 # Set defaults
 atonly=""
@@ -155,7 +157,6 @@ config=false
 debug=""
 dist=false
 distcheck=false
-distcheckfake=false
 gnulib=false
 headercheck=""
 sparse=""
@@ -189,7 +190,6 @@ Usage:- acmbuild.sh / $0 [options] [-- configure options to pass on]
 	-C or --distcheck perform normal distcheck
 	-d or --debug build with appropriate debug flags
 	-D or --dist perform a make dist
-	-F or --distcheckfake fake a distcheck for fixed root
 	-g or --gnulib run gnulib-tool --update
 	-h or --help displays usage information
 	-H or --header-check show include stack depth
@@ -262,10 +262,10 @@ proc_CL()
 	local script_name="acmbuild.sh/bootstrap.sh"
 	local tmp
 
-	tmp="getopt -o abcCdDFghHKstTvV "
-	tmp+="--long at-only,build,check,config,distcheck,debug,dist,"
-	tmp+="distcheckfake,gnulib,help,header-check,sparse,source-tarball,"
-	tmp+="testing-hacks,verbose,version"
+	tmp="getopt -o abcCdDghHKstTvV "
+	tmp+="--long at-only,build,check,config,distcheck,debug,dist,gnulib,"
+	tmp+="help,header-check,sparse,source-tarball,testing-hacks,verbose,"
+	tmp+="version"
 	GETOPTTEMP=$($tmp -n "$script_name" -- "$@")
 	std_cmd_err_handler $?
 
@@ -279,9 +279,8 @@ proc_CL()
 			shift
 			;;
 		-b|--build)
-			if $distcheck || $dist || $distcheckfake || $tarball; \
-				then
-				msg="Options b, C, D, F and T are mutually "
+			if $distcheck || $dist || $tarball; then
+				msg="Options b, C, D and T are mutually "
 				msg+="exclusive."
 				output "$msg" 1
 				script_exit 64
@@ -294,8 +293,8 @@ proc_CL()
 			shift
 			;;
 		-C|--distcheck)
-			if $build || $dist || $distcheckfake || $tarball ; then
-				msg="Options b, C, D, F and T are mutually "
+			if $build || $dist || $tarball ; then
+				msg="Options b, C, D and T are mutually "
 				msg+="exclusive."
 				output "$msg" 1
 				script_exit 64
@@ -308,24 +307,13 @@ proc_CL()
 			shift
 			;;
 		-D|--dist)
-			if $build || $distcheck || $distcheckfake \
-				|| $tarball ; then
-				msg="Options b, C, D, F and T are mutually "
+			if $build || $distcheck || $tarball ; then
+				msg="Options b, C, D and T are mutually "
 				msg+="exclusive."
 				output "$msg" 1
 				script_exit 64
 			fi
 			dist=true
-			shift
-			;;
-		-F|--distcheckfake)
-			if $build || $distcheck || $dist || $tarball ; then
-				msg="Options b, C, D, F and T are mutually "
-				msg+="exclusive."
-				output "$msg" 1
-				script_exit 64
-			fi
-			distcheckfake=true
 			shift
 			;;
 		-g|--gnulib)
@@ -342,9 +330,8 @@ proc_CL()
 			shift
 			;;
 		-K|--check)
-			if $distcheck || $dist || $distcheckfake || $tarball; \
-				then
-				msg="Options C, D, F, K and T are mutually "
+			if $distcheck || $dist || $tarball; then
+				msg="Options C, D, K and T are mutually "
 				msg+="exclusive."
 				output "$msg" 1
 				script_exit 64
@@ -361,9 +348,8 @@ proc_CL()
 			shift
 			;;
 		-T|--source-tarball)
-			if $build || $distcheck || $dist || $distcheckfake ; \
-				then
-				msg="Options b, C, D, F and T are mutually "
+			if $build || $distcheck || $dist ; then
+				msg="Options b, C, D and T are mutually "
 				msg+="exclusive."
 				output "$msg" 1
 				script_exit 64
@@ -393,9 +379,9 @@ proc_CL()
 	done
 
 	if [[ $atonly || $debug || $headercheck || $sparse || $testinghacks ]] \
-		|| $distcheckfake || $verbose ; then
+		|| $verbose ; then
 		if ! $config ; then
-			msg="Options a, d, F, H, s, t and v require option c."
+			msg="Options a, d, H, s, t and v require option c."
 			output "$msg" 1
 			script_exit 64
 		fi
@@ -403,8 +389,8 @@ proc_CL()
 
 	# One option has to be selected.
 	if ! $build && ! $check && ! $config && ! $distcheck && ! $dist \
-		&& ! $distcheckfake && ! $gnulib && ! $tarball ; then
-		output "Either b, c, C, D, F, g, K or T must be set." 1
+		&& ! $gnulib && ! $tarball ; then
+		output "Either b, c, C, D, g, K or T must be set." 1
 		script_exit 64
 	fi
 
@@ -462,10 +448,6 @@ proc_config()
 	cmdline="$basedir/configure$configcli_extra_args$verboseconfig"
 	cmdline+="$atonly$debug$headercheck$sparse$testinghacks"
 
-	if $distcheckfake ; then
-		cmdline=$cmdline" --enable-distcheckfake=yes"
-	fi
-
 	eval "$cmdline"
 	status=$?
 	output "$cmdline completed with exit status: $status" $status
@@ -497,11 +479,6 @@ proc_make()
 
 	if $dist ; then
 		cmdline="make"$verbosemake" dist clean"
-	fi
-
-	if $distcheckfake ; then
-		cmdline="make"$verbosemake" distcheck clean "
-		cmdline+="DISTCHECK_CONFIGURE_FLAGS=--enable-distcheckfake=yes"
 	fi
 
 	if $tarball ; then
