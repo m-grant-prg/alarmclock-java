@@ -167,7 +167,7 @@ AC_ARG_ENABLE(atonly,
 AM_CONDITIONAL(ATONLY, test x$atonly = xtrue)
 
 if test "x${atonly}" = xtrue; then
-	AC_MSG_NOTICE(Building for AT only testing or installing.)
+	AC_MSG_NOTICE(building for AT only testing or installing)
 	AC_SUBST(extjarloc,"/usr/share/java")
 else
 	AC_SUBST(extjarloc,"$datadir/java")
@@ -204,10 +204,10 @@ AM_CONDITIONAL([DISTCHECKFAKE], [test x$distcheckfake = xtrue])
 
 if test "x${distcheckfake}" = xtrue; then
 	AC_SUBST([desktoploc], ["$datadir/applications"])
-	AC_MSG_NOTICE([Using substitute paths to facilitate distcheck.])
+	AC_MSG_NOTICE([using substitute paths to facilitate distcheck])
 else
 	AC_SUBST([desktoploc], ["/usr/share/applications"])
-	AC_MSG_NOTICE([Using distcheck incompatible absolute based paths.])
+	AC_MSG_NOTICE([using distcheck incompatible absolute based paths])
 fi
 
 #
@@ -227,7 +227,7 @@ AC_ARG_ENABLE(testinghacks,
 AM_CONDITIONAL(TESTINGHACKS, test x$testinghacks = xtrue)
 
 if test "x${testinghacks}" = xtrue; then
-	AC_MSG_NOTICE(Building with testing hacks for local testing.)
+	AC_MSG_NOTICE(building with testing hacks for local testing)
 	AC_SUBST(projjarloc,"\$(builddir)/../java/src/alarmclock")
 	AC_SUBST(projjarname,"alarmclock-java-$PACKAGE_VERSION.jar")
 else
