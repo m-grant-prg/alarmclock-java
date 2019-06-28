@@ -96,6 +96,7 @@
 #				variable.				#
 # 22/06/2019	MG	1.0.3	Add distcheckfake option.		#
 #				Improve in-file comments on CLAs.	#
+# 28/06/2019	MG	1.0.4	Correct ARG_ENABLE help text.		#
 #									#
 #########################################################################
 
@@ -106,7 +107,7 @@
 #					#
 #########################################
 
-AC_REVISION([$Revision: 1.0.3 $])
+AC_REVISION([$Revision: 1.0.4 $])
 
 AC_PREREQ([2.69])
 
@@ -156,7 +157,8 @@ AC_MSG_NOTICE(checking command line arguments)
 # /usr/local but anything pre-installed would normally be in /usr.
 #
 AC_ARG_ENABLE(atonly,
-	--enable-atonly    Build for AT only testing or installation,
+	AS_HELP_STRING([--enable-atonly], \
+			[build for AT only testing or installation]),
 	[case "${enableval}" in
 		yes) atonly=true ;;
 		no)  atonly=false ;;
@@ -191,7 +193,7 @@ fi
 # and hence succeed.
 #
 AC_ARG_ENABLE([distcheckfake],
-	[  --enable-distcheckfake    Enable running of distcheck],
+	AS_HELP_STRING([--enable-distcheckfake], [enable running of distcheck]),
 	[case "${enableval}" in
 		yes) distcheckfake=true ;;
 		no)  distcheckfake=false ;;
@@ -215,7 +217,8 @@ fi
 # environment or a production build / install environment.
 #
 AC_ARG_ENABLE(testinghacks,
-	--enable-testinghacks    Build with testing hacks for local testing,
+	AS_HELP_STRING([--enable-testinghacks], \
+			[build with testing hacks for local testing]),
 	[case "${enableval}" in
 	yes) testinghacks=true ;;
 	no)  testinghacks=false ;;
