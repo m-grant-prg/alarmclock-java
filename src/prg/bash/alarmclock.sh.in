@@ -109,14 +109,17 @@
 #				path via configure.			#
 # 22/06/2019	MG	1.1.2	Modernise getopt processing.		#
 #				Setup trap handling ASAP.		#
+# 14/10/2019	MG	1.1.3	Move script_exit() before it is used.	#
 #									#
 #########################################################################
+
 
 ##################
 # Init variables #
 ##################
+
 readonly outputprefix="$(basename $0):"
-readonly version=1.1.2				# Script version
+readonly version=1.1.3				# Script version
 readonly packageversion=@package_version@	# Package version
 
 readonly projjarloc=@projjarloc@
@@ -157,6 +160,14 @@ output()
 	fi
 }
 
+# Standard function to tidy up and return exit code.
+# Parameters - 	$1 is the exit code.
+# No return value.
+script_exit()
+{
+	exit $1
+}
+
 # Standard function to test command error and exit if non-zero.
 # Parameters - $1 is $?
 # No return value.
@@ -165,14 +176,6 @@ std_cmd_err_handler()
 	if (( $1 )); then
 		script_exit $1
 	fi
-}
-
-# Standard function to tidy up and return exit code.
-# Parameters - 	$1 is the exit code.
-# No return value.
-script_exit()
-{
-	exit $1
 }
 
 # Standard trap exit function.
