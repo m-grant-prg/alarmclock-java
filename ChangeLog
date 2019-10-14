@@ -1,3 +1,10 @@
+2019-10-14 v1.1.5 Mark Grant <m.grant.prg@gmail.com>
+	*  bash: Move script_exit() before it is used
+	travis: Reinstate default build environment
+	at: configure: Correct ARG_ENABLE message format
+	at: configure: Correct ARG_ENABLE help texts
+	Source still at v1.0.14
+
 2019-06-27 v 1.1.4 Mark Grant <m.grant.prg@gmail.com>
 	*  at: Update bootstrap.sh to v1.4.5
 	at: README: Improve AT installation instructions
