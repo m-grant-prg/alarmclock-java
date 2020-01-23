@@ -1,6 +1,6 @@
 /*
  * Class ID: PlaySoundFile
- * Copyright (C) 2014-2018  Mark Grant
+ * Copyright (C) 2014-2018, 2020  Mark Grant
  *
  * Released under the GPLv3 or later.
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -14,6 +14,7 @@
  * Date		Author	Version	Description				*
  *									*
  * 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	*
+ * 22/01/2020	MG	1.0.4	Add getClassLoader to access resource.	*
  *									*
  ************************************************************************
  */
@@ -29,7 +30,7 @@ import java.net.URL;
  * of JAR embedded files and of external files. Also supports play once or loop.
  *
  * @author Mark Grant
- * @version 1.0.3
+ * @version 1.0.4
  */
 public class PlaySoundFile {
 
@@ -41,7 +42,7 @@ public class PlaySoundFile {
 	 * @param file Name of embedded file to play.
 	 */
 	public void playFile(String file) {
-		URL fileToPlay = this.getClass().getResource(file);
+		URL fileToPlay = this.getClass().getClassLoader().getResource(file);
 		player = Applet.newAudioClip(fileToPlay);
 		player.play();
 	}
@@ -62,7 +63,7 @@ public class PlaySoundFile {
 	 * @param file Name of the embedded file to play.
 	 */
 	public void playFileLoop(String file) {
-		URL fileToPlay = this.getClass().getResource(file);
+		URL fileToPlay = this.getClass().getClassLoader().getResource(file);
 		player = Applet.newAudioClip(fileToPlay);
 		player.loop();
 	}

@@ -1,6 +1,6 @@
 /*
  * Class ID: AlarmClock
- * Copyright (C) 2014-2018  Mark Grant
+ * Copyright (C) 2014-2018, 2020  Mark Grant
  *
  * Released under the GPLv3 or later.
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -14,6 +14,8 @@
  * Date		Author	Version	Description				*
  *									*
  * 09/12/2015	MG	1.0.11	Introduced in-source ChangeLogs.	*
+ * 22/01/2020	MG	1.0.12	Correct in-jar resource locations and	*
+ *				add getClassLoader to access resource.	*
  *									*
  ************************************************************************
  */
@@ -31,7 +33,7 @@ import gnu.getopt.*;
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.11
+ * @version 1.0.12
  */
 public class AlarmClock extends javax.swing.JFrame {
 
@@ -43,8 +45,8 @@ public class AlarmClock extends javax.swing.JFrame {
 	public AlarmClock() {
 		// Initialise icon for use in frame borders etc..
 		try {
-			alarmClockImage = ImageIO.read(this.getClass()
-				.getResource("AlarmClock.png"));
+			alarmClockImage = ImageIO.read(this.getClass().getClassLoader()
+				.getResource("jarobjects/AlarmClock.png"));
 		}
 		catch (Exception e) { }
 
@@ -861,7 +863,7 @@ public class AlarmClock extends javax.swing.JFrame {
 
 	private void startTimer1() {
 		timerAlarm1 = new Timer(timerDelay1, this.playAlarm1);
-		playerThread1 = new PlaySoundThread("AlarmClock.wav", true);
+		playerThread1 = new PlaySoundThread("jarobjects/AlarmClock.wav", true);
 		timerAlarm1.start();
 		timerCounter1 = new Timer(60000, this.counterUpdater1);
 		timerCounter1.start();
@@ -877,7 +879,7 @@ public class AlarmClock extends javax.swing.JFrame {
 
 	private void startTimer2() {
 		timerAlarm2 = new Timer(timerDelay2, this.playAlarm2);
-		playerThread2 = new PlaySoundThread("AlarmClock.wav", true);
+		playerThread2 = new PlaySoundThread("jarobjects/AlarmClock.wav", true);
 		timerAlarm2.start();
 		timerCounter2 = new Timer(60000, this.counterUpdater2);
 		timerCounter2.start();

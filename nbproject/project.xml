@@ -6,7 +6,7 @@
             <name>AlarmClock</name>
             <explicit-platform explicit-source-supported="true"/>
             <source-roots>
-                <root id="src.src.dir" name="Source Packages"/>
+                <root id="src.src.dir"/>
             </source-roots>
             <test-roots>
                 <root id="test.test.dir" name="Test Packages"/>

@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: src/prg/java/src/alarmclock/Makefile.am			#
-# Author: Copyright (C) 2018-2019  Mark Grant				#
+# Author: Copyright (C) 2018-2020  Mark Grant				#
 #									#
 # Released under the GPLv3 or later.					#
 # SPDX-License-Identifier: GPL-3.0-or-later				#
@@ -26,25 +26,14 @@
 # 30/03/2019	MG	1.0.3	Add build of javadoc.			#
 # 23/06/2019	MG	1.0.4	Add classpath to javadoc to find getopt.#
 #				Fix make distcheck issues.		#
+# 22/01/2020	MG	1.0.5	Additional jarobjects moved up to	#
+#				jarobjects directory.			#
+#				Set compile for jdk 8.			#
 #									#
 #########################################################################
 
 
 pkgpath = alarmclock
-
-
-$(pkgpath)/AlarmClock.png $(pkgpath)/AlarmClock.wav \
-	$(pkgpath)/AlarmClockAbout.txt: Makefile
-	mkdir -pv $(@D)
-	rm -fv $(@)
-	cp -v $(srcdir)/$(pkgpath)/$(@F).in $@
-$(pkgpath)/AlarmClock.png: $(srcdir)/$(pkgpath)/AlarmClock.png.in
-$(pkgpath)/AlarmClock.wav: $(srcdir)/$(pkgpath)/AlarmClock.wav.in
-$(pkgpath)/AlarmClock.txt: $(srcdir)/$(pkgpath)/AlarmClock.txt.in
-
-
-noinst_DATA = $(pkgpath)/AlarmClock.png $(pkgpath)/AlarmClock.wav \
-	$(pkgpath)/AlarmClockAbout.txt
 
 
 JAVAROOT = .
@@ -56,11 +45,13 @@ jardir = $(datadir)/java
 Version.java: Makefile
 	$(edit) $(top_srcdir)/$@.template > $@
 
-AM_JAVACFLAGS = -cp "$(extjarloc)/*"
+AM_JAVACFLAGS = --release 8 -cp "$(extjarloc)/*"
 
-$(jarfile): classnoinst.stamp $(pkgpath)/AlarmClock.png \
-	$(pkgpath)/AlarmClock.wav $(pkgpath)/AlarmClockAbout.txt
-	$(JAR) cf $(JARFLAGS) $@ $(pkgpath)
+$(jarfile): classnoinst.stamp $(srcdir)/../jarobjects/AlarmClock.png \
+	$(srcdir)/../jarobjects/AlarmClock.wav \
+	$(srcdir)/../jarobjects/AlarmClockAbout.txt
+	$(JAR) cfe $(JARFLAGS) $@ alarmclock.AlarmClock \
+		$(srcdir)/../jarobjects $(pkgpath)
 	$(JAVADOC) -classpath "$(extjarloc)/*" -sourcepath $(srcdir)/*.java \
 		-d ./docs
 
@@ -80,11 +71,6 @@ uninstall-local:
 
 clean-local:
 	rm -rf ./docs
-
-
-EXTRA_DIST = $(srcdir)/$(pkgpath)/AlarmClock.png.in \
-	$(srcdir)/$(pkgpath)/AlarmClock.wav.in \
-	$(srcdir)/$(pkgpath)/AlarmClockAbout.txt.in
 
 
 CLEANFILES = $(jarfile) $(pkgpath)/* Version.java

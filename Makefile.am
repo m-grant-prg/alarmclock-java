@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
-# Author: Copyright (C) 2018, 2019  Mark Grant				#
+# Author: Copyright (C) 2018-2020  Mark Grant				#
 #									#
 # Released under the GPLv3 or later.					#
 # SPDX-License-Identifier: GPL-3.0-or-later				#
@@ -33,6 +33,7 @@
 #				/usr/share/java must be accommodated,	#
 #				so set the configure flags to be used	#
 #				by make distcheck.			#
+# 22/01/2020	MG	1.0.5	Add jarobjects directory.		#
 #									#
 #########################################################################
 
@@ -45,7 +46,8 @@ AM_DISTCHECK_CONFIGURE_FLAGS = --enable-distcheckfake=yes --enable-atonly=yes
 
 SUBDIRS = src/desktop src/distobjects
 SUBDIRS += src/man/1
-SUBDIRS += src/prg/bash src/prg/java/src/alarmclock
+SUBDIRS += src/prg/bash
+SUBDIRS += src/prg/java/src/jarobjects src/prg/java/src/alarmclock
 
 
 doc_DATA = AUTHORS ChangeLog COPYING NEWS README

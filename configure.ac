@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./configure.ac						#
-# Author: Copyright (C) 2018-2019  Mark Grant				#
+# Author: Copyright (C) 2018-2020  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0					#
@@ -97,6 +97,7 @@
 # 22/06/2019	MG	1.0.3	Add distcheckfake option.		#
 #				Improve in-file comments on CLAs.	#
 # 28/06/2019	MG	1.0.4	Correct ARG_ENABLE help text.		#
+# 22/01/2020	MG	1.0.5	Add jarobjects directory.		#
 #									#
 #########################################################################
 
@@ -107,7 +108,7 @@
 #					#
 #########################################
 
-AC_REVISION([$Revision: 1.0.4 $])
+AC_REVISION([$Revision: 1.0.5 $])
 
 AC_PREREQ([2.69])
 
@@ -468,6 +469,7 @@ AC_CONFIG_FILES([Makefile
 		src/distobjects/Makefile
 		src/man/1/Makefile
 		src/prg/bash/Makefile
+		src/prg/java/src/jarobjects/Makefile
 		src/prg/java/src/alarmclock/Makefile])
 
 AC_OUTPUT
