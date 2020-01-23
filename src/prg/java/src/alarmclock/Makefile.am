@@ -28,7 +28,6 @@
 #				Fix make distcheck issues.		#
 # 22/01/2020	MG	1.0.5	Additional jarobjects moved up to	#
 #				jarobjects directory.			#
-#				Set compile for jdk 8.			#
 #									#
 #########################################################################
 
@@ -45,7 +44,7 @@ jardir = $(datadir)/java
 Version.java: Makefile
 	$(edit) $(top_srcdir)/$@.template > $@
 
-AM_JAVACFLAGS = --release 8 -cp "$(extjarloc)/*"
+AM_JAVACFLAGS = -cp "$(extjarloc)/*"
 
 $(jarfile): classnoinst.stamp $(srcdir)/../jarobjects/AlarmClock.png \
 	$(srcdir)/../jarobjects/AlarmClock.wav \
