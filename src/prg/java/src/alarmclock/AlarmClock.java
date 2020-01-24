@@ -14,8 +14,9 @@
  * Date		Author	Version	Description				*
  *									*
  * 09/12/2015	MG	1.0.11	Introduced in-source ChangeLogs.	*
- * 22/01/2020	MG	1.0.12	Correct in-jar resource locations and	*
+ * 23/01/2020	MG	1.0.12	Correct in-jar resource locations and	*
  *				add getClassLoader to access resource.	*
+ *				Increase counter update timer frequency.*
  *									*
  ************************************************************************
  */
@@ -865,7 +866,7 @@ public class AlarmClock extends javax.swing.JFrame {
 		timerAlarm1 = new Timer(timerDelay1, this.playAlarm1);
 		playerThread1 = new PlaySoundThread("jarobjects/AlarmClock.wav", true);
 		timerAlarm1.start();
-		timerCounter1 = new Timer(60000, this.counterUpdater1);
+		timerCounter1 = new Timer(5000, this.counterUpdater1);
 		timerCounter1.start();
 		updateCounters1();
 	}
@@ -881,7 +882,7 @@ public class AlarmClock extends javax.swing.JFrame {
 		timerAlarm2 = new Timer(timerDelay2, this.playAlarm2);
 		playerThread2 = new PlaySoundThread("jarobjects/AlarmClock.wav", true);
 		timerAlarm2.start();
-		timerCounter2 = new Timer(60000, this.counterUpdater2);
+		timerCounter2 = new Timer(5000, this.counterUpdater2);
 		timerCounter2.start();
 		updateCounters2();
 	}
