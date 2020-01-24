@@ -841,10 +841,10 @@ public class AlarmClock extends javax.swing.JFrame {
 		currentDate = Calendar.getInstance();
 		long remainingTimeInMillis = (targetTime1.getTimeInMillis() - currentDate.getTimeInMillis());
 
-		Long remainingHoursLong = new Long(remainingTimeInMillis / (60 * 60 * 1000));
+		Long remainingHoursLong = remainingTimeInMillis / (60 * 60 * 1000);
 		alarmCountdownHoursLabel1.setText(remainingHoursLong.toString());
 
-		Long remainingMinsLong = new Long((remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000));
+		Long remainingMinsLong = (remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000);
 		alarmCountdownMinsLabel1.setText(remainingMinsLong.toString());
 	}
 
@@ -855,10 +855,10 @@ public class AlarmClock extends javax.swing.JFrame {
 		currentDate = Calendar.getInstance();
 		long remainingTimeInMillis = (targetTime2.getTimeInMillis() - currentDate.getTimeInMillis());
 
-		Long remainingHoursLong = new Long(remainingTimeInMillis / (60 * 60 * 1000));
+		Long remainingHoursLong = remainingTimeInMillis / (60 * 60 * 1000);
 		alarmCountdownHoursLabel2.setText(remainingHoursLong.toString());
 
-		Long remainingMinsLong = new Long((remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000));
+		Long remainingMinsLong = (remainingTimeInMillis - (remainingHoursLong.longValue() * 60 * 60 * 1000)) / (60 * 1000);
 		alarmCountdownMinsLabel2.setText(remainingMinsLong.toString());
 	}
 
