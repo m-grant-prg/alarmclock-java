@@ -1,3 +1,9 @@
+Release 1.2.0 2020-01-24
+Release 1.2.x series now pinned at stretch for java 8
+java: Increase update timer frequency
+at: netbeans: Correct jar object usage
+Other technical only changes. Details can be found in the ChangeLog.
+
 Release 1.1.5 2019-10-14
 Technical changes only. Details can be found in the ChangeLog.
 

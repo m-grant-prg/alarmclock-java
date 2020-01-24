@@ -1,3 +1,11 @@
+2020-01-24 v1.2.0 Mark Grant <m.grant.prg@gmail.com>
+	Release 1.2.x series now pinned at stretch for java 8
+	java: Increase update timer frequency
+	at: netbeans: Correct jar object usage
+	netbeans: Use Java platform 1.8
+	at: Update bootstrap.sh to v1.4.7
+	Source now at v1.0.15
+
 2019-10-14 v1.1.5 Mark Grant <m.grant.prg@gmail.com>
 	*  bash: Move script_exit() before it is used
 	travis: Reinstate default build environment
