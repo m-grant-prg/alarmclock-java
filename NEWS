@@ -1,3 +1,6 @@
+Release 1.2.1 2020-01-25
+Update displayed copyright dates.
+
 Release 1.2.0 2020-01-24
 Release 1.2.x series now pinned at stretch for java 8
 java: Increase update timer frequency
