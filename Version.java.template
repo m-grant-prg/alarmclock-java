@@ -46,7 +46,7 @@ package alarmclock;
 public class Version {
 	private static final String pkgVersion =
 				new String("@package_version@");
-	private static final String srcVersion = "v1.0.15";
+	private static final String srcVersion = "v1.2.1";
 
 	/**
 	 * Public static method to return the overall package version.
