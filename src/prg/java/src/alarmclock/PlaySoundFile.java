@@ -15,26 +15,37 @@
  *									*
  * 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	*
  * 22/01/2020	MG	1.0.4	Add getClassLoader to access resource.	*
+ * 25/01/2020	MG	1.0.5	Replace deprecated AudioClip / Applet	*
+ *				usage.					*
  *									*
  ************************************************************************
  */
 
 package alarmclock;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.net.URL;
+import java.io.IOException;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.sound.sampled.Clip.LOOP_CONTINUOUSLY;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * Class to play a sound file using the AudioClip player. Supports the playing
  * of JAR embedded files and of external files. Also supports play once or loop.
  *
  * @author Mark Grant
- * @version 1.0.4
+ * @version 1.0.5
  */
 public class PlaySoundFile {
 
-	private AudioClip player;
+	private AudioInputStream audioStream;
+	private Clip audioClip;
 
 	/**
 	 * Plays the 'file' embedded in the JAR.
@@ -42,19 +53,21 @@ public class PlaySoundFile {
 	 * @param file Name of embedded file to play.
 	 */
 	public void playFile(String file) {
-		URL fileToPlay = this.getClass().getClassLoader().getResource(file);
-		player = Applet.newAudioClip(fileToPlay);
-		player.play();
-	}
-
-	/**
-	 * Plays the file as detailed in the URL.
-	 * Can be stopped using the stopPlayingFile Method.
-	 * @param file URL of the path to the file to play.
-	 */
-	public void playFile(URL file) {
-		player = Applet.newAudioClip(file);
-		player.play();
+		try {
+			audioStream = AudioSystem.getAudioInputStream(this.getClass()
+				.getClassLoader().getResourceAsStream(file));
+			AudioFormat format = audioStream.getFormat();
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+		} catch (UnsupportedAudioFileException ex) {
+			Logger.getLogger(PlaySoundFile.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (LineUnavailableException ex) {
+			Logger.getLogger(PlaySoundFile.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(PlaySoundFile.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 	/**
@@ -63,25 +76,27 @@ public class PlaySoundFile {
 	 * @param file Name of the embedded file to play.
 	 */
 	public void playFileLoop(String file) {
-		URL fileToPlay = this.getClass().getClassLoader().getResource(file);
-		player = Applet.newAudioClip(fileToPlay);
-		player.loop();
-	}
-
-	/**
-	 * Plays the file as detailed in the URL in a continuous loop.
-	 * Can be stopped using the stopPlayingFile Method.
-	 * @param file URL of the path to the file to play.
-	 */
-	public void playFileLoop(URL file) {
-		player = Applet.newAudioClip(file);
-		player.loop();
+		try {
+			audioStream = AudioSystem.getAudioInputStream(this.getClass().
+				getClassLoader().getResourceAsStream(file));
+			AudioFormat format = audioStream.getFormat();
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.loop(LOOP_CONTINUOUSLY);
+		} catch (UnsupportedAudioFileException ex) {
+			Logger.getLogger(PlaySoundFile.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (LineUnavailableException ex) {
+				Logger.getLogger(PlaySoundFile.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(PlaySoundFile.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 	/**
 	 * Stops playing the current file.
 	 */
 	public void stopPlayingFile() {
-		player.stop();
+		audioClip.stop();
 	}
 }

@@ -1,6 +1,6 @@
 /*
  * Class ID: PlaySoundThread
- * Copyright (C) 2014-2018  Mark Grant
+ * Copyright (C) 2014-2018, 2020  Mark Grant
  *
  * Released under the GPLv3 or later.
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -14,6 +14,7 @@
  * Date		Author	Version	Description				*
  *									*
  * 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	*
+ * 25/01/2020	MG	1.0.4	Remove overloading for URL.		*
  *									*
  ************************************************************************
  */
@@ -28,12 +29,11 @@ import java.net.URL;
  * embedded in the JAR or external files.
  *
  * @author Mark Grant
- * @version 1.0.3
+ * @version 1.0.4
  */
 public class PlaySoundThread implements Runnable {
 
 	private String fileToPlay;
-	private URL fileToPlayURL;
 	private boolean playFile;
 	private boolean loop;
 
@@ -56,34 +56,15 @@ public class PlaySoundThread implements Runnable {
 	}
 
 	/**
-	 * Public constructor used to build an object that plays an external file
-	 * pointed at by an URL.
-	 * @param fileToPlayURL Path to the external file to play.
-	 * @param loop True means play in a continuous loop, false means play once.
-	 */
-	public  PlaySoundThread(URL fileToPlayURL, boolean  loop) {
-		playThread = new Thread(this);
-		this.fileToPlayURL = fileToPlayURL;
-		this.playFile = false;
-		this.loop = loop;
-	}
-
-	/**
 	 * Implementation of Thread run() method as per the Runnable interface.
 	 */
 	public void run() {
 		PlaySoundFile player = new PlaySoundFile();
 
-		if (this.playFile)
-			if (this.loop)
-				player.playFileLoop(fileToPlay);
-			else
-				player.playFile(fileToPlay);
+		if (this.loop)
+			player.playFileLoop(fileToPlay);
 		else
-			if (this.loop)
-				player.playFileLoop(fileToPlayURL);
-			else
-				player.playFile(fileToPlayURL);
+			player.playFile(fileToPlay);
 
 		// This loop allows for the thread to be interrupted.
 		while (!Thread.interrupted()) {
