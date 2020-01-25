@@ -17,12 +17,17 @@
  * 22/01/2020	MG	1.0.4	Add getClassLoader to access resource.	*
  * 25/01/2020	MG	1.0.5	Replace deprecated AudioClip / Applet	*
  *				usage.					*
+ *				Use buffered input stream to avoid some	*
+ *				platforms throwing an IO exception due	*
+ *				to mark / reset not supported on wav	*
+ *				file.					*
  *									*
  ************************************************************************
  */
 
 package alarmclock;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -54,8 +59,9 @@ public class PlaySoundFile {
 	 */
 	public void playFile(String file) {
 		try {
-			audioStream = AudioSystem.getAudioInputStream(this.getClass()
+			BufferedInputStream bufAudioStream = new BufferedInputStream(this.getClass()
 				.getClassLoader().getResourceAsStream(file));
+			audioStream = AudioSystem.getAudioInputStream(bufAudioStream);
 			AudioFormat format = audioStream.getFormat();
 			DataLine.Info info = new DataLine.Info(Clip.class, format);
 			audioClip = (Clip) AudioSystem.getLine(info);
@@ -77,8 +83,9 @@ public class PlaySoundFile {
 	 */
 	public void playFileLoop(String file) {
 		try {
-			audioStream = AudioSystem.getAudioInputStream(this.getClass().
-				getClassLoader().getResourceAsStream(file));
+			BufferedInputStream bufAudioStream = new BufferedInputStream(this.getClass()
+				.getClassLoader().getResourceAsStream(file));
+			audioStream = AudioSystem.getAudioInputStream(bufAudioStream);
 			AudioFormat format = audioStream.getFormat();
 			DataLine.Info info = new DataLine.Info(Clip.class, format);
 			audioClip = (Clip) AudioSystem.getLine(info);
