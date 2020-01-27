@@ -98,6 +98,8 @@
 #				Improve in-file comments on CLAs.	#
 # 28/06/2019	MG	1.0.4	Correct ARG_ENABLE help text.		#
 # 22/01/2020	MG	1.0.5	Add jarobjects directory.		#
+# 27/01/2020	MG	1.0.6	Bump minimum required java version	#
+#				to 8					#
 #									#
 #########################################################################
 
@@ -108,7 +110,7 @@
 #					#
 #########################################
 
-AC_REVISION([$Revision: 1.0.5 $])
+AC_REVISION([$Revision: 1.0.6 $])
 
 AC_PREREQ([2.69])
 
@@ -366,7 +368,7 @@ fi
 AC_MSG_NOTICE(checking for compiler characteristics)
 
 # Specially written m4 macro.
-JAVA_VERSION_OK(1.7, $srcdir)
+JAVA_VERSION_OK(1.8, $srcdir)
 
 
 #################################################
