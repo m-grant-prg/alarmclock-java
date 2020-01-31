@@ -1,4 +1,4 @@
 mkdir -p distribution
 cd dist
-tar -cvpz --format=posix -f ../distribution/AlarmClock$(git describe --always 1>/dev/null 2>/dev/null && git describe --always | tr -d '\n' || echo 'Pre-Release' | tr -d '\n').tar.gz * --exclude=README.TXT
+tar -cvpz --format=posix --exclude=README.TXT -f ../distribution/AlarmClock$(git describe --always 1>/dev/null 2>/dev/null && git describe --always | tr -d '\n' || echo 'Pre-Release' | tr -d '\n').tar.gz *
 cd ..
