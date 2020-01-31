@@ -80,7 +80,29 @@ N.B. If you wish to move the application to another location you *must* move the
 relative subdirectory 'lib' with it. i.e. the jar and the lib directory must
 maintain their relative relationship.
 
-A.2) Using just the jar from the NetBeans build output
+A.2) Using a tarball of the NetBeans build output
+-------------------------------------------------
+To simplify the distribution of the jar file and lib directory as mentioned
+above, a tarball can be created, distributed, extracted and used.
+
+Create the archive:-
+
+	./credisttar.sh
+		with the ./ path modified as necessary.
+
+Distribute the tarball created in project_root/distribution.
+
+Extract the tarball in the desired location:-
+
+	tar xvpzf ./AlarmClockvXXXXXXXXXX.tar.gz
+		replacing XXXXXXXXXX with the embedded version string in the
+		tarball name.
+
+And then, as above, the application can be run using:-
+
+	java -jar Alarmclock.jar
+
+A.3) Using just the jar from the NetBeans build output
 ------------------------------------------------------
 In order to just use the jar file, the supplemental jar libraries in the
 NetBeans dist/lib directory (e.g. getopt) must already be installed on your
@@ -90,7 +112,7 @@ Move the jar file to the desired location and run the command:-
 	java -cp /usr/share/java/*:./AlarmClock.jar alarmclock.AlarmClock
 		with the ./ path modified as necessary.
 
-A.3) Using the jar built by AutoTools
+A.4) Using the jar built by AutoTools
 -------------------------------------
 In order to use the jar file built by AutoTools, the supplemental jar libraries
 (e.g. getopt) must already be installed on your system.
