@@ -156,7 +156,8 @@ repository provides the mechanism to produce a Windows msi installer package.
 ---------------------
 5 ... Utility Scripts
 =====================
-In the project root directory there is 1 helper script; bootstrap.sh.
+In the project root directory there are 2 helper scripts; bootstrap.sh and
+credisttar.sh.
 
 bootstrap.sh
 ------------
@@ -180,4 +181,15 @@ For the full list of arguments to bootstrap.sh, please refer to the options
 section of the acmbuild wiki, the options are identical:-
 
 https://github.com/m-grant-prg/acmbuild/wiki
+
+credisttar.sh
+-------------
+This script produces a tarball from the NetBeans build output. The tarball can
+then be used for distribution. Both project jar (eg AlarmClock.jar) and
+libraries (eg getopt) are archived.
+
+The script always produces the tarball in the project_root/distribution
+directory and can be invoked from anywhere, eg:-
+
+../credisttar.sh
 
