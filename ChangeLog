@@ -1,3 +1,13 @@
+2020-02-02 v1.2.2 Mark Grant <m.grant.prg@gmail.com>
+	*  at: Add installation instructions for tarball
+	at: Add credisttar.sh helper script description
+	netbeans: Script should have .sh extension
+	netbeans: Add path awareness to credisttar
+	netbeans: Correct tar command
+	at: Add more jar-only installation instructions
+	at: Bump minimum required java version to 8
+	Source still at v1.2.1
+
 2020-01-25 v1.2.1 Mark Grant <m.grant.prg@gmail.com>
 	*  Update displayed copyright dates.
 	Source now at v1.2.1
