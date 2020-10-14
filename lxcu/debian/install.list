@@ -1,0 +1,4 @@
+autoconf autoconf-archive automake autotools-dev
+default-jdk libgetopt-java
+txt2man txt2manwrap
+
