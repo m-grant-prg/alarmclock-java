@@ -1,3 +1,11 @@
+*.c	diff=cpp
+*.h	diff=cpp
+*.html	diff=html
+*.java	diff=java
+*.md	diff=markdown
+*.sh	diff=bash
+*.sh.in	diff=bash
+
 # Specify Files and directories to ignore from a git archive command.
 **/nbproject		export-ignore
 manifest.mf		export-ignore
