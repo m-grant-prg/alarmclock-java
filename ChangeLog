@@ -1,3 +1,14 @@
+2021-07-22 v1.3.3 Mark Grant <m.grant.prg@gmail.com>
+	* git: Upgrade .gitignore to v1.0.3
+	at: Upgrade bootstrap.sh to v1.4.9
+	git: Add standard gitattributes entries
+	git: Add mailmap file
+	travis: Stop using Travis
+	actions: Initial build action setup
+	at: lxcu: Add lxc test build setup
+	travis: Bionic is the new minimum release
+	Source still at v1.3.1
+
 2020-02-02 v1.3.2 Mark Grant <m.grant.prg@gmail.com>
 	*  at: Add installation instructions for tarball
 	at: Add credisttar.sh helper script description
