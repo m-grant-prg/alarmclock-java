@@ -28,6 +28,9 @@
 #				when make check is setup and TESTS run.	#
 # 18/07/2021	MG	1.0.3	Add ctags.				#
 #				Refine AutoTools section.		#
+# 27/09/2021	MG	1.0.4	Add exclusion of tags temporary files.	#
+# 28/09/2021	MG	1.0.5	Add exclusion of .bak files.		#
+# 02/11/2021	MG	1.0.6	Create editor section and add .vimrc	#
 #									#
 #########################################################################
 
@@ -59,13 +62,18 @@ test-driver
 
 # Backup Files
 **/*~
-**/*.swp
+**/*.bak
 
 # C Extras
 **/cscope.*
 
 # Ctags
 **/tags
+**/tags.*
+
+# Editors
+**/*.swp
+**/*.vimrc
 
 # General
 **/*.log
