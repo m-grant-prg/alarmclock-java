@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
-# Author: Copyright (C) 2018-2020  Mark Grant				#
+# Author: Copyright (C) 2018-2021  Mark Grant				#
 #									#
 # Released under the GPLv3 or later.					#
 # SPDX-License-Identifier: GPL-3.0-or-later				#
@@ -34,6 +34,7 @@
 #				so set the configure flags to be used	#
 #				by make distcheck.			#
 # 22/01/2020	MG	1.0.5	Add jarobjects directory.		#
+# 08/11/2021	MG	1.0.6	Add misc directory to DIST.		#
 #									#
 #########################################################################
 
@@ -55,7 +56,7 @@ doc_DATA = AUTHORS ChangeLog COPYING NEWS README
 
 EXTRA_DIST = JavaVersionCheckDist Version.java.template \
 		$(srcdir)/AUTHORS $(srcdir)/ChangeLog $(srcdir)/COPYING \
-		$(srcdir)/NEWS $(srcdir)/README
+		$(srcdir)/NEWS $(srcdir)/README $(srcdir)/misc
 
 
 srctarball:
