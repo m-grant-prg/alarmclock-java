@@ -1,0 +1,4 @@
+autoconf autoconf-archive automake
+java-devel javapackages-tools gnu-getopt
+txt2man txt2manwrap
+
