@@ -2,10 +2,10 @@
 #########################################################################
 #									#
 # Macro ID: m4extra/java-vm.m4						#
-# Author: Copyright (C) 2014-2019  Mark Grant				#
+# Author: Copyright (C) 2014-2019, 2021  Mark Grant			#
 #									#
-# Released under the GPLv3 or later.					#
-# SPDX-License-Identifier: GPL-3.0-or-later				#
+# Released under the GPLv3 only.					#
+# SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 # Macros pertaining to the Java VM.					#
@@ -27,6 +27,7 @@
 # 02/03/2019	MG	1.0.5	Change to better macro and file name.	#
 #				Exit from here on error, no need for	#
 #				error testing in configure.ac		#
+# 21/11/2021	MG	1.0.6	Tighten SPDX tag.			#
 #									#
 #########################################################################
 
