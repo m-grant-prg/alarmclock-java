@@ -1,3 +1,16 @@
+2021-11-29 v1.3.4 Mark Grant <m.grant.prg@gmail.com>
+	* at: Add AC_COPYRIGHT macro
+	all: Tighten SPDX tags
+	at: Upgrade java m4 macro to v1.0.6
+	at: Upgrade bootstrap.sh to v1.4.10
+	git: Update mailmap to v1.0.2
+	git: Update gitignore to v1.0.7
+	git: Update gitattributes to v1.0.2
+	at: Use git to enhance package version
+	lxcu: Add openSUSE
+	lxcu: Add Fedora
+	at: Add misc directory to DIST
+
 2021-07-22 v1.3.3 Mark Grant <m.grant.prg@gmail.com>
 	* git: Upgrade .gitignore to v1.0.3
 	at: Upgrade bootstrap.sh to v1.4.9
