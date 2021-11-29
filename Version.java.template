@@ -1,9 +1,9 @@
 /*
  * Class ID: Version
- * Copyright (C) 2014-2018, 2020  Mark Grant
+ * Copyright (C) 2014-2018, 2020, 2021  Mark Grant
  *
- * Released under the GPLv3 or later.
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * Released under the GPLv3 only.
+ * SPDX-License-Identifier: GPL-3.0-only
  *
  */
 
@@ -32,6 +32,7 @@
  *				Add SPDX license tag.			*
  *				Remove package ChangeLog. The info is	*
  *				in git and AutoTools ChangeLog.		*
+ * 29/11/2021	MG	1.0.5	Tighten SPDX tag.			*
  *									*
  ************************************************************************
  */
@@ -41,7 +42,7 @@ package alarmclock;
 /**
  * Class solely to return the version of this package.
  * @author Mark Grant
- * @version 1.0.4
+ * @version 1.0.5
  */
 public class Version {
 	private static final String pkgVersion =

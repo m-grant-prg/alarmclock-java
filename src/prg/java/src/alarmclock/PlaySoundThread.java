@@ -1,9 +1,9 @@
 /*
  * Class ID: PlaySoundThread
- * Copyright (C) 2014-2018, 2020  Mark Grant
+ * Copyright (C) 2014-2018, 2020, 2021  Mark Grant
  *
- * Released under the GPLv3 or later.
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * Released under the GPLv3 only.
+ * SPDX-License-Identifier: GPL-3.0-only
  *
  */
 
@@ -15,6 +15,7 @@
  *									*
  * 09/12/2015	MG	1.0.3	Introduced in-source ChangeLogs.	*
  * 25/01/2020	MG	1.0.4	Remove overloading for URL.		*
+ * 29/11/2021	MG	1.0.5	Tighten SPDX tag.			*
  *									*
  ************************************************************************
  */
@@ -29,7 +30,7 @@ import java.net.URL;
  * embedded in the JAR or external files.
  *
  * @author Mark Grant
- * @version 1.0.4
+ * @version 1.0.5
  */
 public class PlaySoundThread implements Runnable {
 

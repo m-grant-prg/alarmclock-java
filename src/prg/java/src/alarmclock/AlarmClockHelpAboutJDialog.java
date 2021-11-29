@@ -1,9 +1,9 @@
 /*
  * Class ID: AlarmClockHelpAboutJDialog
- * Copyright (C) 2014-2018, 2020  Mark Grant
+ * Copyright (C) 2014-2018, 2020, 2021  Mark Grant
  *
- * Released under the GPLv3 or later.
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * Released under the GPLv3 only.
+ * SPDX-License-Identifier: GPL-3.0-only
  *
  */
 
@@ -19,6 +19,7 @@
  *				static text file.			*
  * 22/01/2020	MG	1.0.5	Correct in-jar resource locations and	*
  *				add getClassLoader to access resource.	*
+ * 29/11/2021	MG	1.0.6	Tighten SPDX tag.			*
  *									*
  ************************************************************************
  */
@@ -32,7 +33,7 @@ import javax.imageio.ImageIO;
 /**
  * Class to display a Help | About Swing modal dialog form.
  * @author Mark Grant
- * @version 1.0.5
+ * @version 1.0.6
  */
 public class AlarmClockHelpAboutJDialog extends javax.swing.JDialog {
 

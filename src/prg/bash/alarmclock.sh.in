@@ -9,10 +9,10 @@
 #########################################################################
 #									#
 # Script ID: alarmclock							#
-# Author: Copyright (C) 2012-2019  Mark Grant				#
+# Author: Copyright (C) 2012-2019, 2021  Mark Grant			#
 #									#
-# Released under the GPLv3 or later.					#
-# SPDX-License-Identifier: GPL-3.0-or-later				#
+# Released under the GPLv3 only.					#
+# SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 # To invoke the AlarmClock jar package.					#
@@ -110,6 +110,7 @@
 # 22/06/2019	MG	1.1.2	Modernise getopt processing.		#
 #				Setup trap handling ASAP.		#
 # 14/10/2019	MG	1.1.3	Move script_exit() before it is used.	#
+# 29/11/2021	MG	1.1.4	Tighten SPDX tag.			#
 #									#
 #########################################################################
 
@@ -119,7 +120,7 @@
 ##################
 
 readonly outputprefix="$(basename $0):"
-readonly version=1.1.3				# Script version
+readonly version=1.1.4				# Script version
 readonly packageversion=@package_version@	# Package version
 
 readonly projjarloc=@projjarloc@

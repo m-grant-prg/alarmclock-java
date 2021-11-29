@@ -1,9 +1,9 @@
 /*
  * Class ID: AlarmClock
- * Copyright (C) 2014-2018, 2020  Mark Grant
+ * Copyright (C) 2014-2018, 2020, 2021  Mark Grant
  *
- * Released under the GPLv3 or later.
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * Released under the GPLv3 only.
+ * SPDX-License-Identifier: GPL-3.0-only
  *
  */
 
@@ -17,6 +17,7 @@
  * 23/01/2020	MG	1.0.12	Correct in-jar resource locations and	*
  *				add getClassLoader to access resource.	*
  *				Increase counter update timer frequency.*
+ * 29/11/2021	MG	1.0.13	Tighten SPDX tag.			*
  *									*
  ************************************************************************
  */
@@ -34,7 +35,7 @@ import gnu.getopt.*;
 /**
  * A Swing GUI application providing the functionality of an alarm clock.
  * @author Mark Grant
- * @version 1.0.12
+ * @version 1.0.13
  */
 public class AlarmClock extends javax.swing.JFrame {
 

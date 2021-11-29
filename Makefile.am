@@ -3,8 +3,8 @@
 # Script ID: ./Makefile.am						#
 # Author: Copyright (C) 2018-2021  Mark Grant				#
 #									#
-# Released under the GPLv3 or later.					#
-# SPDX-License-Identifier: GPL-3.0-or-later				#
+# Released under the GPLv3 only.					#
+# SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 # AutoMake script file to generate AlarmClock project from source.	#
@@ -35,6 +35,7 @@
 #				by make distcheck.			#
 # 22/01/2020	MG	1.0.5	Add jarobjects directory.		#
 # 08/11/2021	MG	1.0.6	Add misc directory to DIST.		#
+# 29/11/2021	MG	1.0.7	Tighten SPDX tag.			#
 #									#
 #########################################################################
 

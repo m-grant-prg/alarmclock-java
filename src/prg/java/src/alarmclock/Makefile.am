@@ -1,10 +1,10 @@
 #########################################################################
 #									#
 # Script ID: src/prg/java/src/alarmclock/Makefile.am			#
-# Author: Copyright (C) 2018-2020  Mark Grant				#
+# Author: Copyright (C) 2018-2021  Mark Grant				#
 #									#
-# Released under the GPLv3 or later.					#
-# SPDX-License-Identifier: GPL-3.0-or-later				#
+# Released under the GPLv3 only.					#
+# SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 # AutoMake script file for alarmclock jar.				#
@@ -28,6 +28,7 @@
 #				Fix make distcheck issues.		#
 # 22/01/2020	MG	1.0.5	Additional jarobjects moved up to	#
 #				jarobjects directory.			#
+# 29/11/2021	MG	1.0.6	Tighten SPDX tag.			#
 #									#
 #########################################################################
 

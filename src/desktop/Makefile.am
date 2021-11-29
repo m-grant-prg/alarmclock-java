@@ -1,10 +1,10 @@
 #########################################################################
 #									#
 # Script ID: src/desktop/Makefile.am					#
-# Author: Copyright (C) 2012-2019  Mark Grant				#
+# Author: Copyright (C) 2012-2019, 2021  Mark Grant			#
 #									#
-# Released under the GPLv3 or later.					#
-# SPDX-License-Identifier: GPL-3.0-or-later				#
+# Released under the GPLv3 only.					#
+# SPDX-License-Identifier: GPL-3.0-only					#
 #									#
 # Purpose:								#
 # AutoMake script file to generate alarmclock.desktop file from source.	#
@@ -31,6 +31,7 @@
 #				support here.				#
 # 03/03/2019	MG	1.0.8	Remove unnecessary shebang.		#
 # 22/06/2019	MG	1.0.9	Add support for make distcheck.		#
+# 29/11/2021	MG	1.0.10	Tighten SPDX tag.			#
 #									#
 #########################################################################
 

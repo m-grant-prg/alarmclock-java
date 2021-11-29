@@ -1,9 +1,9 @@
 /*
  * Class ID: PlaySoundFile
- * Copyright (C) 2014-2018, 2020  Mark Grant
+ * Copyright (C) 2014-2018, 2020, 2021  Mark Grant
  *
- * Released under the GPLv3 or later.
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * Released under the GPLv3 only.
+ * SPDX-License-Identifier: GPL-3.0-only
  *
  */
 
@@ -21,6 +21,7 @@
  *				platforms throwing an IO exception due	*
  *				to mark / reset not supported on wav	*
  *				file.					*
+ * 29/11/2021	MG	1.0.6	Tighten SPDX tag.			*
  *									*
  ************************************************************************
  */
@@ -45,7 +46,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * of JAR embedded files and of external files. Also supports play once or loop.
  *
  * @author Mark Grant
- * @version 1.0.5
+ * @version 1.0.6
  */
 public class PlaySoundFile {
 
