@@ -1,3 +1,6 @@
+2021-11-30 v1.3.5 Mark Grant <m.grant.prg@gmail.com>
+	* git: Update gitattributes to v1.0.3
+
 2021-11-29 v1.3.4 Mark Grant <m.grant.prg@gmail.com>
 	* at: Add AC_COPYRIGHT macro
 	all: Tighten SPDX tags
