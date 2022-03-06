@@ -1,0 +1,4 @@
+# Java Swing does not cope with HiDPI. This config parameter sets the scaling
+# multiple. It should be 0 for non-HiDPI systems and say 2.0 for HiDPI systems.
+scaling_factor=0
+

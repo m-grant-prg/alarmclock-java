@@ -1,0 +1,30 @@
+NAME
+alarmclock-java.conf - Configuration file for the alarmclock-java package
+DESCRIPTION
+alarmclock-java.conf contains one line for each parameter (Key / Value pair).
+FILES
+alarmclock-java.conf	The parameters are as follows:-
+
+scaling_factor=	Java Swing does not cope with HiDPI systems. This parameter
+should be set to 0 for normal systems and say 2.0 for HiDPI systems.
+
+The file is stored in an etc directory. The exact location depends on the method
+of installation but for Autotools installations on Linux this is likely to
+be /usr/local/etc/alarmclock-java.conf.
+AUTHOR
+Written by Mark Grant.
+REPORTING BUGS
+Report bugs to <m.grant.prg@gmail.com>
+COPYRIGHT
+Copyright (C) 2022 Mark Grant.
+.br
+License GPLv3: GNU GPL version 3 only
+.br
+<http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+.br
+There is NO WARRANTY, to the extent permitted by law.
+SEE ALSO
+alarmclock(1)
+

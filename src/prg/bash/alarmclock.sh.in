@@ -9,7 +9,7 @@
 #########################################################################
 #									#
 # Script ID: alarmclock							#
-# Author: Copyright (C) 2012-2019, 2021  Mark Grant			#
+# Author: Copyright (C) 2012-2019, 2021, 2022  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -111,6 +111,8 @@
 #				Setup trap handling ASAP.		#
 # 14/10/2019	MG	1.1.3	Move script_exit() before it is used.	#
 # 29/11/2021	MG	1.1.4	Tighten SPDX tag.			#
+# 04/03/2022	MG	1.1.5	Add processing of config file to get	#
+#				new HiDPI scaling factor.		#
 #									#
 #########################################################################
 
@@ -120,14 +122,14 @@
 ##################
 
 readonly outputprefix="$(basename $0):"
-readonly version=1.1.4				# Script version
+readonly version=1.1.5				# Script version
 readonly packageversion=@package_version@	# Package version
 
 readonly projjarloc=@projjarloc@
 readonly projjarname=@projjarname@
 readonly extjarloc=@extjarloc@
-cmdline="java -cp "$extjarloc/*":$projjarloc/$projjarname"
-cmdline+=" alarmclock.AlarmClock"
+
+readonly etclocation=@sysconfdir@		# Path to config directory
 
 
 #############
@@ -195,7 +197,35 @@ trap_exit()
 # Setup trap.
 trap trap_exit SIGHUP SIGINT SIGQUIT SIGTERM
 
-# Process command line arguments with GNU getopt.
+## Process the config file.
+# Parameters - None
+# No return value.
+proc_config_file()
+{
+	local input=()
+	local oldIFS=$IFS
+	local scaling_factor
+
+	IFS="="
+
+	exec 3<"$etclocation/alarmclock-java.conf"
+	while read -u3 -ra input; do
+		case ${input[0]} in
+		scaling_factor)
+			scaling_factor=${input[1]}
+			cmdline="java -cp "$extjarloc/*
+			cmdline+=":$projjarloc/$projjarname"
+			cmdline+=" -Dsun.java2d.uiScale="$scaling_factor
+			cmdline+=" alarmclock.AlarmClock"
+			;;
+		esac
+	done
+	exec 3<&-
+
+	IFS=$oldIFS
+}
+
+ Process command line arguments with GNU getopt.
 # Parameters -	$1 is the command line.
 # No return value.
 proc_CL()
@@ -246,6 +276,8 @@ proc_CL()
 ########
 # Main #
 ########
+
+proc_config_file
 
 proc_CL "$@"
 

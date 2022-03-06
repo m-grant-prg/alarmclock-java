@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./configure.ac						#
-# Author: Copyright (C) 2018-2021  Mark Grant				#
+# Author: Copyright (C) 2018-2022  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -105,6 +105,7 @@
 #				further package version information.	#
 #				Tighten SPDX tag.			#
 #				Add AC_COPYRIGHT macro.			#
+# 03/03/2022	MG	1.0.8	Add config file.			#
 #									#
 #########################################################################
 
@@ -115,11 +116,11 @@
 #					#
 #########################################
 
-AC_COPYRIGHT([Copyright (C) 2018-2021  Mark Grant
+AC_COPYRIGHT([Copyright (C) 2018-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION([$Revision: 1.0.7 $])
+AC_REVISION([$Revision: 1.0.8 $])
 
 AC_PREREQ([2.69])
 
@@ -491,9 +492,11 @@ AC_MSG_NOTICE(processing output files)
 
 # Project Makefiles to create.
 AC_CONFIG_FILES([Makefile
+		src/conf/etc/Makefile
 		src/desktop/Makefile
 		src/distobjects/Makefile
 		src/man/1/Makefile
+		src/man/5/Makefile
 		src/prg/bash/Makefile
 		src/prg/java/src/jarobjects/Makefile
 		src/prg/java/src/alarmclock/Makefile])

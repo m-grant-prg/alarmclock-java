@@ -1,7 +1,7 @@
 #########################################################################
 #									#
 # Script ID: ./Makefile.am						#
-# Author: Copyright (C) 2018-2021  Mark Grant				#
+# Author: Copyright (C) 2018-2022  Mark Grant				#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -36,6 +36,7 @@
 # 22/01/2020	MG	1.0.5	Add jarobjects directory.		#
 # 08/11/2021	MG	1.0.6	Add misc directory to DIST.		#
 # 29/11/2021	MG	1.0.7	Tighten SPDX tag.			#
+# 03/03/2022	MG	1.0.8	Add config file.			#
 #									#
 #########################################################################
 
@@ -46,8 +47,9 @@ ACLOCAL_AMFLAGS = -I m4 -I m4extra
 AM_DISTCHECK_CONFIGURE_FLAGS = --enable-distcheckfake=yes --enable-atonly=yes
 
 
-SUBDIRS = src/desktop src/distobjects
-SUBDIRS += src/man/1
+SUBDIRS = src/conf/etc
+SUBDIRS += src/desktop src/distobjects
+SUBDIRS += src/man/1 src/man/5
 SUBDIRS += src/prg/bash
 SUBDIRS += src/prg/java/src/jarobjects src/prg/java/src/alarmclock
 
