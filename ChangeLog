@@ -1,3 +1,6 @@
+2022-03-08 v1.3.7 Mark Grant <m.grant.prg@gmail.com>
+	* bash: Add config file for HiDPI scaling factor
+
 2021-12-01 v1.3.6 Mark Grant <m.grant.prg@gmail.com>
 	* java: Correct license in Help:About dialog box
 

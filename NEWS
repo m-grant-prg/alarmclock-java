@@ -1,3 +1,8 @@
+Release 1.3.7 2022-03-08
+Add new config file to hold scaling_factor parameter. If your application
+window looks tiny then your system is probably HiDPI and you should change the
+scaling_factor. Starting with 2.0 is a good idea.
+
 Release 1.3.6 2021-12-01
 Correct license in Help:About dialog box
 
