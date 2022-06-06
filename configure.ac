@@ -106,6 +106,7 @@
 #				Tighten SPDX tag.			#
 #				Add AC_COPYRIGHT macro.			#
 # 03/03/2022	MG	1.0.8	Add config file.			#
+# 06/06/2022	MG	1.0.9	Use namespace enhanced m4 macro.	#
 #									#
 #########################################################################
 
@@ -120,7 +121,7 @@ AC_COPYRIGHT([Copyright (C) 2018-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION([$Revision: 1.0.8 $])
+AC_REVISION([$Revision: 1.0.9 $])
 
 AC_PREREQ([2.69])
 
@@ -393,7 +394,7 @@ fi
 AC_MSG_NOTICE(checking for compiler characteristics)
 
 # Specially written m4 macro.
-JAVA_VERSION_OK(11.0, $srcdir)
+MG_JAVA_VERSION_OK(11.0, $srcdir)
 
 
 #################################################

@@ -2,7 +2,7 @@
 #########################################################################
 #									#
 # Macro ID: m4extra/java-vm.m4						#
-# Author: Copyright (C) 2014-2019, 2021  Mark Grant			#
+# Author: Copyright (C) 2014-2019, 2021, 2022  Mark Grant		#
 #									#
 # Released under the GPLv3 only.					#
 # SPDX-License-Identifier: GPL-3.0-only					#
@@ -28,13 +28,14 @@
 #				Exit from here on error, no need for	#
 #				error testing in configure.ac		#
 # 21/11/2021	MG	1.0.6	Tighten SPDX tag.			#
+# 06/06/2022	MG	1.1.1	Add MG_ namespace.			#
 #									#
 #########################################################################
 
 
-# JAVA_VERSION_OK(Required_Java_Version, Start_Dir)
-# -----------------------------------------------
-AC_DEFUN([JAVA_VERSION_OK],
+# MG_JAVA_VERSION_OK(Required_Java_Version, Start_Dir)
+# ----------------------------------------------------
+AC_DEFUN([MG_JAVA_VERSION_OK],
 [echo -n "checking for java version >= "$1" ... "
 if ! java -jar $2/JavaVersionCheckDist/JavaVersionCheck.jar -m $1; then
    	AC_MSG_ERROR([java jre not suitable])
