@@ -107,6 +107,8 @@
 #				Add AC_COPYRIGHT macro.			#
 # 03/03/2022	MG	1.0.8	Add config file.			#
 # 06/06/2022	MG	1.0.9	Use namespace enhanced m4 macro.	#
+# 11/10/2022	MG	1.0.10	Separate AutoTools generated files from	#
+#				project root.				#
 #									#
 #########################################################################
 
@@ -121,7 +123,7 @@ AC_COPYRIGHT([Copyright (C) 2018-2022  Mark Grant
 	      This script is free to copy or distribute under the terms set out
 	      in the package license. See COPYING for details.])
 
-AC_REVISION([$Revision: 1.0.9 $])
+AC_REVISION([$Revision: 1.0.10 $])
 
 AC_PREREQ([2.69])
 
@@ -151,6 +153,9 @@ AC_INIT([MGE AlarmClock Java Package], m4_esyscmd([ \
 AC_MSG_NOTICE(initialisation and setup)
 
 AC_SUBST(package_version, $PACKAGE_VERSION)
+
+# Separate AutoTools generated files from project root.
+AC_CONFIG_AUX_DIR([build-aux])
 
 #
 # Passes the options to all am files. Puts objects in the sub-directory
