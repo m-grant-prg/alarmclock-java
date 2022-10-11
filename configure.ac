@@ -109,6 +109,7 @@
 # 06/06/2022	MG	1.0.9	Use namespace enhanced m4 macro.	#
 # 11/10/2022	MG	1.0.10	Separate AutoTools generated files from	#
 #				project root.				#
+#				Use AC MSG CHECKING where appropriate.	#
 #									#
 #########################################################################
 
@@ -200,11 +201,13 @@ AC_ARG_ENABLE(atonly,
 	esac],atonly=false)
 AM_CONDITIONAL(ATONLY, test x$atonly = xtrue)
 
+AC_MSG_CHECKING([whether to build for AutoTools only testing or installation])
 if test "x${atonly}" = xtrue; then
-	AC_MSG_NOTICE(building for AT only testing or installing)
 	AC_SUBST(extjarloc,"/usr/share/java")
+	AC_MSG_RESULT([yes])
 else
 	AC_SUBST(extjarloc,"$datadir/java")
+	AC_MSG_RESULT([no])
 fi
 
 #
@@ -236,12 +239,13 @@ AC_ARG_ENABLE([distcheckfake],
 	esac],[distcheckfake=false])
 AM_CONDITIONAL([DISTCHECKFAKE], [test x$distcheckfake = xtrue])
 
+AC_MSG_CHECKING([whether to use workarounds to facilitate distcheck])
 if test "x${distcheckfake}" = xtrue; then
 	AC_SUBST([desktoploc], ["$datadir/applications"])
-	AC_MSG_NOTICE([using substitute paths to facilitate distcheck])
+	AC_MSG_RESULT([yes])
 else
 	AC_SUBST([desktoploc], ["/usr/share/applications"])
-	AC_MSG_NOTICE([using distcheck incompatible absolute based paths])
+	AC_MSG_RESULT([no])
 fi
 
 #
@@ -260,10 +264,11 @@ AC_ARG_ENABLE(testinghacks,
 	esac],testinghacks=false)
 AM_CONDITIONAL(TESTINGHACKS, test x$testinghacks = xtrue)
 
+AC_MSG_CHECKING([whether to use TESTINGHACKS for local testing])
 if test "x${testinghacks}" = xtrue; then
-	AC_MSG_NOTICE(building with testing hacks for local testing)
 	AC_SUBST(projjarloc,"\$(builddir)/../java/src/alarmclock")
 	AC_SUBST(projjarname,"alarmclock-java-$PACKAGE_VERSION.jar")
+	AC_MSG_RESULT([yes])
 else
 	# If STDJARLOC is supplied it overrides the alternative Debian-based
 	# standard for jar file location.
@@ -273,6 +278,7 @@ else
 		AC_SUBST(projjarloc,"$datadir/java")
 	fi
 	AC_SUBST(projjarname,"alarmclock-java.jar")
+	AC_MSG_RESULT([no])
 fi
 
 
